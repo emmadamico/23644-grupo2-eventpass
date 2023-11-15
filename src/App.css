@@ -1,38 +1,58 @@
-.App {
-  text-align: center;
+/* Fonts */
+@font-face {
+  font-family: "Montserrat Regular";
+  src: url("./assets/fonts/Montserrat-Regular.otf") format("opentype");
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: "Montserrat SemiBold";
+  src: url("./assets/fonts/Montserrat-SemiBold.otf") format("opentype");
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: "Montserrat Bold";
+  src: url("./assets/fonts/Montserrat-Bold.otf") format("opentype");
 }
 
-.App-header {
-  background-color: #282c34;
+/* Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100vw;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  overflow-x: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+body {
+  width: 100%;
+  height: 100%;
+}
+a {
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+/* Root Var */
+:root {
+  --bg-main-color: #000000;
+  --bg-secondary-color: #2d2929;
+
+  --white-color: #ffffff;
+  --white-hover-color: #ffffffc8;
+
+  --green-color: #08b100;
+  --gree-light-color: #0cff00;
+
+  --Montserrat-regular: "Montserrat Regular", sans-serif;
+  --Montserrat-semibold: "Montserrat SemiBold", sans-serif;
+  --Montserrat-bold: "Montserrat Bold", sans-serif;
 }
