@@ -1,3 +1,19 @@
+/* Fonts */
+@font-face {
+  font-family: "Montserrat Regular";
+  src: url("./assets/fonts/Montserrat-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Montserrat SemiBold";
+  src: url("./assets/fonts/Montserrat-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Montserrat Bold";
+  src: url("./assets/fonts/Montserrat-Bold.otf") format("opentype");
+}
+
 /* Resets */
 * {
   margin: 0;
@@ -8,6 +24,7 @@
 html {
   max-width: 100vw;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 body {
@@ -26,5 +43,16 @@ li {
 
 /* Root Var */
 :root {
-  --bg-color: #;
+  --bg-main-color: #000000;
+  --bg-secondary-color: #2d2929;
+
+  --white-color: #ffffff;
+  --white-hover-color: #ffffffc8;
+
+  --green-color: #08b100;
+  --gree-light-color: #0cff00;
+
+  --Montserrat-regular: "Montserrat Regular", sans-serif;
+  --Montserrat-semibold: "Montserrat SemiBold", sans-serif;
+  --Montserrat-bold: "Montserrat Bold", sans-serif;
 }
