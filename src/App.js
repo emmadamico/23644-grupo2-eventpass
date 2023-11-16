@@ -5,6 +5,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./App.css";
 import "./styles/Navbar.css";
 import "./styles/Header.css";
+import "./styles/Footer.css";
 
 function App() {
   return (
