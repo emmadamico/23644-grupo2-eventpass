@@ -8,8 +8,8 @@ export function Footer() {
         <section className="container py-4 ">
           <div className="row m-0 p-0">
             <article className="col-12 col-md-6 col-lg-4 order-1 ">
-              <a
-                href="#home"
+              <Link
+                to={"/"}
                 className="d-flex align-items-center justify-content-center"
               >
                 <img
@@ -17,7 +17,7 @@ export function Footer() {
                   alt=""
                   className="img-fluid w-50"
                 />
-              </a>
+              </Link>
             </article>
             <article className="col-12  col-lg-4 order-3 order-lg-2 mt-5 mt-lg-0 d-flex flex-column align-items-center justify-content-center">
               <h5 className="text-white">Siguenos en:</h5>
