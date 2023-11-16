@@ -6,7 +6,9 @@ import { FAQ } from "../pages/FAQ";
 import { NotFound } from "../pages/Error404";
 import { Profile } from "../pages/Profile";
 import { Tickets } from "../pages/Tickets";
+
 import { Description } from "../pages/Description";
+
 // import { customTicket } from "../pages/TicketCustom";  REVISAR
 
 export function Rutas() {
