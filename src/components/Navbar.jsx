@@ -14,7 +14,7 @@ export function Navbar() {
     <>
       <nav className="navbar navbar-expand-sm navbar-dark bg-black fixed-top">
         <div className="container py-2">
-          <Link className="navbar-brand fs-3" to={"/"}>
+          <Link className="navbar-brand fs-3" to={"/"} id="logo__title">
             EVENT<strong className="fst-italic text__light-green">PASS</strong>
           </Link>
           <button
