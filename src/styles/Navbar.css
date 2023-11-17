@@ -1,0 +1,26 @@
+/* Custom Styles */
+
+.text__light-green {
+  color: var(--green-light-color);
+}
+
+.navbar-brand#logo__title:hover strong.text__light-green {
+  transition: all 0.3s ease-in-out;
+  text-shadow: 0 0 3px var(--green-light-color);
+}
+.Link {
+  color: var(--white-color) !important;
+}
+
+.Link:hover {
+  transition: color 0.3s ease-in-out;
+  color: var(--white-hover-color) !important;
+}
+
+/* MediaQuerys */
+
+@media (max-width: 575px) {
+  #navBar__Collapse {
+    flex-direction: column;
+  }
+}
