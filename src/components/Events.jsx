@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 
-export default function Events() {
+
+export default function Events()  {
+
   let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=1&size=10`;
   console.log(url);
 
@@ -19,9 +21,8 @@ export default function Events() {
               <p>{event.dates?.start?.localTime}</p>
               <Link to={event.url}>{event.url}</Link>
             </div>
-
-            {event.images && event.images.length > 0 && (
               <img src={event.images[0].url} className="w-100  img-fluid" />
+
             )}
           </div>
         ))}
