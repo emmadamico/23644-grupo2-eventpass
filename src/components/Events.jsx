@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 
-export default function HookData() {
+export default function Events() {
   let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=1&size=10`;
   console.log(url);
 
@@ -21,10 +21,7 @@ export default function HookData() {
             </div>
 
             {event.images && event.images.length > 0 && (
-              <img
-                src={event.images[0].url}
-                className="w-100 position-absolute z-1 top-0 img-fluid"
-              />
+              <img src={event.images[0].url} className="w-100  img-fluid" />
             )}
           </div>
         ))}
