@@ -1,21 +1,45 @@
 import { Link } from "react-router-dom";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 export function Footer() {
   return (
     <>
       <footer className="bg-black w-100">
-        <section className="container pt-4">
+        <section className="container py-4 ">
           <div className="row m-0 p-0">
-            <article className="col-12 col-lg-4 d-flex align-items-center justify-content-center">
-              <img src="/logoEventPass.png" alt="" className="img-fluid w-50" />
+            <article className="col-12 col-md-6 col-lg-4 order-1 ">
+              <Link
+                to={"/"}
+                className="d-flex align-items-center justify-content-center"
+              >
+                <img
+                  src="/logoEventPass.png"
+                  alt=""
+                  className="img-fluid w-50"
+                />
+              </Link>
             </article>
-            <article className="col-12 col-lg-4 d-flex flex-column align-items-center justify-content-center">
+            <article className="col-12  col-lg-4 order-3 order-lg-2 mt-5 mt-lg-0 d-flex flex-column align-items-center justify-content-center">
               <h5 className="text-white">Siguenos en:</h5>
-              <div></div>
+              <div className="d-flex align-items-center gap-4 mt-3">
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                  <i className="bi bi-facebook fs-4" />
+                </a>
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                  <i className="bi bi-instagram fs-4" />
+                </a>
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                  <i className="bi bi-twitter fs-4"></i>
+                </a>
+              </div>
             </article>
-            <article className="col-12 col-lg-4 d-flex flex-column align-items-center justify-content-around">
-              <h4 className="Link fs-5">Quiénes somos</h4>
-              <h4 className="Link fs-5">Atención al cliente</h4>
+            <article className="col-12 col-md-6 col-lg-4 order-2 order-lg-3 mt-5 mt-md-0  d-flex flex-column align-items-center align-items-md-start justify-content-center gap-2">
+              <Link to={"/about"} className="Link fs-5 ">
+                Quiénes somos
+              </Link>
+              <Link to={"#"} className="Link fs-5">
+                Atención al cliente
+              </Link>
               <Link to={"/faq"} className="Link fs-5">
                 Preguntas Frecuentes
               </Link>

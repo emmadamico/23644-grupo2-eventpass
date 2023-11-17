@@ -6,6 +6,7 @@ import { FAQ } from "../pages/FAQ";
 import { NotFound } from "../pages/Error404";
 import { Profile } from "../pages/Profile";
 import { Tickets } from "../pages/Tickets";
+import { About } from "../pages/AboutUs";
 
 import { Description } from "../pages/Description";
 
@@ -20,6 +21,7 @@ export function Rutas() {
       <Route path="/description" element={<Description />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/mytickets" element={<Tickets />} />
+      <Route path="/about" element={<About />} />
       {/* <Route path="/mytickets/customticket" element={<customTicket/>} />  REVISAR */}
       <Route path="/faq" element={<FAQ />} />
       <Route path="*" element={<NotFound />} />
