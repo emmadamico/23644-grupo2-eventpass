@@ -6,6 +6,7 @@ import "./App.css";
 import "./styles/Navbar.css";
 import "./styles/Header.css";
 import "./styles/Footer.css";
+import "./styles/Events.css";
 
 function App() {
   return (

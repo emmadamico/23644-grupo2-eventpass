@@ -1,0 +1,39 @@
+.card__container {
+  height: 17rem;
+}
+
+.card__text {
+  background-color: rgba(90, 85, 85, 0);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(2px) brightness(0.8);
+
+  color: var(--white-color);
+}
+
+a {
+  color: var(--white-hover-color);
+}
+
+.hover:hover {
+  transition: color 0.3s ease-in-out;
+  color: var(--green-light-color) !important;
+}
+
+section {
+  /* background-image: url(/public/background.png); */
+}
+
+img {
+  border-radius: 0.5rem 1.5rem;
+}
+
+.versalita {
+  font-variant: small-caps;
+}
+
+@media (max-width: 766px) {
+  img {
+    border-radius: 0;
+  }
+}
