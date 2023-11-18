@@ -19,7 +19,7 @@ export default function Events()  {
               <h3>{event.name}</h3>
               <p>{event.dates?.start?.localDate}</p>
               <p>{event.dates?.start?.localTime}</p>
-              <Link to={`/description/${event.id}`} className="btn btn-info">{event.name}</Link>
+              <Link to={`/description/${event.id}`} >{event.name}</Link>
             </div>
             <img src={event.images[0].url} className="w-100 img-fluid" alt={event.name} />
           </div>
