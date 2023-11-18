@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import OtherEvents from '../components/OtherEvents';
 
 const Description = () => {
   const [eventData, setEventData] = useState(null);
@@ -21,7 +22,7 @@ const Description = () => {
     };
 
     fetchEventDetails();
-  }, []);
+  }, [eventId]);
 
 
   return (
@@ -70,26 +71,8 @@ const Description = () => {
             <p>Cargando detalles del evento...</p>
           )}
         </div>
+        <OtherEvents />
 
-        <div className='text-black py-5' style={{backgroundColor: "#ffffff60"}}>
-          <div className="container mb-5">
-              <h2 className='fw-bold'>Otros eventos de interes</h2>
-          </div>
-          <div className="d-flex justify-content-around gap-2">
-              <div className="card rounded-4" style={{width: "18rem"}}>
-                <img src="https://cdn.getcrowder.com/images/8dfede87-cdef-40f8-b151-d68f24b7a443-whatsapp-image-2023-06-30-at-14.12.28.jpeg" className="card-img-top rounded-4" alt="..."/>
-              </div>
-              <div className="card rounded-4" style={{width: "18rem"}}>
-                <img src="https://i0.wp.com/ruidomagazine.com/wp-content/uploads/2023/06/lit.jpg?resize=880%2C880&ssl=1" className="card-img-top rounded-4" alt="..."/>
-              </div>
-              <div className="card rounded-4" style={{width: "18rem"}}>
-                <img src="https://cdn.eldestapeweb.com/eldestape/102023/1697129731746.webp?cw=1080&ch=1080&extw=jpg" className="card-img-top rounded-4" alt="..."/>
-              </div>
-              <div className="card rounded-4" style={{width: "18rem"}}>
-                <img src="https://www.movistararena.cl/wp-content/uploads/2023/02/movistar-arena-arena-news-nickinicole1-1024x1024.webp" className="card-img-top rounded-4" alt="..."/>
-              </div>
-          </div>
-        </div>
     </div>
 
     <Footer />
