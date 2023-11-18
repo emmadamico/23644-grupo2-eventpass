@@ -6,10 +6,10 @@ import { useFetch } from "../hooks/useFetch";
 export default function Events()  {
 
   let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=1&size=10`;
-  console.log(url);
+  // console.log(url);
 
   let { data, isPending, error } = useFetch(url);
-  console.log(isPending, error);
+  console.log(data, isPending, error);
   return (
     <>
       <section className="row">
@@ -19,11 +19,9 @@ export default function Events()  {
               <h3>{event.name}</h3>
               <p>{event.dates?.start?.localDate}</p>
               <p>{event.dates?.start?.localTime}</p>
-              <Link to={event.url}>{event.url}</Link>
+              <Link to={event.url}>{event.id}</Link>
             </div>
-              <img src={event.images[0].url} className="w-100  img-fluid" />
-
-            )}
+            <img src={event.images[0].url} className="w-100 img-fluid" alt={event.name} />
           </div>
         ))}
       </section>
