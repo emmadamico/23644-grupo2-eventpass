@@ -18,7 +18,7 @@ export function Rutas() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/description" element={<Description />} />
+      <Route path="/description/:eventId" element={<Description />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/mytickets" element={<Tickets />} />
       <Route path="/about" element={<About />} />

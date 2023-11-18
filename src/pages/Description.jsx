@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Header } from "../components/Header";
+import { Link, useParams } from 'react-router-dom';
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 
-const TicketmasterEventExample = () => {
+const Description = () => {
   const [eventData, setEventData] = useState(null);
-  const apiKey = 'TU_CLAVE_DE_API'; // Reemplaza con tu clave de API
-  const eventId = 'ID_DEL_EVENTO'; // Reemplaza con el ID del evento que deseas obtener
+  const { eventId } = useParams(); // Obtén el eventId de la ruta
 
   useEffect(() => {
     const fetchEventDetails = async () => {
       try {
         // const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/${eventId}.json?apikey=${apiKey}`);
-        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/G5v0Z9YcKv8Bt?apikey=HkAwxk8A5J4sB3ynC4jCtvIybZfuDAOn`);
+        const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events/${eventId}?apikey=${process.env.REACT_APP_CONSUMER_KEY}`);
         const data = await response.json();
 
         setEventData(data);
@@ -23,13 +21,13 @@ const TicketmasterEventExample = () => {
     };
 
     fetchEventDetails();
-  }, [apiKey, eventId]);
+  }, []);
 
 
   return (
     <>
     <MyNavbar />
-    <div style={{backgroundImage: "url(./background.png)", backgroundPosition: "center center", backgroundSize:"cover"}}>
+    <div style={{backgroundImage: "url(../background.png)", backgroundSize: "cover", backgroundPosition: "top center"}}>
         { eventData ? ( <img src={eventData.images[5].url} className='img-fluid' alt={eventData.name}/> ) : ( <p>Cargando detalles del evento...</p> ) }
         <div>
           {eventData ? (
@@ -86,4 +84,4 @@ const TicketmasterEventExample = () => {
   );
 };
 
-export default TicketmasterEventExample;
+export default Description;
