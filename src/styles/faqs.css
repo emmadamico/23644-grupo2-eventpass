@@ -1,14 +1,9 @@
-.faqs{
-    margin: 70px;
-}
-
+/*Se estiliza banner de faq*/
 .banner img {
     width: 100%;
-    height: 500px; 
+    height: 400px; 
     object-fit: cover;
 }
-
-
 .banner .title {
     position: absolute;
     top: 20%;
@@ -17,8 +12,29 @@
     color: black;
     font-size: 2em;
 }
-
-.card{
-    width: 80%;
-    height: 800px;
+/*Se estiliza section*/
+.faqs{
+    background-image: url(../../public/background.png);
+    background-repeat: no-repeat;
+    background-size:cover;
 }
+.card-faq{
+    width: 80%;
+    height: auto;
+    border-radius: 50px;
+    background-color: #ffffff;
+    position: relative;
+    top: -150px;
+    padding: 70px;
+}
+/*Se sobreescriben estilos de bootstrap*/
+.card-faq .accordion-button.collapsed, 
+.card-faq .accordion-button:not(.collapsed){
+    background-color: #0CFF00;
+    padding: 25px;
+    border-radius: 50px!important;
+}
+  .card-faq .accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(12, 255, 0, 0.5);
+  }
+ 
