@@ -12,7 +12,7 @@ export function FAQ() {
             src="/banner.png"
             alt=""
           />
-          <h1 className="title">PREGUNTAS FRECUENTES</h1>
+          <h1 className="title">Preguntas Frecuentes</h1>
       </banner>
       
       <section className="faqs">
