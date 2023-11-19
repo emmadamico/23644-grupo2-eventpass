@@ -15,14 +15,12 @@
     font-variant: small-caps;
     font-weight: bold;
 }
-
 .banner p{
     top: 35%;
     left: 30%;
     font-size: 1.5em;
     font-variant: none;
 }
-
 main{
     background-image: url(../../public/background.png);
     background-repeat: no-repeat;
@@ -37,12 +35,16 @@ main{
     border: 1px solid rgba(255, 255, 255, 0.12);
     position: relative;
     top: -160px;
-    padding: 6rem;
+    padding: 0 1rem;
 }
 
-  @media (max-width: 1200px){
-    .banner .title{
-        left: 25%;
-        top: 30%;
-  }
+.card-user .nav-tabs .nav-link {
+    border-radius: 50px;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+}
+.card-user .nav-tabs .nav-link:active, 
+.card-user .nav-tabs .nav-link:focus {
+    background-color: #0CFF00;
 }
