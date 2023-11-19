@@ -19,75 +19,39 @@ export function FAQ() {
       <div className="card-faq mx-auto">
       <Accordion>
       <Accordion.Item className='mb-4 border-0' eventKey="0">
-        <Accordion.Header>Accordion Item #1</Accordion.Header>
+        <Accordion.Header>¿Cuáles son los medios de pago?</Accordion.Header>
         <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Aceptamos pagos con cualquier tarjeta de crédito, débito o Mercado Pago.
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item className='mb-4 border-0' eventKey="1">
-        <Accordion.Header>Accordion Item #2</Accordion.Header>
+        <Accordion.Header>Quiero comprar las entradas con la tarjeta de una persona que no irá al evento. ¿Qué debo hacer?</Accordion.Header>
         <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Al momento de realizar la compra deberás completar los datos del comprador con los datos del titular de la tarjeta. Una vez realizada la misma, te brindaremos un link de compra desde donde podrás personalizar las entradas.
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item className='mb-4 border-0' eventKey="2">
-        <Accordion.Header>Accordion Item #1</Accordion.Header>
+        <Accordion.Header>Compré entradas y no puedo asistir al evento. ¿Es posible transferir las entradas a otra persona?</Accordion.Header>
         <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Sí. Deberás ingresar al link de compra que te enviamos vía mail cuando realizaste la compra y desde allí podrás cambiar el nombre de las entradas que desees transferir.
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item className='mb-4 border-0' eventKey="3">
-        <Accordion.Header>Accordion Item #1</Accordion.Header>
+        <Accordion.Header>¿Qué debo presentar al momento de ingresar?</Accordion.Header>
         <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          En el control de accesos deberás presentar tu entrada impresa o en tu celular. Por seguridad, también te recomendamos asistir con tu DNI.
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item className='mb-4 border-0' eventKey="4">
-        <Accordion.Header>Accordion Item #1</Accordion.Header>
+        <Accordion.Header>¿Cómo funciona el control de accesos?</Accordion.Header>
         <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+        Realizamos un escaneo de los códigos QR de las entradas para validar acceso y evitar el ingreso de entradas duplicadas o falsificadas, ya que solo es posible acreditar códigos QR que se encuentren en la base de datos del evento una única vez.
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item className='mb-4 border-0' eventKey="5">
-        <Accordion.Header>Accordion Item #1</Accordion.Header>
+        <Accordion.Header>El evento para el que compré entradas fue cancelado. ¿Cómo solicito el reembolso?</Accordion.Header>
         <Accordion.Body>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+        Deberás contactarnos, colocando como asunto: REEMBOLSO.
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>

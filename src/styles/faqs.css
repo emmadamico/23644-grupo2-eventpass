@@ -11,6 +11,8 @@
     transform: translate(-50%, -50%);
     color: black;
     font-size: 2em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
 }
 /*Se estiliza section*/
 .faqs{
@@ -26,6 +28,7 @@
     position: relative;
     top: -150px;
     padding: 70px;
+    font-family: 'montserrat', sans-serif;
 }
 /*Se sobreescriben estilos de bootstrap*/
 .card-faq .accordion-button.collapsed, 
