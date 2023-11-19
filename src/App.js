@@ -7,6 +7,8 @@ import "./styles/Navbar.css";
 import "./styles/Header.css";
 import "./styles/Footer.css";
 import "./styles/Events.css";
+import "./styles/Fav.css";
+import "./styles/Filter.css";
 
 function App() {
   return (

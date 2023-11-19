@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
+import { Fav } from "./Fav";
+import { Filter } from "./Filter";
 
 export default function Events() {
   //Paginador
@@ -14,27 +16,43 @@ export default function Events() {
   };
 
   const HandleDecrementPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    } else {
-      setPage(1);
-    }
+    setPage(page > 1 ? page - 1 : 1);
   };
 
-  //Interpolacion url api
-  let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=9`;
+  const [selectedSegmentId, setSelectedSegmentId] = useState(null);
+
+  const handleSegmentClick = (segmentId) => {
+    setSelectedSegmentId(segmentId);
+    console.log("Segment ID seleccionado:", segmentId);
+  };
+
+  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=9`;
   //console.log(url);
 
-  // CustomHook
-  let { data, isPending, error } = useFetch(url);
+  let { data, isPending, error, performFetch } = useFetch(url);
   //console.log(isPending, error);
+
+  useEffect(() => {
+    if (selectedSegmentId === "todos") {
+      setSelectedSegmentId(null);
+      const newUrl = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=9`;
+
+      performFetch(newUrl);
+    } else if (selectedSegmentId) {
+      const newUrl = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=9&segmentId=${selectedSegmentId}`;
+
+      performFetch(newUrl);
+      //console.log(selectedSegmentId, newUrl);
+    }
+  }, [selectedSegmentId, page]);
   return (
     <>
+      <Filter onSegmentClick={handleSegmentClick} />
       <Container className="p-0">
         <section className="row p-0 m-0">
           {data?._embedded?.events?.map((event) => (
             <div
-              className="col-12 col-md-4  m-0 p-0 px-0 p-md-2"
+              className="col-12 col-md-6 col-lg-4  m-0 p-0 px-0 p-md-2"
               key={event.id}
             >
               <div className="position-relative d-flex align-items-center card__container">
@@ -45,20 +63,11 @@ export default function Events() {
                     <p className="m-0 p-0">{event.dates?.start?.localTime}</p>
                   </div>
                   <div className="d-flex align-items-center justify-content-between">
-                    <Link to={event.url} className="hover">
+                    <Link to={`/description/:${event.id}`} className="hover">
                       Ir al Evento
                     </Link>
-                    <div className="d-flex align-items-center gap-2">
-                      <a href="" target="_blank" rel="noopener noreferrer">
-                        <i className="bi bi-facebook" />
-                      </a>
-                      <a href="" target="_blank" rel="noopener noreferrer">
-                        <i className="bi bi-instagram" />
-                      </a>
-                      <a href="" target="_blank" rel="noopener noreferrer">
-                        <i className="bi bi-twitter"></i>
-                      </a>
-                    </div>
+
+                    <Fav />
                   </div>
                 </div>
 
