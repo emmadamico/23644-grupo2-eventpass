@@ -6,9 +6,11 @@ import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
 import { Filter } from "./Filter";
 
+
 export default function Events() {
   //Paginador
   const [page, setPage] = useState(1);
+
 
   //Manejadores de paginador
   const HandleIncrementPage = () => {
@@ -87,6 +89,7 @@ export default function Events() {
                 </div>
               </div>
             </div>
+
           ))}
         </section>
 
@@ -105,6 +108,7 @@ export default function Events() {
           </button>
         </div>
       </Container>
+
     </>
   );
 }
