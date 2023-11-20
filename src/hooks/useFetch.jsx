@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 
-export const useFetch = (url) => {
+export const useFetch = (initialUrl) => {
+  const [url, setUrl] = useState(initialUrl);
   const [data, setData] = useState(null);
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getData = async (url) => {
+    const fetchData = async () => {
       try {
+        setIsPending(true);
+
         let res = await fetch(url);
 
         if (!res.ok) {
@@ -24,13 +27,18 @@ export const useFetch = (url) => {
         setData(data);
         setError({ error: false });
       } catch (error) {
-        setIsPending(true);
+        setIsPending(false);
         setError(error);
       }
-      //console.log(json)
     };
-    getData(url);
+
+    fetchData();
   }, [url]);
 
-  return { data, isPending, error };
+  // Función para realizar solicitudes con una nueva URL
+  const performFetch = (newUrl) => {
+    setUrl(newUrl);
+  };
+
+  return { data, isPending, error, performFetch };
 };
