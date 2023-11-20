@@ -25,7 +25,10 @@ export default function OtherEvents()  {
                 <div className="d-flex justify-content-around gap-2">
 
                     {data?._embedded?.events?.map((event) => (
-                        <div className="card rounded-4" style={{width: "18rem"}}>
+                        <div 
+                        key={event.id}
+                        className="card rounded-4" 
+                        style={{width: "18rem"}}>
                             <Link to={`/description/${event.id}`} onClick={scrollToTop} >
                                 <img 
                                 className="card-img-top rounded-4" 
