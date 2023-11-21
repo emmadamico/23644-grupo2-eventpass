@@ -69,7 +69,7 @@ export default function Events() {
                   </div>
                   <div className="d-flex align-items-center justify-content-between">
                     <Link to={`/description/:${event.id}`} className="hover">
-                      Ir al Evento
+                      See More
                     </Link>
                     <Fav />
                   </div>
