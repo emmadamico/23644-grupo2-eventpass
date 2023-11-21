@@ -1,13 +1,14 @@
+import "../App.css";
+import '../styles/faqs.css'
+import Accordion from 'react-bootstrap/Accordion';
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
-import Accordion from 'react-bootstrap/Accordion';
-import '../styles/faqs.css'
 
 export function FAQ() {
   return (
     <main>
       <MyNavbar/>
-      <banner className='banner'>
+      <banner className='banner-faq'>
         <img
             src="/banner.png"
             alt=""
