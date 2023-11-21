@@ -17,7 +17,7 @@ export function Filter({ onSegmentClick }) {
           activeClassName="active"
           onClick={() => onSegmentClick("todos")} // Puedes asignar cualquier id que desees, en este caso, estoy utilizando "todos"
         >
-          Todos
+          All
         </NavLink>
         {data?._embedded?.classifications?.map((classification) => {
           const segment = classification?.segment;
@@ -29,7 +29,7 @@ export function Filter({ onSegmentClick }) {
                 activeClassName="active"
                 onClick={() => onSegmentClick(segment.id)}
               >
-                {segment.name === "Undefined" ? "Otros" : segment.name}
+                {segment.name === "Undefined" ? "Another" : segment.name}
               </NavLink>
             );
           }
