@@ -12,16 +12,14 @@
 
 
 /* conteiner */
-.d-flex h6{
-    padding: 6px 12px;
-}
 
-.conteiner h6{
+.titulo-personalizar{
     color: #ffffff;
+    padding: 6px 12px;
+    
 }
 
-.conteiner{
-    /* background-color: #ffffff; */
+.conteiner-personalizar{
     background-color: rgba(90, 85, 85, 0);
     backdrop-filter: blur(2px) brightness(0.7);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -29,11 +27,11 @@
     padding: 2em;
     border-radius: 10px;
 }
-.d-flex{
+.imagenes{
     padding: 2em;
 }
 
-.d-flex img{
+.imagenes img{
     object-fit: cover; 
     width: 15em;
     height: 15em;
@@ -85,14 +83,10 @@
     font-size: 16px; 
 }
 
-div.d-flex{
-    padding: 0%;
-    margin-top: 1rem;
-}
 
 /* compartir descargar */
-.d-flex h5{
-    color: #0CFF00 !important;
+.texto-verde{
+    color: #0CFF00;
 }
 .compartir{
     background-color: black;

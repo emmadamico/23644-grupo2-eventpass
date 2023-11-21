@@ -48,9 +48,9 @@ const descarga = (e) => {
           Regala una entrada personalizada y sorprende a tu persona especial con un diseño y un mensaje únicos.
         </p>
       </div>
-      <div className="conteiner">
-        <h6>Elije un diseño:</h6>
-        <div className="d-flex justify-content-center flex-wrap gap-2">
+      <div className="conteiner-personalizar">
+        <h6 className="titulo-personalizar">Elije un diseño:</h6>
+        <div className="imagenes d-flex justify-content-center flex-wrap gap-2">
           <img onClick={() => seleccionarImgClick('../img/img1.jpg')} src="../img/img1.jpg" className="img-fluid" alt="" />
           <img onClick={() => seleccionarImgClick('../img/img2.jpg')} src="../img/img2.jpg" className="img-fluid" alt="" />
           <img onClick={() => seleccionarImgClick('../img/img3.jpg')} src="../img/img3.jpg" className="img-fluid" alt="" />
@@ -59,8 +59,8 @@ const descarga = (e) => {
           <img onClick={() => seleccionarImgClick('../img/img6.jpg')} src="../img/img6.jpg" className="img-fluid" alt="" />
 
         </div>
-        <div className="d-flex flex-wrap">
-        <h6>Escribe un mensaje:</h6>
+        <div className="conteiner-mensaje d-flex flex-wrap">
+        <h6 className="titulo-personalizar">Escribe un mensaje:</h6>
         <input onChange={textomensaje} className="form-control w-25 d-block" type="text" placeholder="Escribe aquí tu mensaje especial" name="mensaje" id="" />
         </div>
         
@@ -82,7 +82,7 @@ const descarga = (e) => {
       </figure>
       {/* Compartir/descargar */}
       <div className="compartir d-flex justify-content-center flex-wrap gap-4 align-items-center">
-        <h5>COMPARTE</h5>
+        <h5 className="texto-verde">COMPARTE</h5>
 
 
         <ul className="list-unstyled d-flex flex-wrap gap-3 align-items-center">
@@ -109,7 +109,7 @@ const descarga = (e) => {
 
 
         </ul>
-        <h5 onClick={descarga} type='button'>DESCARGA</h5>
+        <h5 className="texto-verde" onClick={descarga} type='button'>DESCARGA</h5>
       </div>
 
     </div>
