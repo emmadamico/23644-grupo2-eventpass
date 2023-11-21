@@ -44,7 +44,50 @@ main{
     font-family: 'Montserrat', sans-serif;
     font-weight: bolder;
 }
-.card-user .nav-tabs .nav-link:active, 
-.card-user .nav-tabs .nav-link:focus {
+
+.card-user .nav-tabs .nav-link.active {
     background-color: #0CFF00;
 }
+
+.user-form label{
+    margin-bottom: 30px;
+    color: white;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+}
+
+.btn{
+    display: flex;
+}
+
+.cancel-btn{
+    font-size: 1em;
+    background-color: #2D2929;
+    color: white;
+    padding: 14px 48px;
+    border-radius: 50px;
+    transition: all .3s ease-in-out;
+    border: none;
+  }
+  .cancel-btn:hover{
+    background-color: rgb(31, 31, 31, 0.9);;
+  }
+
+.save-btn{
+    font-size: 1em;
+    background-color: #0CFF00;
+    color: black;
+    padding: 14px 48px;
+    border-radius: 50px;
+    transition: all .3s ease-in-out;
+    border: none;
+}
+
+.save-btn:hover{
+    background-color: rgba(11, 200, 0);
+  }
+
+  .input-form{
+    width: 500px;
+  }
