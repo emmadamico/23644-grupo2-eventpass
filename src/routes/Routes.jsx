@@ -8,7 +8,7 @@ import { Profile } from "../pages/Profile";
 import { Tickets } from "../pages/Tickets";
 import { About } from "../pages/AboutUs";
 
-import { Description } from "../pages/Description";
+import Description from "../pages/Description";
 
 // import { customTicket } from "../pages/TicketCustom";  REVISAR
 

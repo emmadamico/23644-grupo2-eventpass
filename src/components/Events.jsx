@@ -11,7 +11,6 @@ export default function Events() {
   //Paginador
   const [page, setPage] = useState(1);
 
-
   //Manejadores de paginador
   const HandleIncrementPage = () => {
     setPage(page + 1);
@@ -108,7 +107,6 @@ export default function Events() {
           </button>
         </div>
       </Container>
-
     </>
   );
 }
