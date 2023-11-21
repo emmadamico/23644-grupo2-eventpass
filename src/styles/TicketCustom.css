@@ -33,8 +33,8 @@
 
 .imagenes img{
     object-fit: cover; 
-    width: 15em;
-    height: 15em;
+    width: 10em;
+    height: 10em;
     border-radius: 10px;
 
 }
@@ -47,6 +47,19 @@
     height: 70vh; 
     overflow: hidden;
     border-radius: 10px;
+}
+
+@media(max-width:1060px){
+    .fondo {
+        width: 70%; 
+        height: 50vh;    
+    }   
+}
+
+@media(max-width:790px){
+    .fondo{
+        height: 40vh;
+    }
 }
 
 .img-fondo {
@@ -65,9 +78,9 @@
 
 
 .contenido-superpuesto img {
-    width: 50%; 
+    width: 40%; 
     height: auto; 
-    margin: 10rem 25rem 5rem;
+    margin: 5rem 15rem 5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 1.5);
 }
 
