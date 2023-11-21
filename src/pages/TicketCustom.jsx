@@ -28,6 +28,7 @@ export function TicketCustom() {
   }
 };
 
+
 const descarga = (e) => {
   html2canvas(document.querySelector("#exportar")).then(function(canvas) {
     let img = canvas.toDataURL("regaloImg/png");
@@ -86,6 +87,7 @@ const descarga = (e) => {
 
 
         <ul className="list-unstyled d-flex flex-wrap gap-3 align-items-center">
+        
           <li><a href="http://" target="_blank" rel="noopener noreferrer">
             <i className="bi bi-facebook fs-4" />
           </a>
