@@ -1,12 +1,10 @@
 import "../App.css";
+import '../styles/profile.css';
 import { useState } from 'react';
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import '../styles/profile.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 export function Profile() {
   const [name, setName] = useState('');
@@ -18,25 +16,25 @@ export function Profile() {
   const [repeatPassword, setRepeatPassword] = useState('');
 
   const handlePasswordCancel = () => {
-    // Aquí puedes agregar la lógica para manejar la cancelación del cambio de contraseña
+    //lógica para manejar la cancelación del cambio de contraseña
   };
 
   const handlePasswordChange = () => {
-    // Aquí puedes agregar la lógica para manejar el cambio de contraseña
+    // lógica para manejar el cambio de contraseña
   };
 
   const handleCancel = () => {
-    // Aquí puedes agregar la lógica para manejar la cancelación de los cambios
+    //lógica para manejar la cancelación de los cambios
   };
 
   const handleSave = () => {
-    // Aquí puedes agregar la lógica para guardar los cambios
+    //lógica para guardar los cambios
   };
 
   return (
-    <main>
+    <main className="profile">
       <MyNavbar/>
-      <banner className='banner'>
+      <banner className='banner-profile'>
         <img
             src="/banner.png"
             alt=""
@@ -45,8 +43,6 @@ export function Profile() {
           <p>Modifica tus datos de cuenta y contacto</p>
       </banner>
 
-
-      
       <div className="card-user mx-auto">
         <Tabs
           defaultActiveKey="user-info"
@@ -75,7 +71,7 @@ export function Profile() {
                     <input className='mx-3 border-0 input-form' type="email" value={email} onChange={e => setEmail(e.target.value)} />
                   </label>
                 </div>
-                <div className='btn form-item mt-3'>
+                <div className='btn mt-3'>
                   <button className='cancel-btn' type="button" onClick={handleCancel}>Cancelar</button>
                   <button className='save-btn' type="button" onClick={handleSave}>Guardar cambios</button>
                 </div>
@@ -104,7 +100,7 @@ export function Profile() {
                   <input className='mx-3 border-0 input-form' type="password" value={repeatPassword} onChange={e => setRepeatPassword(e.target.value)} />
               </label>
             </div>
-            <div className='btn form-item mt-3'>
+            <div className='btn mt-3'>
               <button className='cancel-btn' type="button" onClick={handlePasswordCancel}>Cancelar</button>
               <button className='save-btn' type="button" onClick={handlePasswordChange}>Cambiar contraseña</button>
             </div>  
@@ -114,7 +110,6 @@ export function Profile() {
         </Tab>
       </Tabs>
       </div>
-      
       <Footer/>
     </main>
   );
