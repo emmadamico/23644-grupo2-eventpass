@@ -8,7 +8,7 @@ import { Profile } from "../pages/Profile";
 import { Tickets } from "../pages/Tickets";
 import { About } from "../pages/AboutUs";
 
-import { Description } from "../pages/Description";
+import Description from "../pages/Description";
 
 // import { customTicket } from "../pages/TicketCustom";  REVISAR
 
@@ -18,7 +18,7 @@ export function Rutas() {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/description" element={<Description />} />
+      <Route path="/description/:eventId" element={<Description />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/mytickets" element={<Tickets />} />
       <Route path="/about" element={<About />} />

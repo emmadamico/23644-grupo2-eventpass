@@ -32,12 +32,12 @@ export function MyNavbar() {
                 <>
                   <li className="nav-item">
                     <Link to={"/login"} className="nav-link Link">
-                      Ingresar
+                      Login
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link to={"/register"} className="nav-link Link">
-                      Registrarme
+                      Signup
                     </Link>
                   </li>
                   <li className="nav-item">
@@ -52,7 +52,7 @@ export function MyNavbar() {
                 <>
                   <li className="nav-item">
                     <Link to={"/mytickets"} className="nav-link Link">
-                      Mis Entradas
+                      My Tickets
                     </Link>
                   </li>
                   <li className="nav-item">
@@ -62,7 +62,7 @@ export function MyNavbar() {
                   </li>
                   <li className="nav-item">
                     <Link to={"/profile"} className="nav-link Link">
-                      Mi Cuenta
+                      Mi Profile
                     </Link>
                   </li>
                   <li className="nav-item">
