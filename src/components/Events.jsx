@@ -6,11 +6,9 @@ import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
 import { Filter } from "./Filter";
 
-
 export default function Events() {
   //Paginador
   const [page, setPage] = useState(1);
-
 
   //Manejadores de paginador
   const HandleIncrementPage = () => {
@@ -18,7 +16,7 @@ export default function Events() {
   };
 
   const HandleDecrementPage = () => {
-    setPage(page > 1 ? page - 1 : 1);
+    setPage(page > 1 ? page - 1 : page);
   };
 
   const [selectedSegmentId, setSelectedSegmentId] = useState(null);
@@ -31,6 +29,7 @@ export default function Events() {
   const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=9`;
   //console.log(url);
 
+  // eslint-disable-next-line no-unused-vars
   let { data, isPending, error, performFetch } = useFetch(url);
   //console.log(isPending, error);
 
@@ -44,9 +43,13 @@ export default function Events() {
       const newUrl = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=9&segmentId=${selectedSegmentId}`;
 
       performFetch(newUrl);
-      //console.log(selectedSegmentId, newUrl);
+    } else {
+      const newUrl = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=9`;
+
+      performFetch(newUrl);
     }
   }, [selectedSegmentId, page]);
+
   return (
     <>
       <Filter onSegmentClick={handleSegmentClick} />
@@ -66,13 +69,11 @@ export default function Events() {
                   </div>
                   <div className="d-flex align-items-center justify-content-between">
                     <Link to={`/description/:${event.id}`} className="hover">
-                      Ir al Evento
+                      See More
                     </Link>
-
                     <Fav />
                   </div>
                 </div>
-
                 <div className="position-absolute z-1">
                   {event.images && event.images.length > 0 && (
                     <Image
@@ -81,7 +82,6 @@ export default function Events() {
                           (image) => image.width === 640 && image.height === 360
                         )?.url || event.images[0].url
                       }
-                      className=""
                       fluid
                       rounded
                     />
@@ -89,7 +89,6 @@ export default function Events() {
                 </div>
               </div>
             </div>
-
           ))}
         </section>
 
@@ -108,7 +107,6 @@ export default function Events() {
           </button>
         </div>
       </Container>
-
     </>
   );
 }
