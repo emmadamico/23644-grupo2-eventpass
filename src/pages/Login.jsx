@@ -1,9 +1,11 @@
+
 import React from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import "../App.css";
 import "../styles/Login.css";
 import { MyNavbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+
 
 export function Login() {
   return (
@@ -13,7 +15,7 @@ export function Login() {
       <div className="form-login form-container mx-auto flex-column justify-content-center align-items-center mt-5">
         <div className="row justify-content-center align-items-center">
           <div className="col-md-8">
-            <div className="cardgral card p-7d" style={{ borderRadius: '1rem', textAlign: 'center' }}>
+            <div className="cardgral card p-7" style={{ borderRadius: '1rem', textAlign: 'center', maxWidth: '600px', margin: 'auto' }}>
               <div className="card-body">
                 <h3 className="mb-4">INGRESAR A MI CUENTA</h3>
                 <Form>
@@ -31,6 +33,7 @@ export function Login() {
                       Contraseña
                     </Form.Label>
                     <Col sm="9">
+                      
                       <Form.Control type="password" placeholder="Ingresa tu contraseña" className="py-2"style={{ borderRadius: '50px' }} />
                     </Col>
                   </Form.Group>                
@@ -38,14 +41,16 @@ export function Login() {
                  <Col>
                   <Button variant="light" type="submit" className="w-100 py-2" style={{ borderRadius: '50px' }}>
                    Ingresar
-                  </Button>
-                 </Col>
+                   </Button>
+                    </Col>    
+                    
+                 
                  <Col className="d-flex align-items-center">
                    <Form.Group controlId="formBasicCheckbox" className="mb-0">
                    <Form.Check type="checkbox" label="Recordarme" />
                   </Form.Group>
                 </Col>
-                  </Row>                  
+                </Row>                 
                 </Form>
                 <div className="row mt-3 d-flex justify-content-center">
   
@@ -57,9 +62,10 @@ export function Login() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </div>      
+       </div>
      </div>
+
       <Footer />
     </div>
   );

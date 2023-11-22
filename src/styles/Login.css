@@ -6,29 +6,56 @@
   margin: 0;
   padding: 0;
 }
-
-.form-login {
-  margin-top: 0;
-  margin-top: 80px;
-  font-family:var(--Montserrat-semibold);
+.form-container {
+  margin-top: 100px; 
 }
-
 .cardgral {
   width: 100%;
-  max-width: 600px; 
-  padding: 20px;  
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
-  background-image: url('/public/background.png'); 
-  background-position: center; 
-  background-repeat: no-repeat;
+  max-width: 500px; 
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
+  background-image: url('/public/background.png'); /* Agrega la imagen de fondo a la tarjeta */
+  /* Ajusta el tamaño de la imagen de fondo de la tarjeta */
+  background-position: center; /* Ajusta la posición de la imagen de fondo de la tarjeta */
+  background-repeat: no-repeat; /* No repitas la imagen de fondo en la tarjeta */
 }
 
 .cardgral-body {
   padding: 30px;
 }
-.mb-4 {
-  color: aliceblue;
+
+.card-body h3 {
+  color: #faf7f7;
+  font-family: var(--Montserrat-semibold);
 }
+
+.card-body .form-label {
+  color: #faf7f7; 
+}
+
+.form-group {
+  display: flex; 
+  align-items: center; 
+}
+
+.form-group .form-label {
+  margin-right: 10px;
+}
+
+.card .form-control {
+  height: 40px;
+  border-radius: 50px;
+  flex-grow: 1; 
+}
+
+
+
 button.py-2:hover {
   background-color: var(--white-hover-color);
 }
+
+.form-check-label {
+  color: #eff5f1;
+}
+
