@@ -10,10 +10,10 @@ export function Login() {
     <div>
       <MyNavbar />
       <div className="body-container">
-      <div className="form-container mx-auto flex-column justify-content-center align-items-center mt-5">
+      <div className="form-login form-container mx-auto flex-column justify-content-center align-items-center mt-5">
         <div className="row justify-content-center align-items-center">
           <div className="col-md-8">
-            <div className="card p-7" style={{ borderRadius: '1rem', textAlign: 'center' }}>
+            <div className="cardgral card p-7d" style={{ borderRadius: '1rem', textAlign: 'center' }}>
               <div className="card-body">
                 <h3 className="mb-4">INGRESAR A MI CUENTA</h3>
                 <Form>

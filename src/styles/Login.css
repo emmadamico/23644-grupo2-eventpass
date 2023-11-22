@@ -7,12 +7,13 @@
   padding: 0;
 }
 
-.form-container {
+.form-login {
   margin-top: 0;
   margin-top: 80px;
+  font-family:var(--Montserrat-semibold);
 }
 
-.card {
+.cardgral {
   width: 100%;
   max-width: 600px; 
   padding: 20px;  
@@ -22,9 +23,12 @@
   background-repeat: no-repeat;
 }
 
-.card-body {
+.cardgral-body {
   padding: 30px;
 }
 .mb-4 {
   color: aliceblue;
+}
+button.py-2:hover {
+  background-color: var(--white-hover-color);
 }
