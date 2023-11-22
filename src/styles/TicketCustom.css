@@ -40,21 +40,26 @@
 
 .imagenes img{
     object-fit: cover; 
-    width: 10em;
-    height: 10em;
+    width: 8em;
+    height: 8em;
     border-radius: 10px;
 
 }
+
+.imagenes img:hover {
+    cursor: pointer; 
+    transform: scale(1.1);
+  }
+
 @media(max-width:425px){
     .imagenes img{
         width: 2rem;
         height: 2rem;
     }
 }
-    width: 15em;
-    height: 15em;
-    border-radius: 10px;
 
+.conteiner-mensaje{
+    margin-bottom: 1rem;
 }
 
 /* Contenedor personalizable */
@@ -100,12 +105,14 @@
 
 @media(max-width:790px){
     .contenido-superpuesto img{
+        width: 50%;
         margin: 5rem 9rem 2rem;
     }
 }
 
 @media(max-width:425px){
     .contenido-superpuesto img{
+        width: 70%;
         margin: 5rem 3rem 2rem;
     }
 }
@@ -127,6 +134,13 @@
 .texto-verde{
     color: #0CFF00;
 }
+.descarga:hover{
+    color: #7ef818;
+    padding: 1rem;
+    border-radius: 10px;
+    border: solid #272925;
+}
+
 .compartir{
     background-color: black;
     margin: 1rem;
