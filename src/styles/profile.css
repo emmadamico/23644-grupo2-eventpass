@@ -17,14 +17,16 @@
     transform: translate(-50%, -50%);
     color: var(--bg-main-color);
     font-size: 2em;
-    font-family: var(--Montserrat-bold);
+    font-family: 'montserrat', sans-serif;
     font-variant: small-caps;
+    font-weight: bold;
 }
 .banner-profile p{
     top: 35%;
     left: 30%;
     font-size: 1.5em;
     font-variant: none;
+    font-weight: bold;
 }
 /*card principal*/
 .card-user{
@@ -41,7 +43,8 @@
 .card-user .nav-tabs .nav-link {
     border-radius: 50px;
     color: var(--bg-main-color);
-    font-family: var(--Montserrat-bold);
+    font-family: 'montserrat', sans-serif;
+    font-weight: bolder;
     padding: 1.5rem;
 }
 

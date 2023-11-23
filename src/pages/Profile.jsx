@@ -51,7 +51,7 @@ export function Profile() {
           fill
         >
         <Tab eventKey="user-info" title="Información personal">
-        <section className='form-container d-flex flex-column justify-content-center align-items-center'>
+        <section className='form-container d-flex flex-column justify-content-center align-items-center m-5'>
           <form className="d-flex flex-column align-items-end p-3 user-form">
                 <div className='form-item mt-3'>
                 <label>
@@ -81,7 +81,7 @@ export function Profile() {
 
         <Tab eventKey="password" title="Contraseña">
         <section className='form-container d-flex flex-column justify-content-center align-items-center'>
-        <form className="d-flex flex-column justify-content-center align-items-end p-3 user-form">
+        <form className="d-flex flex-column justify-content-center align-items-end p-3 user-form m-5">
             <div className='form-item mt-3'>
               <label>
                   Contraseña actual:
