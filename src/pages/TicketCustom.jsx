@@ -13,9 +13,17 @@ export function TicketCustom() {
   const [mensaje, setMensaje] = useState("Escribe aquí tu mensaje especial (hasta 500 caracteres)");
   const [imgfondo, setImgfondo] = useState('../img/img5.jpg');
 
+  const [color, setColor] = useState('');
+  const [size, setSize] = useState(20);
+
   const textomensaje = (e) => {
     setMensaje(e.target.value);
   }
+
+  const myStyle = {
+    color: color,
+    fontSize: size + 'px',
+};
 
   const seleccionarImgClick = (src) => {
 
@@ -64,7 +72,38 @@ export function TicketCustom() {
             <h6 className="titulo-personalizar">Escribe un mensaje:</h6>
             <input onChange={textomensaje} className="form-control d-block" type="text" placeholder="Escribe aquí tu mensaje especial" name="mensaje" id="" />
           </div>
-          
+          <div class="btn-group dropdown mx-2">
+            <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Color
+            </button>
+            <ul class="dropdown-menu">
+              <li><p class="dropdown-item m-auto">
+                <input
+                  type="color"
+                  value={setColor}
+                  onChange={(e) => setColor(e.target.value)}
+                /></p>
+              </li>
+            </ul>
+          </div>
+          <div class="btn-group dropdown mx-2">
+            <button class="btn btn-dark dropdown-toggle btn-transparent" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Tamaño
+            </button>
+            <ul class="dropdown-menu">
+             
+               <li><p class="dropdown-item m-auto">
+                <input
+                  type="range"
+                  min={10}
+                  max={120}
+                  value={size}
+                  onChange={(e) => setSize(Number(e.target.value))} // Convert the value to a number
+                  step={1}
+                /></p></li> 
+
+            </ul>
+          </div>
 
         </div>
 
@@ -76,7 +115,7 @@ export function TicketCustom() {
           <div className="contenido-superpuesto">
             <img src="../img/Taylor-Swift-Eras-Tour-Ticket-VIP-1.jpg" alt="" srcset="" />
 
-            <p className='text-center'>{mensaje}</p>
+            <p className='text-center'style={myStyle}>{mensaje}</p>
 
           </div>
 
