@@ -11,6 +11,7 @@ import "./styles/Fav.css";
 import "./styles/Register.css";
 import "./styles/Filter.css";
 import "./styles/Login.css";
+import "./styles/HeroText.css";
 import "./App.css";
 
 function App() {
