@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import "../App.css";
 import "../styles/Login.css";
@@ -8,6 +7,28 @@ import { Footer } from '../components/Footer';
 
 
 export function Login() {
+
+
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleLogin = () => {
+    
+    if (formData.email && formData.password) {
+      setLoggedIn(true);
+    } else {
+      alert('Por favor, ingresa tu correo electrónico y contraseña');
+    }
+  };
+
+
   return (
     <div>
       <MyNavbar />
@@ -39,7 +60,7 @@ export function Login() {
                   </Form.Group>                
                   <Row className="mb-3 align-items-center">
                  <Col>
-                  <Button variant="light" type="submit" className="w-100 py-2" style={{ borderRadius: '50px' }}>
+                  <Button variant="light" type="submit" className="w-100 py-2" style={{ borderRadius: '50px' }}onClick={handleLogin}>
                    Ingresar
                    </Button>
                     </Col>    
@@ -62,12 +83,13 @@ export function Login() {
               </div>
             </div>
           </div>
-        </div>      
-       </div>
+          </div>
      </div>
-
+</div>
       <Footer />
     </div>
   );
 }
+
+
 
