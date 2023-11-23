@@ -1,0 +1,80 @@
+/*Se estiliza banner de faq*/
+.banner-faq img {
+    width: 100%;
+    height: 30rem; 
+    object-fit: cover;
+}
+.banner-faq .title {
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    color: var(--bg-main-color);
+    font-size: 2em;
+    font-family: var(--Montserrat-bold);
+    font-variant: small-caps;
+}
+/*Se estiliza section*/
+.faqs{
+    background-image: url(../../public/background.png);
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.card-faq{
+    width: 90%;
+    height: auto;
+    border-radius: 50px;
+    background-color: rgba(90, 85, 85, 0);
+    backdrop-filter: blur(2px) brightness(0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    top: -180px;
+    padding: 6rem;
+}
+/*Se sobreescriben estilos de bootstrap*/
+.card-faq .accordion-button.collapsed, 
+.card-faq .accordion-button:not(.collapsed){
+    background-color: var(--green-light-color);
+    padding: 2rem;
+    border-radius: 50px!important;
+    font-family: var(--Montserrat-semibold);
+    color: var(--bg-main-color);
+}
+.card-faq .accordion-item {
+    background-color: transparent;
+}
+  .card-faq .accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(12, 255, 0, 0.5);
+  }
+
+  .card-faq .accordion-body {
+    color: var(--white-color);
+} 
+  @media (max-width: 1200px){
+    .banner .title{
+        left: 25%;
+        top: 30%;
+  }
+}
+@media (max-width: 990px){
+    .banner .title{
+        left: 35%;
+  }
+}
+@media (max-width: 655px){
+    .banner .title{
+        left: 40%; 
+  }
+}
+@media (max-width: 570px){
+    .card-faq{
+        width: 100%;
+        padding: 20% 0;
+        border-radius: 0;
+    }
+    .card-faq .accordion-button.collapsed, 
+    .card-faq .accordion-button:not(.collapsed){
+    border-radius: 0!important;
+}  
+}
+ 
