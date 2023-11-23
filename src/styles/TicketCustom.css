@@ -27,17 +27,41 @@
     padding: 2em;
     border-radius: 10px;
 }
+
+@media(max-width:425px){
+    .conteiner-personalizar{
+        padding: 1rem;
+    }
+
+}
 .imagenes{
     padding: 2em;
 }
 
 .imagenes img{
     object-fit: cover; 
-    width: 15em;
-    height: 15em;
+    width: 8em;
+    height: 8em;
     border-radius: 10px;
 
 }
+
+.imagenes img:hover {
+    cursor: pointer; 
+    transform: scale(1.1);
+  }
+
+@media(max-width:425px){
+    .imagenes img{
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+.conteiner-mensaje{
+    margin-bottom: 1rem;
+}
+
 
 /* Contenedor personalizable */
 
@@ -48,6 +72,15 @@
     overflow: hidden;
     border-radius: 10px;
 }
+
+@media(max-width:1060px){
+    .fondo {
+        width: 70%; 
+        height: 50vh;    
+    }   
+}
+
+
 
 .img-fondo {
     width: 100%;
@@ -65,10 +98,24 @@
 
 
 .contenido-superpuesto img {
-    width: 50%; 
+    width: 40%; 
     height: auto; 
-    margin: 10rem 25rem 5rem;
+    margin: 6rem 15rem 5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 1.5);
+}
+
+@media(max-width:790px){
+    .contenido-superpuesto img{
+        width: 50%;
+        margin: 5rem 9rem 2rem;
+    }
+}
+
+@media(max-width:425px){
+    .contenido-superpuesto img{
+        width: 70%;
+        margin: 5rem 3rem 2rem;
+    }
 }
 
 .contenido-superpuesto p{
@@ -88,6 +135,13 @@
 .texto-verde{
     color: #0CFF00;
 }
+.descarga:hover{
+    color: #7ef818;
+    padding: 1rem;
+    border-radius: 10px;
+    border: solid #272925;
+}
+
 .compartir{
     background-color: black;
     margin: 1rem;
