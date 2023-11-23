@@ -38,6 +38,17 @@ a {
   text-decoration: none;
 }
 
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
 ul,
 ol,
 li {
@@ -62,26 +73,19 @@ li {
 
 /* Custom Styles */
 
-.text__light-green {
-  color: var(--green-light-color);
-}
-
-.navbar-brand#logo__title:hover strong.text__light-green {
-  transition: all 0.3s ease-in-out;
-  text-shadow: 0 0 3px var(--green-light-color);
-}
-.Link {
-  color: var(--white-color) !important;
-}
-
-.Link:hover {
-  transition: color 0.3s ease-in-out;
-  color: var(--white-hover-color) !important;
-}
-
 .glass-bg {
   background-color: rgba(90, 85, 85, 0);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(2px) brightness(0.6);
+  backdrop-filter: blur(2px) brightness(0.7);
+}
+
+.box__shadow-inset {
+  box-shadow: rgba(149, 149, 159, 0.25) 0px 50px 100px -20px,
+    rgba(254, 254, 254, 0.3) 0px 30px 60px -30px,
+    rgba(21, 149, 60, 0.35) 0px -2px 6px 0px inset !important;
+}
+
+.box__shadow {
+  box-shadow: rgba(255, 255, 255, 0.16) 0px 1px 4px;
 }
