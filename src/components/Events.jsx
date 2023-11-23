@@ -82,7 +82,7 @@ export default function Events() {
                           (image) => image.width === 640 && image.height === 360
                         )?.url || event.images[0].url
                       }
-                      className="box__shadow"
+                      className=""
                       fluid
                       rounded
                     />
