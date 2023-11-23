@@ -1,6 +1,7 @@
 import React from "react";
 import { useFetch } from "../hooks/useFetch";
 import { Link } from "react-router-dom";
+import Events from "./Events";
 
 export default function OtherEvents() {
   let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=1&size=4`;
@@ -16,7 +17,7 @@ export default function OtherEvents() {
 
   return (
     <>
-      <div className="text-black py-5" style={{ backgroundColor: "#ffffff60" }}>
+      {/* <div className="text-black py-5" style={{ backgroundColor: "#ffffff60" }}>
         <div className="container mb-5">
           <h2 className="fw-bold">More Events</h2>
         </div>
@@ -41,7 +42,8 @@ export default function OtherEvents() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
+      <Events />
     </>
   );
 }

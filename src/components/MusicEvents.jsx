@@ -4,10 +4,9 @@ import { useFetch } from "../hooks/useFetch";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
-import { Filter } from "./Filter";
 
-export default function Events() {
-  const elementos = 3;
+export function MusicEvents() {
+  const elementos = 4;
   //Paginador
   const [page, setPage] = useState(1);
 
@@ -58,9 +57,9 @@ export default function Events() {
 
   return (
     <>
-      <Filter onSegmentClick={handleSegmentClick} />
       <Container>
-        <div className="d-flex align-items-center justify-content-end mt-5 mb-2">
+        <div className="d-flex align-items-center justify-content-between mt-5 pt-5 mb-2">
+          <h3>Concerts</h3>
           <div className="d-flex">
             <button
               onClick={HandleDecrementPage}
@@ -101,12 +100,12 @@ export default function Events() {
           <section className="row p-0 m-0 card__container">
             {shuffledEvents.map((event) => (
               <div
-                className="col-12 col-md-6 col-lg-4  m-0 p-0 px-0 p-md-2 card__container"
+                className="col-12 col-md-6 col-lg-3  m-0 p-0 px-0 px-md-2 card__container"
                 key={event.id}
               >
                 <div className="position-relative d-flex align-items-center card__container">
                   <div className="position-absolute z-2 px-2 w-100 py-2 d-flex flex-column gap-2 card__text ">
-                    <h4 className="m-0 p-0 versalita">{event.name}</h4>
+                    <h5 className="m-0 p-0 versalita">{event.name}</h5>
                     <div className="d-flex align-items-center justify-content-between">
                       <p className="m-0 p-0">{event.dates?.start?.localDate}</p>
                       <p className="m-0 p-0">{event.dates?.start?.localTime}</p>

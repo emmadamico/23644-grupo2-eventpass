@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import OtherEvents from "../components/OtherEvents";
-import { useFetch } from "../hooks/useFetch";
 
 const Description = () => {
   const [eventData, setEventData] = useState(null);
@@ -84,7 +83,7 @@ const Description = () => {
                     {eventData ? eventData.name : `titulo`}
                   </h1>
                   <a href="" className="btn btn-light rounded-pill w-25">
-                    Ver en Mapa
+                    Map
                   </a>
                 </div>
                 <div className="col-lg-6 mb-3">
