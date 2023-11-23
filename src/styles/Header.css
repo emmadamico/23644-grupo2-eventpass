@@ -35,6 +35,22 @@ header::before {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#ffffff",GradientType=1);
 }
 
+.hero__text-wrapper {
+  height: 100%;
+}
+
+.hero__container-hover:hover {
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 5px -1px var(--green-light-color);
+}
+.hero__text-green {
+  color: var(--green-light-color);
+}
+
+.hero__text-hover:hover span {
+  transition: all 0.3s ease-in-out;
+  text-shadow: 0 0 3px var(--green-light-color);
+}
 @media (max-width: 575px) {
   header {
     height: 100vh;

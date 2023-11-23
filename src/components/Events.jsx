@@ -57,7 +57,7 @@ export default function Events() {
         <section className="row p-0 m-0">
           {data?._embedded?.events?.map((event) => (
             <div
-              className="col-12 col-md-6 col-lg-4  m-0 p-0 px-0 p-md-2"
+              className="col-12 col-md-6 col-lg-4  m-0 p-0 px-0 p-md-2 "
               key={event.id}
             >
               <div className="position-relative d-flex align-items-center card__container">
@@ -74,7 +74,7 @@ export default function Events() {
                     <Fav />
                   </div>
                 </div>
-                <div className="position-absolute z-1">
+                <div className="position-absolute z-1 rounded ">
                   {event.images && event.images.length > 0 && (
                     <Image
                       src={
@@ -82,6 +82,7 @@ export default function Events() {
                           (image) => image.width === 640 && image.height === 360
                         )?.url || event.images[0].url
                       }
+                      className="box__shadow"
                       fluid
                       rounded
                     />

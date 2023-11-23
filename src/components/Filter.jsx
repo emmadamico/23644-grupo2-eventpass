@@ -11,7 +11,7 @@ export function Filter({ onSegmentClick }) {
   //console.log(selectedSegmentId);
   return (
     <>
-      <section className="d-flex align-items-center justify-content-around filter-container mt-2 py-1 flex-wrap px-2">
+      <section className="d-flex align-items-center justify-content-around flex-wrap  mt-2 py-2  px-2 filter-container box__shadow-inset">
         <NavLink
           className="versalita Link px-2 px-md-0"
           activeClassName="active"
