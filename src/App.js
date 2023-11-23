@@ -13,6 +13,7 @@ import "./styles/Filter.css";
 import "./styles/Login.css";
 import "./styles/HeroText.css";
 import "./styles/MusicEvents.css";
+import "./styles/SportsEvents.css";
 import "./App.css";
 
 function App() {

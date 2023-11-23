@@ -139,28 +139,29 @@ const Description = () => {
               <div className="row">
                 <div className="col-lg-6">
                   <h2>Rango de Precios</h2>
-                  <p>
-                    ${eventData.priceRanges[0].min} - $
-                    {eventData.priceRanges[0].max}{" "}
-                    {eventData.priceRanges[0].currency}
-                  </p>
+                  {eventData.priceRanges && eventData.priceRanges.length > 0 ? (
+                    <p>
+                      ${eventData.priceRanges[0].min} - $
+                      {eventData.priceRanges[0].max}{" "}
+                      {eventData.priceRanges[0].currency}
+                    </p>
+                  ) : (
+                    "Precios no disponibles"
+                  )}
+
                   <h2 className="mb-3">Descripción:</h2>
                   <p>{eventData.info}</p>
                   <p>Fecha: {eventData.dates.start.localDate}</p>
                   <p>Hora: {eventData.dates.start.localTime}</p>
                   <h2 className="mb-3">Escenario:</h2>
-                  {eventData.seatmap.staticUrl ? (
+                  {eventData.seatmap && eventData.seatmap.staticUrl ? (
                     <img
-                      src={
-                        eventData.seatmap && eventData.seatmap.staticUrl
-                          ? eventData.seatmap.staticUrl
-                          : "Seatmap"
-                      }
+                      src={eventData.seatmap.staticUrl}
                       className="img-fluid"
                       alt=""
                     />
                   ) : (
-                    <p>Cargando ...</p>
+                    <p>No hay información de mapa de asientos disponible.</p>
                   )}
                   <h3>Visita nuestro apartado de </h3>
                   <Link to={"/faq"}>Preguntas Frecuentes</Link>
