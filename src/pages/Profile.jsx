@@ -40,7 +40,7 @@ export function Profile() {
             alt=""
           />
           <h1 className="title">Mi cuenta</h1>
-          <p>Modifica tus datos de cuenta y contacto</p>
+          <p className="p-profile">Modifica tus datos de cuenta y contacto</p>
       </banner>
 
       <div className="card-user mx-auto">
