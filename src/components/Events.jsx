@@ -5,7 +5,7 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
 import { Filter } from "./Filter";
-
+import "../styles/Events.css";
 export default function Events() {
   const elementos = 3;
   //Paginador
@@ -121,11 +121,9 @@ export default function Events() {
                     </div>
                     <div className="d-flex align-items-center justify-content-between">
                       <Link to={`/description/:${event.id}`} className="hover">
-
                         <button className="btn btn-dark rounded-pill">
                           See More
                         </button>
-
                       </Link>
                       <Fav />
                     </div>
