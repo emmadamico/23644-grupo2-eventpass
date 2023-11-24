@@ -1,0 +1,99 @@
+/*background de profile-main*/
+.profile{
+    background-image: url(../../public/background.png);
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+/*Se estiliza banner*/
+.banner-profile img {
+    width: 100%;
+    height: 30rem; 
+    object-fit: cover;
+}
+.banner-profile .title, .p-profile{
+    position: absolute;
+    top: 25%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    color: var(--bg-main-color);
+    font-size: 2em;
+    font-family: 'montserrat', sans-serif;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+.p-profile{
+    top: 35%;
+    left: 30%;
+    font-size: 1.5em;
+    font-variant: none;
+    font-weight: bold;
+}
+/*card principal*/
+.card-user{
+    width: 90%;
+    height: auto;
+    border-radius: 50px;
+    background-color: rgba(90, 85, 85, 0);
+    backdrop-filter: blur(2px) brightness(0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    top: -150px;
+    padding: 0 1.5rem;
+}
+.card-user .nav-tabs .nav-link {
+    border-radius: 50px;
+    color: var(--bg-main-color);
+    font-family: 'montserrat', sans-serif;
+    font-weight: bolder;
+    padding: 1.5rem;
+}
+
+.card-user .nav-tabs .nav-link.active {
+    background-color: var(--green-light-color);
+}
+
+/*formulario*/
+.user-form label{
+    margin-bottom: 30px;
+    color: var(--white-color);
+    font-size: 1em;
+    font-family: var(--Montserrat-semibold);
+}
+.btn{
+    display: flex;
+}
+.btn button{
+    margin: 0 30px;
+}
+.cancel-btn{
+    font-size: 1em;
+    background-color: #2D2929;
+    color: var(--white-color);
+    padding: 14px 48px;
+    border-radius: 50px;
+    transition: all .3s ease-in-out;
+    border: none;
+  }
+  .cancel-btn:hover{
+    background-color: rgb(31, 31, 31, 0.9);;
+  }
+
+.save-btn{
+    font-size: 1em;
+    background-color: var(--green-light-color);
+    color: var(--bg-main-color);
+    padding: 14px 48px;
+    border-radius: 50px;
+    transition: all .3s ease-in-out;
+    border: none;
+}
+
+.save-btn:hover{
+    background-color: rgba(11, 200, 0);
+  }
+
+  .input-form{
+    width: 500px;
+    padding: 0.5rem;
+    border-radius: 50px;
+  }
