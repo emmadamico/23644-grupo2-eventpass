@@ -4,11 +4,10 @@ import { useFetch } from "../hooks/useFetch";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
-import { Filter } from "./Filter";
-import "../styles/Events.css";
+import "../styles/MusicEvents.css";
 
-export default function Events() {
-  const elementos = 3;
+export function MusicEvents() {
+  const elementos = 4;
   //Paginador
   const [page, setPage] = useState(1);
 
@@ -21,58 +20,22 @@ export default function Events() {
     setPage(page > 1 ? page - 1 : page);
   };
 
-  const [selectedSegmentId, setSelectedSegmentId] = useState(null);
+  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}&segmentId=KZFzniwnSyZfZ7v7nJ`;
 
-  const handleSegmentClick = (segmentId) => {
-    setSelectedSegmentId(segmentId);
-    console.log("Segment ID seleccionado:", segmentId);
-  };
-
-  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
-  //console.log(url);
-
-  // eslint-disable-next-line no-unused-vars
   let { data, isPending, error, performFetch } = useFetch(url);
-  //console.log(isPending, error);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      let newUrl = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
-
-      if (selectedSegmentId === "todos") {
-        setSelectedSegmentId(null);
-      } else if (selectedSegmentId) {
-        newUrl += `&segmentId=${selectedSegmentId}`;
-      }
-
-      await performFetch(newUrl);
-    };
-
-    fetchData();
-  }, [selectedSegmentId, page]);
 
   //Ordena al azar los eventos
   const shuffledEvents = data?._embedded?.events
     ? [...data._embedded.events].sort(() => Math.random() * 10 - 5)
     : [];
-  //console.log(data._embedded?.events[0]?.classifications[0]?.segment?.name);
+  useEffect(() => {
+    performFetch(url);
+  }, [url]);
   return (
     <>
-      <Filter onSegmentClick={handleSegmentClick} />
       <Container>
-        <div className="d-flex align-items-center justify-content-between mt-5 pt-5 mb-2 ">
-          {isPending ? (
-            "loading"
-          ) : selectedSegmentId !== null ? (
-            <h3 className="text-white versalita">
-              {data._embedded?.events[0]?.classifications[0]?.segment?.name
-                ? data._embedded?.events[0]?.classifications[0]?.segment?.name
-                : "Category"}
-            </h3>
-          ) : (
-            <h3 className="text-white versalita">All</h3>
-          )}
-
+        <div className="d-flex align-items-center justify-content-between mt-5 pt-5 mb-2">
+          <h3 className="text-white versalita">Concerts</h3>
           <div className="d-flex">
             <button
               onClick={HandleDecrementPage}
@@ -108,14 +71,14 @@ export default function Events() {
       {!isPending && data && (
         <Container className="p-0">
           <section className="row p-0 m-0 card__container">
-            {shuffledEvents.map((event) => (
+            {data?._embedded?.events?.map((event) => (
               <div
-                className="col-12 col-md-6 col-lg-4  m-0 p-0 px-0 p-md-2 card__container"
+                className="col-12 col-md-6 col-lg-3  m-0 p-0 px-0 px-md-2 card__container"
                 key={event.id}
               >
                 <div className="position-relative d-flex align-items-center card__container">
                   <div className="position-absolute z-2 px-2 w-100 py-2 d-flex flex-column gap-2 card__text ">
-                    <h5 className="m-0 p-0 versalita">{event.name}</h5>
+                    <h6 className="m-0 p-0 versalita">{event.name}</h6>
                     <div className="d-flex align-items-center justify-content-between">
                       <p className="m-0 p-0">{event.dates?.start?.localDate}</p>
                       <p className="m-0 p-0">{event.dates?.start?.localTime}</p>
