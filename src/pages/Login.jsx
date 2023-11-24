@@ -24,7 +24,7 @@ export function Login() {
     if (formData.email && formData.password) {
       setLoggedIn(true);
     } else {
-      alert('Por favor, ingresa tu correo electrónico y contraseña');
+      alert('Please, enter your email and password');
     }
   };
 
@@ -38,30 +38,30 @@ export function Login() {
           <div className="col-md-8">
             <div className="cardgral card p-7" style={{ borderRadius: '1rem', textAlign: 'center', maxWidth: '600px', margin: 'auto' }}>
               <div className="card-body">
-                <h3 className="mb-4">INGRESAR A MI CUENTA</h3>
+                <h3 className="mb-4">LOGIN IN TO MY ACCOUNT</h3>
                 <Form>
                   <Form.Group as={Row} className="mb-3">
                     <Form.Label column sm="3">
                       E-mail
                     </Form.Label>
                     <Col sm="9">
-                      <Form.Control type="email" placeholder="Ingresa tu correo electrónico" className="py-2" style={{ borderRadius: '50px' }}/>
+                      <Form.Control type="email" placeholder="Enter your email" className="py-2" style={{ borderRadius: '50px' }}/>
                     </Col>
                   </Form.Group>
 
                   <Form.Group as={Row} className="mb-3">
                     <Form.Label column sm="3">
-                      Contraseña
+                      Password
                     </Form.Label>
                     <Col sm="9">
                       
-                      <Form.Control type="password" placeholder="Ingresa tu contraseña" className="py-2"style={{ borderRadius: '50px' }} />
+                      <Form.Control type="password" placeholder="Enter your password" className="py-2"style={{ borderRadius: '50px' }} />
                     </Col>
                   </Form.Group>                
                   <Row className="mb-3 align-items-center">
                  <Col>
                   <Button variant="light" type="submit" className="w-100 py-2" style={{ borderRadius: '50px' }}onClick={handleLogin}>
-                   Ingresar
+                   Login
                    </Button>
                     </Col>    
                     
@@ -77,7 +77,7 @@ export function Login() {
   
                 <div className="row mt-3">
                   
-                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <a href="#">Did you forget your password?</a>
                   </div>
                 </div>
               </div>
