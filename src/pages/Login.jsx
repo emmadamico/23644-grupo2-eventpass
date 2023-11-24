@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Button } from "react-bootstrap";
+import "../styles/Login.css";
 
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";

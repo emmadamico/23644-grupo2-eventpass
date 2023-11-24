@@ -5,6 +5,7 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
 import { Filter } from "./Filter";
+import "../styles/Events.css";
 
 export default function Events() {
   const elementos = 3;

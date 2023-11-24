@@ -16,10 +16,6 @@
   color: var(--green-light-color) !important;
 }
 
-.versalita {
-  font-variant: small-caps;
-}
-
 @media (max-width: 766px) {
   img {
     border-radius: 0;

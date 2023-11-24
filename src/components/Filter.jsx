@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
+import "../styles/Filter.css";
+
 export function Filter({ onSegmentClick }) {
   let url = `https://app.ticketmaster.com/discovery/v2/classifications.jsonn?apikey=${process.env.REACT_APP_CONSUMER_KEY}`;
 

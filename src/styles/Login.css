@@ -52,6 +52,7 @@
   border-radius: 50px;
 }
 
+/* Corregir nombre de clases */
 button.py-2:hover {
   background-color: var(--white-hover-color);
 }

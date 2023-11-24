@@ -94,43 +94,56 @@ export function SportsEvents() {
             <article className="col-12 col-md-6 col-lg-4">
               <Image src={"#"} className="" fluid rounded />
             </article>
-            {data?._embedded?.events?.map((event) => (
-              <div
-                className="col-12 col-md-6 col-lg-8  m-0 p-0 px-0 px-md-2 card__container"
-                key={event.id}
-              >
-                <div className="position-relative d-flex align-items-center card__container">
-                  <div className="position-absolute z-2 px-2 w-100 py-2 d-flex flex-column gap-2 card__text ">
-                    <h6 className="m-0 p-0 versalita">{event.name}</h6>
-                    <div className="d-flex align-items-center justify-content-between">
-                      <p className="m-0 p-0">{event.dates?.start?.localDate}</p>
-                      <p className="m-0 p-0">{event.dates?.start?.localTime}</p>
+            {data?._embedded?.events
+              ?.filter(
+                (event) =>
+                  event?.classifications?.[0]?.segment?.id ===
+                  "KZFzniwnSyZfZ7v7nE"
+              )
+              .map((event) => (
+                <div
+                  className="col-12 col-md-6 col-lg-8  m-0 p-0 px-0 px-md-2 card__container"
+                  key={event.id}
+                >
+                  <div className="position-relative d-flex align-items-center card__container">
+                    <div className="position-absolute z-2 px-2 w-100 py-2 d-flex flex-column gap-2 card__text ">
+                      <h6 className="m-0 p-0 versalita">{event.name}</h6>
+                      <div className="d-flex align-items-center justify-content-between">
+                        <p className="m-0 p-0">
+                          {event.dates?.start?.localDate}
+                        </p>
+                        <p className="m-0 p-0">
+                          {event.dates?.start?.localTime}
+                        </p>
+                      </div>
+                      <div className="d-flex align-items-center justify-content-between">
+                        <Link
+                          to={`/description/:${event.id}`}
+                          className="hover"
+                        >
+                          See More
+                        </Link>
+                        <Fav />
+                      </div>
                     </div>
-                    <div className="d-flex align-items-center justify-content-between">
-                      <Link to={`/description/:${event.id}`} className="hover">
-                        See More
-                      </Link>
-                      <Fav />
+                    <div className=" z-1 rounded ">
+                      {event.images && event.images.length > 0 && (
+                        <Image
+                          src={
+                            event.images.find(
+                              (image) =>
+                                image.width === 1024 && image.height === 576
+                            )?.url || event.images[0].url
+                          }
+                          className=""
+                          fluid
+                          rounded
+                        />
+                      )}
                     </div>
-                  </div>
-                  <div className=" z-1 rounded ">
-                    {event.images && event.images.length > 0 && (
-                      <Image
-                        src={
-                          event.images.find(
-                            (image) =>
-                              image.width === 1024 && image.height === 576
-                          )?.url || event.images[0].url
-                        }
-                        className=""
-                        fluid
-                        rounded
-                      />
-                    )}
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </section>
         </Container>
       )}

@@ -4,6 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
+import "../styles/MusicEvents.css";
 
 export function MusicEvents() {
   const elementos = 4;
