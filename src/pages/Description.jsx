@@ -4,6 +4,7 @@ import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import OtherEvents from "../components/OtherEvents";
 
+
 import "../styles/Description.css"
 
 const Description = () => {
@@ -81,6 +82,7 @@ const Description = () => {
                     {eventData ? eventData.name : `titulo`}
                   </h1>
 
+
                   <a href={`https://www.google.com/maps/@${latitude},${longitude},13z?hl=es-419&entry=ttu`} target="blank_" className="btn btn-light rounded-pill w-25">
                     <i class="bi bi-geo-alt me-2"></i>Ver en Mapa
 
@@ -139,6 +141,7 @@ const Description = () => {
               <hr />
               <div className="row">
                 <div className="col-lg-6">
+
 
 
                   <h2 className="mb-3"><i class="bi bi-file-earmark-text me-2"></i>Description:</h2>
