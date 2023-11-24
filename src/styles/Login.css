@@ -1,38 +1,42 @@
-/* body {
+.body-container {
   background-image: url('/public/background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
-} */
-.container-mx-auto {
-  margin-top: 80px; /* Ajusta la cantidad de margen superior según tus necesidades */
 }
-
-.card {
+.form-container {
+  margin-top: 100px; 
+}
+.cardgral {
   width: 100%;
-  max-width: 500px;
+  max-width: 500px; 
   padding: 20px;
   border-radius: 15px;
-  background: var(--bg-main-color) !important;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
+  background-image: url('/public/background.png'); /* Agrega la imagen de fondo a la tarjeta */
+  /* Ajusta el tamaño de la imagen de fondo de la tarjeta */
+  background-position: center; /* Ajusta la posición de la imagen de fondo de la tarjeta */
+  background-repeat: no-repeat; /* No repitas la imagen de fondo en la tarjeta */
 }
 
-.card-body {
-  padding: 20px;
+.cardgral-body {
+  padding: 30px;
 }
 
 .card-body h3 {
   color: #faf7f7;
+  font-family: var(--Montserrat-semibold);
 }
 
 .card-body .form-label {
-  color: #faf7f7;
+  color: #faf7f7; 
 }
 
 .form-group {
-  display: flex;
-  align-items: center;
+  display: flex; 
+  align-items: center; 
 }
 
 .form-group .form-label {
@@ -42,15 +46,10 @@
 .card .form-control {
   height: 40px;
   border-radius: 50px;
-  flex-grow: 1;
+  flex-grow: 1; 
 }
 
-.card .btn {
-  background-color: #eff5f1;
-  color: #000;
-  border: none;
-  border-radius: 50px;
-}
+
 
 /* Corregir nombre de clases */
 button.py-2:hover {
@@ -61,10 +60,3 @@ button.py-2:hover {
   color: #eff5f1;
 }
 
-.row .col-md-6 a {
-  color: #eff5f1;
-}
-
-/* a {
-  color: #070707;
-} */
