@@ -1,7 +1,6 @@
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import "../styles/Register.css";
-
 export function Register() {
   return (
     <>
