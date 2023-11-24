@@ -85,9 +85,11 @@ export function MusicEvents() {
                     </div>
                     <div className="d-flex align-items-center justify-content-between">
                       <Link to={`/description/:${event.id}`} className="hover">
+
                         <button className="btn btn-dark rounded-pill">
                           See More
                         </button>
+
                       </Link>
                       <Fav />
                     </div>
