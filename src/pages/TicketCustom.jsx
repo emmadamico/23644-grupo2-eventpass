@@ -57,7 +57,7 @@ export function TicketCustom() {
           </p>
         </div>
         <div className="conteiner-personalizar">
-          <h6 className="titulo-personalizar">Elije un diseño:</h6>
+          <h6 className="titulo-personalizar">Choose a design:</h6>
           <div className="imagenes d-flex justify-content-center flex-wrap gap-4">
             <img onClick={() => seleccionarImgClick('../img/img1.jpg')} style={{ border: imgfondo.includes('../img/img1.jpg') ? '3px solid #5fcb03' : 'none' }} src="../img/img1.jpg" className="img-fluid" alt="" />
             <img onClick={() => seleccionarImgClick('../img/img2.jpg')} style={{ border: imgfondo.includes('../img/img2.jpg') ? '3px solid #5fcb03' : 'none' }} src="../img/img2.jpg" className="img-fluid" alt="" />
