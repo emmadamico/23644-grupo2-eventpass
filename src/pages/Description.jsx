@@ -4,8 +4,7 @@ import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import OtherEvents from "../components/OtherEvents";
 
-
-import "../styles/Description.css"
+import "../styles/Description.css";
 
 const Description = () => {
   const [eventData, setEventData] = useState(null);
@@ -56,10 +55,11 @@ const Description = () => {
     <>
       <MyNavbar />
 
-      <div
-        className="description-container"
-      >
-        <div className="position-relative" style={{height: "80vh", overflow: "hidden", objectFit: "cover"}}>
+      <div className="description-container">
+        <div
+          className="position-relative"
+          style={{ height: "80vh", overflow: "hidden", objectFit: "cover" }}
+        >
           {eventData ? (
             <img
               src={
@@ -82,10 +82,12 @@ const Description = () => {
                     {eventData ? eventData.name : `titulo`}
                   </h1>
 
-
-                  <a href={`https://www.google.com/maps/@${latitude},${longitude},13z?hl=es-419&entry=ttu`} target="blank_" className="btn btn-light rounded-pill w-25">
+                  <a
+                    href={`https://www.google.com/maps/@${latitude},${longitude},13z?hl=es-419&entry=ttu`}
+                    target="blank_"
+                    className="btn btn-light rounded-pill w-25"
+                  >
                     <i class="bi bi-geo-alt me-2"></i>Ver en Mapa
-
                   </a>
                 </div>
                 <div className="col-lg-6 mb-3">
@@ -141,56 +143,101 @@ const Description = () => {
               <hr />
               <div className="row">
                 <div className="col-lg-6">
+                  <h2 className="mb-3">
+                    <i class="bi bi-file-earmark-text me-2"></i>Description:
+                  </h2>
 
+                  {eventData.info ? (
+                    <p>{eventData.info}</p>
+                  ) : (
+                    <p>
+                      Immerse yourself in the world of entertainment with our
+                      upcoming event. Whether it's a thrilling show, an exciting
+                      sports event, a mesmerizing concert, inspiring art, or
+                      captivating theater performance, there's something for
+                      everyone. Join us for an unforgettable experience that
+                      promises excitement, passion, and enjoyment.
+                    </p>
+                  )}
 
+                  <p>
+                    <i class="bi bi-clock me-2"></i>Date:{" "}
+                    {eventData.dates.start.localDate}
+                  </p>
+                  <p>
+                    <i class="bi bi-calendar-check me-2"></i>Hora:{" "}
+                    {eventData.dates.start.localTime}
+                  </p>
 
-                  <h2 className="mb-3"><i class="bi bi-file-earmark-text me-2"></i>Description:</h2>
-
-                  {eventData.info 
-                  ? <p>{eventData.info}</p>
-                  : (<p>Immerse yourself in the world of entertainment with our upcoming event. Whether it's a thrilling show, an exciting sports event, a mesmerizing concert, inspiring art, or captivating theater performance, there's something for everyone. Join us for an unforgettable experience that promises excitement, passion, and enjoyment.</p>)}
-                  
-                  <p><i class="bi bi-clock me-2"></i>Date: {eventData.dates.start.localDate}</p>
-                  <p><i class="bi bi-calendar-check me-2"></i>Hora: {eventData.dates.start.localTime}</p>
-
-                  {eventData.priceRanges 
-                  ? (<div className="mb-3"><h2><i class="bi bi-cash-coin me-2"></i>Price:</h2><span>${eventData.priceRanges[0].min}</span> - <span>${eventData.priceRanges[0].max}</span> <span className="bg-success px-1">{eventData.priceRanges[0].currency}</span></div>) 
-                  : (<p><span className="px-2 mb-5 bg-success"><i class="bi bi-cash me-2"></i>Free</span></p>)}
+                  {eventData.priceRanges ? (
+                    <div className="mb-3">
+                      <h2>
+                        <i class="bi bi-cash-coin me-2"></i>Price:
+                      </h2>
+                      <span>${eventData.priceRanges[0].min}</span> -{" "}
+                      <span>${eventData.priceRanges[0].max}</span>{" "}
+                      <span className="bg-success px-1">
+                        {eventData.priceRanges[0].currency}
+                      </span>
+                    </div>
+                  ) : (
+                    <p>
+                      <span className="px-2 mb-5 bg-success">
+                        <i class="bi bi-cash me-2"></i>Free
+                      </span>
+                    </p>
+                  )}
 
                   <h2 className="mb-3">Escenario:</h2>
 
-
-                  <button type="button" className="btn btn-dark w-75 rounded rounded-5 py-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <button
+                    type="button"
+                    className="btn btn-dark w-75 rounded rounded-5 py-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
                     Ver Ubicaciones
                   </button>
 
-                  <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div
+                    className="modal fade"
+                    id="exampleModal"
+                    tabIndex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
                     <div className="modal-dialog modal-dialog-centered modal-lg">
                       <div className="modal-content">
                         <div className="modal-body">
-                        {eventData.seatmap.staticUrl ? (
-                                      <img
-                                        src={
-                                          eventData.seatmap && eventData.seatmap.staticUrl
-                                            ? eventData.seatmap.staticUrl
-                                            : "Seatmap"
-                                        }
-                                        className="img-fluid"
-                                        alt=""
-                                      />
-                                    ) : (
-                                      <p>Cargando ...</p>
-                                    )}
+                          {eventData.seatmap.staticUrl ? (
+                            <img
+                              src={
+                                eventData.seatmap && eventData.seatmap.staticUrl
+                                  ? eventData.seatmap.staticUrl
+                                  : "Seatmap"
+                              }
+                              className="img-fluid"
+                              alt=""
+                            />
+                          ) : (
+                            <p>Cargando ...</p>
+                          )}
                         </div>
-                          <button type="button" className="btn btn-dark rounded rounded-5 position-absolute top-0 start-100 translate-middle" data-bs-dismiss="modal">X</button>
-
+                        <button
+                          type="button"
+                          className="btn btn-dark rounded rounded-5 position-absolute top-0 start-100 translate-middle"
+                          data-bs-dismiss="modal"
+                        >
+                          X
+                        </button>
                       </div>
                     </div>
                   </div>
-
                 </div>
                 <div className="col-lg-6">
-                  <h2 className="mb-3"><i class="bi bi-geo-alt-fill me-2"></i>Ubicación:</h2>
+                  <h2 className="mb-3">
+                    <i class="bi bi-geo-alt-fill me-2"></i>Ubicación:
+                  </h2>
                   <iframe
                     title={eventData.name}
                     width="100%"
@@ -198,7 +245,9 @@ const Description = () => {
                     style={{ border: "0" }}
                     src={`https://www.google.com/maps/embed/v1/view?key=AIzaSyDDe3ScyX4InbPvd1xtNjPM3SZraLXueRQ&center=${latitude},${longitude}&zoom=13`}
                   />
-                  <h2 className="mb-3"><i class="bi bi-exclamation-circle me-2"></i>Importante:</h2>
+                  <h2 className="mb-3">
+                    <i class="bi bi-exclamation-circle me-2"></i>Importante:
+                  </h2>
 
                   <small className=" p-0 mb-0 lh-1">
                     ** Se permite la compra de un máximo de 4 entradas por
@@ -206,7 +255,10 @@ const Description = () => {
                     cumplan con lo establecido, las mismas serán dadas de baja.
                   </small>
                   <h3 className="mt-3">Visita nuestro apartado de </h3>
-                  <Link to={"/faq"}>Preguntas Frecuentes <i class="bi bi-box-arrow-up-right ms-2"></i></Link>
+                  <Link to={"/faq"}>
+                    Preguntas Frecuentes{" "}
+                    <i class="bi bi-box-arrow-up-right ms-2"></i>
+                  </Link>
                 </div>
               </div>
             </div>
