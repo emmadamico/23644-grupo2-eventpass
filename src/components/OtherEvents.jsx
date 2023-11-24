@@ -1,6 +1,7 @@
 import React from "react";
 import { useFetch } from "../hooks/useFetch";
 import { Link } from "react-router-dom";
+import "../styles/OtherEvents.css"
 
 export default function OtherEvents() {
   let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=1&size=4`;
@@ -24,7 +25,7 @@ export default function OtherEvents() {
           {data?._embedded?.events?.map((event) => (
             <div
               key={event.id}
-              className="card rounded-4"
+              className="card otherEventCard rounded-4"
               style={{ width: "18rem" }}
             >
               <Link to={`/description/${event.id}`} onClick={scrollToTop}>
