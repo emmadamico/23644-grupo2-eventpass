@@ -8,10 +8,19 @@
   color: var(--white-color);
 }
 
+.form-container {
+  background-color: var(--bg-main-color);
+}
+
 .register-label{
   font-family: var(--Montserrat-regular);
   color: var(--white-color);
 } 
+
+.register-input {
+  background-color: var(--white-color);
+  color: var(--bg-secondary-color);
+}
 
 .register-validation {
   color: var(--green-color);

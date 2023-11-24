@@ -97,10 +97,10 @@ export function Register() {
         </h4>
         <form onSubmit={handleSubmit} className="d-flex flex-column justify-content-center align-items-end p-3">
           <div className="form-items mt-3 d-flex gap-3">
-            <label htmlFor="firstName" className="register-label text-white">First Name</label>
+            <label htmlFor="firstName" className="register-label text-white px-3 py-2">First Name</label>
             <div className="d-flex flex-column">
             <input
-              className="px-2 border-0 rounded-pill bg-dark text-white "
+              className="register-input px-3 py-2 border-0 rounded-pill"
               type="text"
               id="firstName"
               name="firstName"
@@ -108,15 +108,15 @@ export function Register() {
               placeholder="First Name"
               onChange={handleChange}
             ></input>
-            {errors.firstName && <small className="register-validation">{errors.firstName}</small>}
+            {errors.firstName && <small className="register-validation px-3 py-2">{errors.firstName}</small>}
             </div>
           </div>
 
           <div className="form-items mt-3 d-flex gap-3">
-            <label htmlFor="lastName" className="register-label text-white">Last Name</label>
+            <label htmlFor="lastName" className="register-label text-white px-3 py-2">Last Name</label>
             <div className="d-flex flex-column">
             <input
-              className="px-2 border-0 rounded-pill bg-dark text-white"
+              className="register-input px-3 py-2 border-0 rounded-pill"
               type="text"
               id="lastName"
               name="lastName"
@@ -124,15 +124,15 @@ export function Register() {
               placeholder="Last Name"
               onChange={handleChange}
             ></input>
-            {errors.lastName && <small className="register-validation">{errors.lastName}</small>}
+            {errors.lastName && <small className="register-validation px-3 py-2">{errors.lastName}</small>}
             </div>
           </div>
           
           <div className="form-items mt-3 d-flex gap-3">
-            <label htmlFor="email" className="register-label text-white">E-mail</label>
+            <label htmlFor="email" className="register-label text-white px-3 py-2">E-mail</label>
             <div className="d-flex flex-column">
             <input
-              className="px-2 border-0 rounded-pill bg-dark text-white"
+              className="register-input px-3 py-2 border-0 rounded-pill"
               type="email"
               id="email"
               name="email"
@@ -140,15 +140,15 @@ export function Register() {
               placeholder="Enter Your Email"
               onChange={handleChange}
             ></input>
-            {errors.email && <small className="register-validation">{errors.email}</small>}
+            {errors.email && <small className="register-validation px-3 py-2">{errors.email}</small>}
             </div>
           </div>
 
           <div className="form-items mt-3 d-flex gap-3">
-            <label htmlFor="password" className="register-label text-white">Password</label>
+            <label htmlFor="password" className="register-label text-white px-3 py-2">Password</label>
             <div className="d-flex flex-column">
             <input
-              className="px-2 border-0 rounded-pill bg-dark text-white"
+              className="register-input px-3 py-2 border-0 rounded-pill"
               type="password"
               id="password"
               name="password"
@@ -156,15 +156,15 @@ export function Register() {
               placeholder="Enter Your Password"
               onChange={handleChange}
             ></input>
-            {errors.password && <small className="register-validation">{errors.password}</small>}
+            {errors.password && <small className="register-validation px-3 py-2">{errors.password}</small>}
             </div>
           </div>
 
           <div className="form-items mt-3 d-flex gap-3">
-            <label htmlFor="confirmPassword" className="register-label text-white">Repeat Password</label>
+            <label htmlFor="confirmPassword" className="register-label text-white px-3 py-2">Repeat Password</label>
             <div className="d-flex flex-column">
             <input
-              className="px-2 border-0 rounded-pill bg-dark text-white"
+              className="input-register px-3 py-2 border-0 rounded-pill"
               type="password"
               id="confirmPassword"
               name="confirmPassword"
@@ -172,7 +172,7 @@ export function Register() {
               placeholder="Repeat Password"
               onChange={handleChange}
             ></input>
-            {errors.confirmPassword && <small className="register-validation">{errors.confirmPassword}</small>}
+            {errors.confirmPassword && <small className="register-validation px-3 py-2">{errors.confirmPassword}</small>}
             </div>
           </div>
 
@@ -187,7 +187,7 @@ export function Register() {
                 name="terminos"
               ></input>
             </div>
-            <button type="submit" className="col border-0 rounded-pill px-3">Signup</button>
+            <button type="submit" className="col border-0 rounded-pill px-3">Sign up</button>
           </div>
         </form>
       </div>
