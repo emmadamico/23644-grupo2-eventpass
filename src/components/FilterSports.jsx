@@ -1,10 +1,8 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
-import "../styles/Filter.css";
 
-export function Filter({ onSegmentClick }) {
-  let url = `https://app.ticketmaster.com/discovery/v2/classifications.jsonn?apikey=${process.env.REACT_APP_CONSUMER_KEY}`;
+export function FilterSports({ onSegmentClick }) {
+  let url = `https://app.ticketmaster.com/discovery/v2/classifications/KZFzniwnSyZfZ7v7nE.json?apikey=${process.env.REACT_APP_CONSUMER_KEY}`;
 
   const { data, isPending, error } = useFetch(url);
 
@@ -20,19 +18,21 @@ export function Filter({ onSegmentClick }) {
           All
         </NavLink>
         {data?._embedded?.classifications?.map((classification) => {
-          const segment = classification?.segment;
-          if (segment) {
-            return (
+          const genres = classification?.segment._embedded[0]?.genres;
+          console.log(genres);
+          if (genres && genres.length > 0) {
+            return genres.map((genre) => (
               <NavLink
                 className="versalita Link"
-                key={segment.id}
+                key={genre.id}
                 activeClassName=""
-                onClick={() => onSegmentClick(segment.id)}
+                onClick={() => onSegmentClick(genre.id)}
               >
-                {segment.name === "Undefined" ? "Another" : segment.name}
+                {genre.name === "Undefined" ? "Another" : genre.name}
               </NavLink>
-            );
+            ));
           }
+
           return null;
         })}
       </section>
