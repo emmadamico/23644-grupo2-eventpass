@@ -70,7 +70,7 @@ export function Login() {
                  
                  <Col className="d-flex align-items-center">
                    <Form.Group controlId="formBasicCheckbox" className="mb-0">
-                   <Form.Check type="checkbox" label="Recordarme" />
+                   <Form.Check type="checkbox" label="Remind me" />
                   </Form.Group>
                 </Col>
                 </Row>                 
