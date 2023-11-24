@@ -52,12 +52,3 @@
 .versalita {
   font-variant: small-caps;
 }
-
-.Link {
-  color: var(--white-color) !important;
-}
-
-.Link:hover {
-  transition: color 0.3s ease-in-out;
-  color: var(--white-hover-color) !important;
-}

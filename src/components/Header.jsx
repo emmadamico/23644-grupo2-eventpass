@@ -1,5 +1,5 @@
 import { HeroText } from "./HeroText";
-import "../styles/Header.css";
+
 export function Header() {
   return (
     <>

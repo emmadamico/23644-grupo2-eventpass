@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/Fav.css";
+
 export function Fav() {
   const [fav, setFav] = useState(false);
 

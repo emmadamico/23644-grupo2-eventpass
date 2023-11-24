@@ -1,7 +1,7 @@
 @import-normalize;
 body {
   margin: 0;
-
+  background-color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -32,11 +32,10 @@ body {
   background-color: var(--bg-main-color);
   font-family: var(--Montserrat-regular) !important;
 }
-body {
-  background-color: #000000;
-}
+
 a {
   text-decoration: none;
+  color: var(--white-color);
 }
 a:-webkit-any-link {
   text-decoration: none;
@@ -56,4 +55,12 @@ ul,
 ol,
 li {
   list-style: none;
+}
+Link {
+  color: var(--white-color) !important;
+}
+
+.Link:hover {
+  transition: color 0.3s ease-in-out;
+  color: var(--white-hover-color) !important;
 }

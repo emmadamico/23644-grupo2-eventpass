@@ -1,9 +1,8 @@
 import React from "react";
 import { useFetch } from "../hooks/useFetch";
 import { Link } from "react-router-dom";
-import "../styles/OtherEvents.css"
-
-
+import "../styles/OtherEvents.css";
+import Events from "./Events";
 
 export default function OtherEvents() {
   let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=1&size=4`;

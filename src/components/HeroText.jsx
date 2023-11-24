@@ -1,5 +1,3 @@
-import "../styles/HeroText.css";
-
 export function HeroText() {
   return (
     <>
