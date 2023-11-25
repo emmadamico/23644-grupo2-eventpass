@@ -82,6 +82,7 @@ const Description = () => {
                   <h1 className="text-white fw-bold w-100 fs-1 versalita">
                     {eventData ? eventData.name : `titulo`}
                   </h1>
+
                   <a
                     href={`https://www.google.com/maps/@${latitude},${longitude},13z?hl=es-419&entry=ttu`}
                     target="blank_"

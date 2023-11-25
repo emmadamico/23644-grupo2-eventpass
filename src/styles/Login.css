@@ -51,7 +51,7 @@
 
 
 
-/* Corregir nombre de clases */
+
 button.py-2:hover {
   background-color: var(--white-hover-color);
 }
@@ -59,4 +59,6 @@ button.py-2:hover {
 .form-check-label {
   color: #eff5f1;
 }
-
+.forget {
+  color: #eff5f1;
+}
