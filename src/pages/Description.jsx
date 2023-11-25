@@ -6,6 +6,7 @@ import OtherEvents from "../components/OtherEvents";
 import "../styles/Description.css"
 
 import Purchase from "../components/Purchase";
+import { CSSTransition } from "react-transition-group";
 
 const Description = () => {
   const [eventData, setEventData] = useState(null);
@@ -51,6 +52,8 @@ const Description = () => {
       year: "numeric",
     });
   };
+  //Se agrega un nuevo estado para controlar la visualización del componente Purchase
+  const [showPurchase, setShowPurchase] = useState(false);
 
   return (
     <>
@@ -89,6 +92,7 @@ const Description = () => {
                   </a>
                 </div>
                 <div className="col-lg-6 mb-3">
+                {!showPurchase ? (
                   <div className="text-white glass-bg rounded-4 px-3 py-3">
                     <h3>
                       {eventData
@@ -116,15 +120,26 @@ const Description = () => {
                       </p>
                     </div>
 
-                    <a
-                      href=""
-                      className="btn btn-dark w-100 rounded rounded-5 py-2"
+                    <span
+                      className="btn btn-dark w-100 rounded rounded-5 py-2" onClick={() => {
+                        console.log('Setting showPurchase to true');
+                        setShowPurchase(true);
+                      }} // Cuando se hace clic en "Get Ticket", cambia showPurchase a true
                     >
                       Get Ticket
-                    </a>
+                    </span>
                   </div>
+                ) : (
+                  <CSSTransition
+                    in={showPurchase}
+                    timeout={5000}
+                    classNames="fade"
+                    unmountOnExit
+                  >
+                    <Purchase eventData={eventData} />
+                  </CSSTransition>
+                )}
                 </div>
-                <Purchase eventData={eventData} />
               </div>
             </div>
           </div>

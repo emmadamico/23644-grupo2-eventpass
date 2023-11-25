@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 const Purchase = ({ eventData }) => {
+  console.log('Rendering Purchase');
   const formatEventDate = (dateString) => {
     const eventDate = new Date(dateString);
     return eventDate.toLocaleDateString("en-EN", {
@@ -22,7 +24,7 @@ const Purchase = ({ eventData }) => {
     }
   };
   return (
-    <div className="col-lg-6 mb-3">
+    <div className="col-lg-6 mb-3 w-100">
       <div className="text-white glass-bg rounded-4 px-3 py-3">
         <h3>
         {eventData ? eventData.name : "Event Name"}
@@ -39,19 +41,21 @@ const Purchase = ({ eventData }) => {
               : "Price"}
           </p>
         </div>
-        <p className="p-0 m-0 fw-bold">
-                        {eventData && eventData._embedded?.venues[0]?.city.name
-                          ? eventData._embedded.venues[0].city.name +
-                            ", " +
-                            eventData._embedded.venues[0].state.name
-                          : "city"}
+          <p className="p-0 m-0 fw-bold">
+            {eventData && eventData._embedded?.venues[0]?.city.name
+              ? eventData._embedded.venues[0].city.name +
+                ", " +
+                eventData._embedded.venues[0].state.name
+              : "city"}
           </p>
-          <div>
-      <button onClick={decrementCount}>-</button>
-      <span>{count}</span>
-      <button onClick={incrementCount}>+</button>
-    </div>
-
+          <div className='d-flex justify-content-center align-items-center flex-column mb-3 mt-3'>
+          <p>Select the number of tickets</p>
+            <div>
+              <button onClick={decrementCount} className='btn btn-dark me-4'>-</button>
+              <span className="me-4">{count}</span>
+              <button onClick={incrementCount}className='btn btn-dark'>+</button>
+            </div>
+          </div>
 
         <a
           href=""
