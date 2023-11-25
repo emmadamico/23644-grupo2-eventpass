@@ -3,15 +3,10 @@ import { Link, useParams } from "react-router-dom";
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import OtherEvents from "../components/OtherEvents";
-<<<<<<< HEAD
-import "../styles/Description.css"
-=======
 
 import "../styles/Description.css";
->>>>>>> 2237f682d323d724b587c09e279d8a40c84cc35f
 
 import Purchase from "../components/Purchase";
-import { CSSTransition } from "react-transition-group";
 
 const Description = () => {
   const [eventData, setEventData] = useState(null);
@@ -139,14 +134,7 @@ const Description = () => {
                     </span>
                   </div>
                 ) : (
-                  <CSSTransition
-                    in={showPurchase}
-                    timeout={5000}
-                    classNames="fade"
-                    unmountOnExit
-                  >
                     <Purchase eventData={eventData} />
-                  </CSSTransition>
                 )}
                 </div>
               </div>
