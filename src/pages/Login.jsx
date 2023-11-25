@@ -1,21 +1,27 @@
 import React, { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import "../App.css";
-import "../styles/Login.css";
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import "../App.css";
+import "../styles/Login.css";
 
 export function Login() {
-  const [formData, setFormData] = useState({ email: "", password: "" });
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [LooggedIn, setLoggedIn] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
   };
 
   const handleLogin = () => {
-    if (formData.email && formData.password) {
+    if (email && password) {
       setLoggedIn(true);
     } else {
       alert("Please, enter your email and password");
@@ -51,6 +57,9 @@ export function Login() {
                           placeholder="Enter your email"
                           className="py-2"
                           style={{ borderRadius: "50px" }}
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
                         />
                       </Col>
                     </Form.Group>
@@ -65,6 +74,9 @@ export function Login() {
                           placeholder="Enter your password"
                           className="py-2"
                           style={{ borderRadius: "50px" }}
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          required
                         />
                       </Col>
                     </Form.Group>
@@ -75,7 +87,6 @@ export function Login() {
                           type="submit"
                           className="w-100 py-2"
                           style={{ borderRadius: "50px" }}
-                          onClick={handleLogin}
                         >
                           Login
                         </Button>
@@ -86,14 +97,21 @@ export function Login() {
                           controlId="formBasicCheckbox"
                           className="mb-0"
                         >
-                          <Form.Check type="checkbox" label="Remind me" />
+                          <Form.Check
+                            type="checkbox"
+                            label="Recordarme"
+                            checked={rememberMe}
+                            onChange={() => setRememberMe(!rememberMe)}
+                          />
                         </Form.Group>
                       </Col>
                     </Row>
                   </Form>
                   <div className="row mt-3 d-flex justify-content-center">
                     <div className="row mt-3">
-                      <a href="#">Did you forget your password?</a>
+                      <a className="forget" href="/">
+                        Did you forget your password?
+                      </a>
                     </div>
                   </div>
                 </div>

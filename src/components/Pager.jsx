@@ -7,13 +7,13 @@ export const PagerButtons = ({ handleDecrementPage, handleIncrementPage }) => {
         onClick={handleDecrementPage}
         className="btn btn-outline-dark rounded-start-pill px-5 fs-6 py-0 fw-bold"
       >
-        <i className="bi bi-chevron-compact-left"></i>
+        <i className="bi bi-chevron-compact-left text-white"></i>
       </button>
       <button
         onClick={handleIncrementPage}
         className="btn btn-outline-dark rounded-end-pill px-5 fs-6 py-0 fw-bold"
       >
-        <i className="bi bi-chevron-compact-right"></i>
+        <i className="bi bi-chevron-compact-right text-white"></i>
       </button>
     </div>
   );
