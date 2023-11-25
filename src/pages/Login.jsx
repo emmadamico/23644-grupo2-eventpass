@@ -1,22 +1,36 @@
+
 import React, { useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { MyNavbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+
 import "../App.css";
 import "../styles/Login.css";
 
 export function Login() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
+  const [LooggedIn, setLoggedIn] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    console.log("Email:", email);
-    console.log("Contraseña:", password);
-    console.log("Recordarme:", rememberMe);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "email") {
+      setEmail(value);
+    } else if (name === "password") {
+      setPassword(value);
+    }
   };
+
+  const handleLogin = () => {
+    if (email && password) {
+      setLoggedIn(true);
+    } else {
+      alert("Please, enter your email and password");
+    }
+  };
+
 
   return (
     <div>
@@ -25,10 +39,20 @@ export function Login() {
         <div className="form-login form-container mx-auto flex-column justify-content-center align-items-center mt-5">
           <div className="row justify-content-center align-items-center">
             <div className="col-md-8">
-              <div className="cardgral card p-7" style={{ borderRadius: '1rem', textAlign: 'center', maxWidth: '600px', margin: 'auto' }}>
+
+              <div
+                className="cardgral card p-7"
+                style={{
+                  borderRadius: "1rem",
+                  textAlign: "center",
+                  maxWidth: "600px",
+                  margin: "auto",
+                }}
+              >
                 <div className="card-body">
                   <h3 className="mb-4">LOGIN IN TO MY ACCOUNT</h3>
-                  <Form onSubmit={handleSubmit}>
+                  <Form>
+
                     <Form.Group as={Row} className="mb-3">
                       <Form.Label column sm="3">
                         E-mail
@@ -38,7 +62,9 @@ export function Login() {
                           type="email"
                           placeholder="Enter your email"
                           className="py-2"
-                          style={{ borderRadius: '50px' }}
+
+                          style={{ borderRadius: "50px" }}
+
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           required
@@ -55,7 +81,9 @@ export function Login() {
                           type="password"
                           placeholder="Enter your password"
                           className="py-2"
-                          style={{ borderRadius: '50px' }}
+
+                          style={{ borderRadius: "50px" }}
+
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                           required
@@ -69,15 +97,21 @@ export function Login() {
                           variant="light"
                           type="submit"
                           className="w-100 py-2"
-                          style={{ borderRadius: '50px' }}
+
+                          style={{ borderRadius: "50px" }}
+
                         >
                           Login
                         </Button>
                       </Col>
 
                       <Col className="d-flex align-items-center">
-                        <Form.Group controlId="formBasicCheckbox" className="mb-0">
-                          <Form.Check
+
+                        <Form.Group
+                          controlId="formBasicCheckbox"
+                          className="mb-0"
+                        >
+       <Form.Check
                             type="checkbox"
                             label="Recordarme"
                             checked={rememberMe}
@@ -90,7 +124,10 @@ export function Login() {
 
                   <div className="row mt-3 d-flex justify-content-center">
                     <div className="row mt-3">
-                      <a className="forget"href="#">Did you forget your password?</a>
+                      <a className="forget" href="/">
+                        Did you forget your password?
+                      </a>
+
                     </div>
                   </div>
                 </div>

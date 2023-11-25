@@ -1,24 +1,37 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useFetch } from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 import { Fav } from "./Fav";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
+import { PagerButtons } from "./Pager";
 
 import "../styles/OtherEvents.css";
 
 export default function OtherEvents() {
-  let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=1&size=4`;
+  const elementos = 4;
+  const [page, setPage] = useState(1);
+  let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
+  let { data, isPending, error, performFetch } = useFetch(url);
 
-  let { data, isPending, error } = useFetch(url);
+  const handleIncrementPage = () => {
+    setPage(page + 1);
+    performFetch(url);
+  };
+
+  const handleDecrementPage = () => {
+    setPage(page > 1 ? page - 1 : page);
+    performFetch(url);
+  };
 
   //console.log(data, isPending, error);
 
   // Función para realizar el desplazamiento al principio de la página
 
-  const shuffledEvents = data?._embedded?.events
-    ? [...data._embedded.events].sort(() => Math.random() * 10 - 5)
-    : [];
+  // const shuffledEvents = data?._embedded?.events
+  //   ? [...data._embedded.events].sort(() => Math.random() * 10 - 5)
+  //   : [];
+  useEffect(() => {}, [url]);
   return (
     <>
       <Container>
@@ -28,6 +41,10 @@ export default function OtherEvents() {
           ) : (
             <h3 className="text-white versalita">More Events</h3>
           )}
+          <PagerButtons
+            handleDecrementPage={handleDecrementPage}
+            handleIncrementPage={handleIncrementPage}
+          />
         </div>
       </Container>
       {isPending && (
@@ -49,7 +66,7 @@ export default function OtherEvents() {
       {!isPending && data && (
         <Container className="p-0">
           <section className="row p-0 m-0 card__container py-4">
-            {shuffledEvents.map((event) => (
+            {data?._embedded?.events?.map((event) => (
               <div
                 className="col-12 col-md-6 col-lg-3  m-0 p-0 px-0 p-md-2 card__container"
                 key={event.id}

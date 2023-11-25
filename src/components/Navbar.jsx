@@ -19,8 +19,15 @@ export function MyNavbar() {
   return (
     <Navbar bg="black" variant="dark" expand="sm" fixed="top">
       <Container>
-        <Link className="navbar-brand fs-3" to={"/"} id="logo__title">
-          EVENT<strong className="fst-italic text__light-green">PASS</strong>
+        <Link
+          className="navbar-brand fs-3 notranslate"
+          to={"/"}
+          id="logo__title"
+        >
+          EVENT
+          <strong className="fst-italic text__light-green notranslate">
+            PASS
+          </strong>
         </Link>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -12,7 +12,7 @@ export function Filter({ onSegmentClick }) {
     <>
       <section className="d-flex align-items-center justify-content-around flex-wrap  mt-5   py-2  px-2 filter-container box__shadow-inset">
         <NavLink
-          className="versalita Link px-2 px-md-0"
+          className="versalita Link px-4 px-md-0"
           activeClassName=""
           onClick={() => onSegmentClick("todos")} // Puedes asignar cualquier id que desees, en este caso, estoy utilizando "todos"
         >
