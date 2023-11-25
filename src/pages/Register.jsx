@@ -1,5 +1,6 @@
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import "../styles/Register.css";
 
 export function Register() {
   return (
@@ -27,7 +28,7 @@ export function Register() {
               className="px-2 border-0 rounded-pill bg-dark text-white"
               type="text"
               name="apellido"
-              placeholder="Las tName"
+              placeholder="Last Name"
             ></input>
           </div>
           <div className="form-items mt-3 d-flex gap-3">
