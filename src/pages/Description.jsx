@@ -3,9 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import OtherEvents from "../components/OtherEvents";
-
-
 import "../styles/Description.css"
+
+import Purchase from "../components/Purchase";
 
 const Description = () => {
   const [eventData, setEventData] = useState(null);
@@ -124,6 +124,7 @@ const Description = () => {
                     </a>
                   </div>
                 </div>
+                <Purchase eventData={eventData} />
               </div>
             </div>
           </div>
