@@ -51,29 +51,29 @@ export function Register() {
 
     // Validación para campos obligatorios
     if (!data.firstName.trim()) {
-      errors.firstName = 'El nombre es obligatorio';
+      errors.firstName = 'Required field';
     }
 
     if (!data.lastName.trim()) {
-      errors.lastName = 'El apellido es obligatorio';
+      errors.lastName = 'Required field';
     }
 
     if (!data.email.trim()) {
-      errors.email = 'El correo electrónico es obligatorio';
+      errors.email = 'Required field';
     } else if (!isValidEmail(data.email)) {
-      errors.email = 'Ingrese un correo electrónico válido';
+      errors.email = 'Enter a valid email';
     }
 
     if (!data.password.trim()) {
-      errors.password = 'La contraseña es obligatoria';
+      errors.password = 'Required field';
     }
 
     if (data.password !== data.confirmPassword) {
-      errors.confirmPassword = 'Las contraseñas no coinciden';
+      errors.confirmPassword = 'Passwords do not match';
     }
 
     if (!data.termsAccepted) {
-      errors.termsAccepted = 'Debe aceptar los términos y condiciones';
+      errors.termsAccepted = 'You must accept the terms and conditions';
     }
 
     return errors;
@@ -108,7 +108,7 @@ export function Register() {
               placeholder="First Name"
               onChange={handleChange}
             ></input>
-            {errors.firstName && <small className="register-validation px-3 py-2">{errors.firstName}</small>}
+            {errors.firstName && <small className="register-validation px-3 pt-2">{errors.firstName}</small>}
             </div>
           </div>
 
@@ -124,7 +124,7 @@ export function Register() {
               placeholder="Last Name"
               onChange={handleChange}
             ></input>
-            {errors.lastName && <small className="register-validation px-3 py-2">{errors.lastName}</small>}
+            {errors.lastName && <small className="register-validation px-3 pt-2">{errors.lastName}</small>}
             </div>
           </div>
           
@@ -140,7 +140,7 @@ export function Register() {
               placeholder="Enter Your Email"
               onChange={handleChange}
             ></input>
-            {errors.email && <small className="register-validation px-3 py-2">{errors.email}</small>}
+            {errors.email && <small className="register-validation px-3 pt-2">{errors.email}</small>}
             </div>
           </div>
 
@@ -156,7 +156,7 @@ export function Register() {
               placeholder="Enter Your Password"
               onChange={handleChange}
             ></input>
-            {errors.password && <small className="register-validation px-3 py-2">{errors.password}</small>}
+            {errors.password && <small className="register-validation px-3 pt-2">{errors.password}</small>}
             </div>
           </div>
 
@@ -172,7 +172,7 @@ export function Register() {
               placeholder="Repeat Password"
               onChange={handleChange}
             ></input>
-            {errors.confirmPassword && <small className="register-validation px-3 py-2">{errors.confirmPassword}</small>}
+            {errors.confirmPassword && <small className="register-validation px-3 pt-2">{errors.confirmPassword}</small>}
             </div>
           </div>
 
@@ -187,7 +187,7 @@ export function Register() {
                 name="terminos"
               ></input>
             </div>
-            <button type="submit" className="col border-0 rounded-pill px-3">Sign up</button>
+            <button type="submit" className="signup-register col border-0 rounded-pill px-3 py-2">Sign up</button>
           </div>
         </form>
       </div>
