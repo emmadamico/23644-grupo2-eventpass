@@ -5,6 +5,7 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
 import { Filter } from "./Filter";
+import { PagerButtons } from "./Pager";
 import "../styles/Events.css";
 export default function Events() {
   const elementos = 3;
@@ -12,11 +13,11 @@ export default function Events() {
   const [page, setPage] = useState(1);
 
   //Manejadores de paginador
-  const HandleIncrementPage = () => {
+  const handleIncrementPage = () => {
     setPage(page + 1);
   };
 
-  const HandleDecrementPage = () => {
+  const handleDecrementPage = () => {
     setPage(page > 1 ? page - 1 : page);
   };
 
@@ -72,20 +73,10 @@ export default function Events() {
             <h3 className="text-white versalita">All</h3>
           )}
 
-          <div className="d-flex">
-            <button
-              onClick={HandleDecrementPage}
-              className="btn btn-outline-dark rounded-start-pill  px-5 fs-6 py-0 fw-bold"
-            >
-              <i class="bi bi-chevron-compact-left"></i>
-            </button>
-            <button
-              onClick={HandleIncrementPage}
-              className="btn btn-outline-dark rounded-end-pill px-5 fs-6 py-0 fw-bold"
-            >
-              <i class="bi bi-chevron-compact-right"></i>
-            </button>
-          </div>
+          <PagerButtons
+            handleDecrementPage={handleDecrementPage}
+            handleIncrementPage={handleIncrementPage}
+          />
         </div>
       </Container>
       {isPending && (
@@ -109,7 +100,7 @@ export default function Events() {
           <section className="row p-0 m-0 card__container">
             {shuffledEvents.map((event) => (
               <div
-                className="col-12 col-md-6 col-lg-4  m-0 p-0 px-0 p-md-2 card__container"
+                className="col-12 col-md-6 col-lg-4  m-0 p-0 px-0 py-2 p-md-2 card__container"
                 key={event.id}
               >
                 <div className="position-relative d-flex align-items-center card__container">

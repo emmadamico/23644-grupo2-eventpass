@@ -1,0 +1,60 @@
+.padding__right {
+  padding-right: 1.5rem;
+}
+
+.sports__card-bg1 {
+  background-image: url(/public/soccer_fanatic.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  border-radius: 5px 0 0 0;
+}
+
+.sports__card-bg1:hover {
+  transition: all 0.5s ease-in-out;
+  background-image: url(/public/football_player2.jpg);
+  background-position: top;
+}
+
+.sports__card-bg2 {
+
+  background-image: url(/public/basket_player2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+
+  cursor: pointer;
+}
+.sports__card-bg2:hover {
+  transition: all 0.5s ease-in-out;
+  background-image: url(/public/basket_player.jpg);
+
+  background-position: bottom;
+
+}
+
+.sports__card-bg3 {
+  background-image: url(/public/soccer_player.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  border-radius: 0 0 0 5px;
+}
+
+.sports__card-bg3:hover {
+  transition: all 0.5s ease-in-out;
+  background-image: url(/public/soccer_portero.jpg);
+  background-position: top;
+}
+
+.sports__card-bg4 {
+  background-image: url(/public/fanatic_woman.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+.sports__card-bg4:hover {
+  transition: all 0.5s ease-in-out;
+  background-image: url(/public/besiball_ball.jpg);
+  background-position: center;
+}

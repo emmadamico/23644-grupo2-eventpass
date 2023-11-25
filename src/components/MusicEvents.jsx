@@ -4,6 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
+import { PagerButtons } from "./Pager";
 import "../styles/MusicEvents.css";
 export function MusicEvents() {
   const elementos = 4;
@@ -11,11 +12,11 @@ export function MusicEvents() {
   const [page, setPage] = useState(1);
 
   //Manejadores de paginador
-  const HandleIncrementPage = () => {
+  const handleIncrementPage = () => {
     setPage(page + 1);
   };
 
-  const HandleDecrementPage = () => {
+  const handleDecrementPage = () => {
     setPage(page > 1 ? page - 1 : page);
   };
 
@@ -35,20 +36,10 @@ export function MusicEvents() {
       <Container>
         <div className="d-flex align-items-center justify-content-between mt-5 pt-5 mb-2">
           <h3 className="text-white versalita">Concerts</h3>
-          <div className="d-flex">
-            <button
-              onClick={HandleDecrementPage}
-              className="btn btn-outline-dark rounded-start-pill  px-5 fs-6 py-0 fw-bold"
-            >
-              <i class="bi bi-chevron-compact-left"></i>
-            </button>
-            <button
-              onClick={HandleIncrementPage}
-              className="btn btn-outline-dark rounded-end-pill px-5 fs-6 py-0 fw-bold"
-            >
-              <i class="bi bi-chevron-compact-right"></i>
-            </button>
-          </div>
+          <PagerButtons
+            handleDecrementPage={handleDecrementPage}
+            handleIncrementPage={handleIncrementPage}
+          />
         </div>
       </Container>
       {isPending && (
@@ -72,7 +63,7 @@ export function MusicEvents() {
           <section className="row p-0 m-0 card__container">
             {data?._embedded?.events?.map((event) => (
               <div
-                className="col-12 col-md-6 col-lg-3  m-0 p-0 px-0 px-md-2 card__container"
+                className="col-12 col-md-6 col-lg-3  m-0 p-0 px-0 py-2 py-md-0 px-md-2 card__container"
                 key={event.id}
               >
                 <div className="position-relative d-flex align-items-center card__container">

@@ -1,17 +1,20 @@
-import { useState } from "react";
+import React from "react";
 
-export function Pager() {
-  //Paginador
-  const [page, setPage] = useState(1);
-
-  //Manejadores de paginador
-  const HandleIncrementPage = () => {
-    setPage(page + 1);
-  };
-
-  const HandleDecrementPage = () => {
-    setPage(page > 1 ? page - 1 : page);
-  };
-
-  return <></>;
-}
+export const PagerButtons = ({ handleDecrementPage, handleIncrementPage }) => {
+  return (
+    <div className="d-flex">
+      <button
+        onClick={handleDecrementPage}
+        className="btn btn-outline-dark rounded-start-pill px-5 fs-6 py-0 fw-bold"
+      >
+        <i className="bi bi-chevron-compact-left text-white"></i>
+      </button>
+      <button
+        onClick={handleIncrementPage}
+        className="btn btn-outline-dark rounded-end-pill px-5 fs-6 py-0 fw-bold"
+      >
+        <i className="bi bi-chevron-compact-right text-white"></i>
+      </button>
+    </div>
+  );
+};
