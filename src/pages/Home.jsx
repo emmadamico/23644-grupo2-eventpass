@@ -4,15 +4,17 @@ import { Footer } from "../components/Footer";
 import Events from "../components/Events";
 import { MusicEvents } from "../components/MusicEvents";
 
-// import { Filter } from "../components/Filter";
+import { SportsEvents } from "../components/SportsEvents";
+
 export function Home() {
   return (
     <>
       <Header />
       <MyNavbar />
-      {/* <Filter /> */}
+
       <Events />
       <MusicEvents />
+      <SportsEvents />
 
       <Footer />
     </>

@@ -2,24 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import Image from "react-bootstrap/Image";
-import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
-import { FilterSports } from "./FilterSports";
+import Container from "react-bootstrap/Container";
+import { PagerButtons } from "./Pager";
+import { PopularSports } from "./PopularSports";
+import "../styles/SportsEvents.css";
+
 export function SportsEvents() {
   const elementos = 1;
-  //Paginador
   const [page, setPage] = useState(1);
+  const [selectedSegmentId, setSelectedSegmentId] = useState(null);
 
-  //Manejadores de paginador
-  const HandleIncrementPage = () => {
+  const handleIncrementPage = () => {
     setPage(page + 1);
   };
 
-  const HandleDecrementPage = () => {
+  const handleDecrementPage = () => {
     setPage(page > 1 ? page - 1 : page);
   };
 
-  const [selectedSegmentId, setSelectedSegmentId] = useState(null);
   const handleSegmentClick = (segmentId) => {
     setSelectedSegmentId(segmentId);
     console.log("Segment ID seleccionado:", segmentId);
@@ -51,61 +52,39 @@ export function SportsEvents() {
     performFetch(url);
   }, [url]);
   return (
-    <>
-      <FilterSports onSegmentClick={handleSegmentClick} />
-      <Container>
-        <div className="d-flex align-items-center justify-content-between mt-5 pt-5 mb-2">
-          <h3 className="text-white versalita">Must Popular Sports</h3>
-          <div className="d-flex">
-            <button
-              onClick={HandleDecrementPage}
-              className="btn btn-outline-dark rounded-start-pill  px-5 fs-6 py-0 fw-bold"
+    <Container className="px-0  mt-5 pt-5">
+      <div className="d-flex align-items-center justify-content-between p-0 mb-3">
+        <h3 className="text-white versalita">Most Popular Sports</h3>
+        <PagerButtons
+          handleDecrementPage={handleDecrementPage}
+          handleIncrementPage={handleIncrementPage}
+        />
+      </div>
+      <section className="p-0 m-0 row d-flex">
+        <PopularSports />
+        <section className="px-0 col-12 col-md-6 col-lg-8 d-flex flex-column">
+          {isPending && (
+            <section
+              style={{ minHeight: "22.33rem" }}
+              className="col-12 col-md-6 col-lg-8 mt-5 pt-1  px-0 w-100 d-flex align-items-center justify-content-center "
             >
-              <i class="bi bi-chevron-compact-left"></i>
-            </button>
-            <button
-              onClick={HandleIncrementPage}
-              className="btn btn-outline-dark rounded-end-pill px-5 fs-6 py-0 fw-bold"
-            >
-              <i class="bi bi-chevron-compact-right"></i>
-            </button>
-          </div>
-        </div>
-      </Container>
-      {isPending && (
-        <Container>
-          <section className="mt-5 pt-1 w-100 d-flex align-items-center justify-content-ccenter ">
-            <article className="d-flex flex-column w-100 align-items-center">
-              <h3 className="text-white text-center w-100 display-5">
-                Loading...
-              </h3>
-              <h2 className="display-4">
-                {" "}
-                EVENT
-                <strong className="fst-italic text__light-green">PASS</strong>
-              </h2>
-            </article>
-          </section>
-        </Container>
-      )}
-      {!isPending && data && (
-        <Container className="p-0">
-          <section className="row p-0 m-0 card__container">
-            <article className="col-12 col-md-6 col-lg-4">
-              <Image src={"#"} className="" fluid rounded />
-            </article>
-            {data?._embedded?.events
-              ?.filter(
-                (event) =>
-                  event?.classifications?.[0]?.segment?.id ===
-                  "KZFzniwnSyZfZ7v7nE"
-              )
-              .map((event) => (
-                <div
-                  className="col-12 col-md-6 col-lg-8  m-0 p-0 px-0 px-md-2 card__container"
-                  key={event.id}
-                >
-                  <div className="position-relative d-flex align-items-center card__container">
+              <article className="d-flex flex-column w-100 align-items-center">
+                <h3 className="text-white text-center w-100 display-5">
+                  Loading...
+                </h3>
+                <h2 className="display-4">
+                  {" "}
+                  EVENT
+                  <strong className="fst-italic text__light-green">PASS</strong>
+                </h2>
+              </article>
+            </section>
+          )}
+          {!isPending && data && (
+            <>
+              {shuffledEvents.map((event) => (
+                <div className="m-0 p-0 px-0  card__container" key={event.id}>
+                  <div className=" px-0 position-relative d-flex align-items-center card__container">
                     <div className="position-absolute z-2 px-2 w-100 py-2 d-flex flex-column gap-2 card__text ">
                       <h6 className="m-0 p-0 versalita">{event.name}</h6>
                       <div className="d-flex align-items-center justify-content-between">
@@ -121,12 +100,14 @@ export function SportsEvents() {
                           to={`/description/:${event.id}`}
                           className="hover"
                         >
-                          See More
+                          <button className="btn btn-dark rounded-pill">
+                            See More
+                          </button>
                         </Link>
                         <Fav />
                       </div>
                     </div>
-                    <div className=" z-1 rounded ">
+                    <div className="px-0">
                       {event.images && event.images.length > 0 && (
                         <Image
                           src={
@@ -135,18 +116,18 @@ export function SportsEvents() {
                                 image.width === 1024 && image.height === 576
                             )?.url || event.images[0].url
                           }
-                          className=""
+                          className="rounded-image"
                           fluid
-                          rounded
                         />
                       )}
                     </div>
                   </div>
                 </div>
               ))}
-          </section>
-        </Container>
-      )}
-    </>
+            </>
+          )}
+        </section>
+      </section>
+    </Container>
   );
 }
