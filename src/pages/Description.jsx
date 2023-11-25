@@ -41,6 +41,7 @@ const Description = () => {
     };
 
     fetchEventDetails();
+    window.scrollTo(0, 0);
   }, [url]);
   const formatEventDate = (dateString) => {
     const eventDate = new Date(dateString);
