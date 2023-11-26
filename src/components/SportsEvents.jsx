@@ -57,12 +57,15 @@ export function SportsEvents() {
           handleIncrementPage={handleIncrementPage}
         />
       </div>
+
       <section className=" row p-0 m-0 d-flex">
         <PopularSports />
         <section className="px-0 col-12 col-md-8 col-lg-8 d-flex flex-column">
           {isPending && (
             <section
               style={{ minHeight: "23.9rem" }}
+
+
               className="col-12 col-md-6 col-lg-8 mt-5 pt-1  px-0 w-100 d-flex align-items-center justify-content-center "
             >
               <article className="d-flex flex-column w-100 align-items-center">
