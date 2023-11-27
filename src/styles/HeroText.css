@@ -10,15 +10,57 @@
   color: var(--green-light-color);
 }
 
-.hero__text-hover:hover span {
+/* .hero__text-hover:hover span {
   transition: all 0.3s ease-in-out;
   text-shadow: 0 0 3px var(--green-light-color);
-}
+} */
 
 .textShadow{
  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.777);
 } 
 
-.text-bigger:hover {
+/* .text-bigger:hover {
   transform: scale(1.1);
+} */
+
+.hero__text-hover span {
+  transition: all 8s ease-in-out;
+}
+
+@keyframes shadowAnimation {
+  0% {
+    text-shadow: 0 0 3px var(--green-light-color);
+  }
+  50% {
+    text-shadow: 0 0 10px var(--green-light-color); 
+  }
+  100% {
+    text-shadow: 0 0 0px var(--green-light-color);
+  }
+}
+
+.hero__text-hover span {
+  animation: shadowAnimation 3s infinite; 
+}
+
+
+
+.text-bigger {
+  transition: transform 30s ease-in-out;
+}
+
+@keyframes scaleAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Ajusta según tus necesidades */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.text-bigger {
+  animation: scaleAnimation 10s infinite; /* Ajusta la duración según tus necesidades */
 }
