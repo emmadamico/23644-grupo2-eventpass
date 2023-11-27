@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Swal from 'sweetalert2';
+import '../styles/purchase.css';
 
 const Purchase = ({ eventData }) => {
   console.log('Rendering Purchase');
@@ -10,7 +12,7 @@ const Purchase = ({ eventData }) => {
       year: "numeric",
     });
   };
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   const incrementCount = () => {
     if (count < 5) {
@@ -19,13 +21,23 @@ const Purchase = ({ eventData }) => {
   };
 
   const decrementCount = () => {
-    if (count > 0) {
+    if (count > 1) {
       setCount(count - 1);
     }
   };
+
+  const handlePayment = () => {
+    Swal.fire({
+      title: 'Payment successful!',
+      html: `Congratulations! You've just bought ${count} tickets.
+      <br>You can check out your tickets <a href="/mytickets">here</a>.`,
+      icon: 'success',
+      confirmButtonText: 'Great'
+    });
+  };
   return (
-    <div className="col-lg-6 mb-3 w-100">
-      <div className="text-white glass-bg rounded-4 px-3 py-3">
+    <div className="col-lg-6 mb-3 w-100 ">
+      <div className="text-white glass-bg rounded-4 px-3 py-3 flip-in-ver-left">
         <h3>
         {eventData ? eventData.name : "Event Name"}
         </h3>
@@ -57,12 +69,11 @@ const Purchase = ({ eventData }) => {
             </div>
           </div>
 
-        <a
-          href=""
-          className="btn btn-dark w-100 rounded rounded-5 py-2"
+        <button
+          className="btn btn-dark w-100 rounded rounded-5 py-2"   onClick={handlePayment}
         >
           Pay
-        </a>
+        </button>
       </div>
     </div>
   );
