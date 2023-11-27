@@ -2,10 +2,10 @@
   height: 100%;
 }
 
-.hero__container-hover:hover {
+/* .hero__container-hover:hover {
   transition: all 0.3s ease-in-out;
   box-shadow: 0 0 5px -1px var(--green-light-color);
-}
+} */
 .hero__text-green {
   color: var(--green-light-color);
 }
