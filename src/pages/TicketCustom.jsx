@@ -10,7 +10,7 @@ import "../styles/TicketCustom.css";
 
 
 export function TicketCustom() {
-  const [mensaje, setMensaje] = useState("Escribe aquí tu mensaje especial (hasta 500 caracteres)");
+  const [mensaje, setMensaje] = useState("Write your special message here");
   const [imgfondo, setImgfondo] = useState('../img/img5.jpg');
 
   const [color, setColor] = useState('');
@@ -53,12 +53,11 @@ export function TicketCustom() {
       <MyNavbar />
       <div>
         <div className="encabezado text-center">
-          <p>¿Quieres sorprender a alguien con una entrada para este evento?
-            Regala una entrada personalizada y sorprende a tu persona especial con un diseño y un mensaje únicos.
+          <p>Do you want to surprise someone with a ticket to this event? Gift a personalized ticket and amaze your special person with a unique design and message.
           </p>
         </div>
         <div className="conteiner-personalizar">
-          <h6 className="titulo-personalizar">Elije un diseño:</h6>
+          <h6 className="titulo-personalizar">Choose a design:</h6>
           <div className="imagenes d-flex justify-content-center flex-wrap gap-4">
             <img onClick={() => seleccionarImgClick('../img/img1.jpg')} style={{ border: imgfondo.includes('../img/img1.jpg') ? '3px solid #5fcb03' : 'none' }} src="../img/img1.jpg" className="img-fluid" alt="" />
             <img onClick={() => seleccionarImgClick('../img/img2.jpg')} style={{ border: imgfondo.includes('../img/img2.jpg') ? '3px solid #5fcb03' : 'none' }} src="../img/img2.jpg" className="img-fluid" alt="" />
@@ -69,15 +68,15 @@ export function TicketCustom() {
 
           </div>
           <div className="conteiner-mensaje d-flex flex-wrap">
-            <h6 className="titulo-personalizar">Escribe un mensaje:</h6>
-            <input onChange={textomensaje} className="form-control d-block" type="text" placeholder="Escribe aquí tu mensaje especial" name="mensaje" id="" />
+            <h6 className="titulo-personalizar">Write a message:</h6>
+            <input onChange={textomensaje} className="form-control d-block" type="text" placeholder="Write your special message here" name="mensaje" id="" />
           </div>
-          <div class="btn-group dropdown mx-2">
-            <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div className="btn-group dropdown mx-2">
+            <button className="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Color
             </button>
-            <ul class="dropdown-menu">
-              <li><p class="dropdown-item m-auto">
+            <ul className="dropdown-menu">
+              <li><p className="dropdown-item m-auto">
                 <input
                   type="color"
                   value={setColor}
@@ -86,13 +85,15 @@ export function TicketCustom() {
               </li>
             </ul>
           </div>
-          <div class="btn-group dropdown mx-2">
-            <button class="btn btn-dark dropdown-toggle btn-transparent" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Tamaño
+
+          <div className="btn-group dropdown mx-2">
+            <button className="btn btn-dark dropdown-toggle btn-transparent" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+              Size
             </button>
-            <ul class="dropdown-menu">
+            <ul className="dropdown-menu">
              
-               <li><p class="dropdown-item m-auto">
+               <li><p className="dropdown-item m-auto">
                 <input
                   type="range"
                   min={10}
@@ -122,7 +123,7 @@ export function TicketCustom() {
         </figure>
         {/* Compartir/descargar */}
         <div className="compartir d-flex justify-content-center flex-wrap gap-4 align-items-center">
-          <h5 className="texto-verde">COMPARTE</h5>
+          <h5 className="texto-verde">SHARE</h5>
 
 
           <ul className="list-unstyled d-flex flex-wrap gap-3 align-items-center">
@@ -150,7 +151,7 @@ export function TicketCustom() {
 
 
           </ul>
-          <h5 className="texto-verde descarga" onClick={descarga} type='button'>DESCARGA</h5>
+          <h5 className="texto-verde descarga" onClick={descarga} type='button'>DOWNLOAD</h5>
         </div>
 
       </div>
