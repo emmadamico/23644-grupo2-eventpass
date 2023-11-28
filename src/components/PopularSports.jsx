@@ -28,7 +28,9 @@ export function PopularSports(props) {
         <div
           className="col-6 p-0 m-0 sports__card-bg2"
           key={"Basketball"}
+
           keyvalue={"Basketball"}
+
           onClick={() => handleKeyValue("Basketball")}
         >
           <div className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold">
@@ -39,7 +41,9 @@ export function PopularSports(props) {
       <div
         className="row p-0 m-0 height__half"
         key={"Basketball"}
+
         keyvalue={"Basketball"}
+
       >
         <div
           className="col-6 p-0 m-0 sports__card-bg3"
@@ -52,7 +56,9 @@ export function PopularSports(props) {
         <div
           className="col-6 p-0 m-0 sports__card-bg4"
           key={"Hockey"}
+
           keyvalue={"Hockey"}
+
           onClick={() => handleKeyValue("Hockey")}
         >
           <div className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold">
