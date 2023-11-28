@@ -85,13 +85,15 @@ export function TicketCustom() {
               </li>
             </ul>
           </div>
+
           <div className="btn-group dropdown mx-2">
             <button className="btn btn-dark dropdown-toggle btn-transparent" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
               Size
             </button>
             <ul className="dropdown-menu">
              
-               <li><p class="dropdown-item m-auto">
+               <li><p className="dropdown-item m-auto">
                 <input
                   type="range"
                   min={10}

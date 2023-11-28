@@ -13,52 +13,51 @@ export function FAQ() {
             src="/banner.png"
             alt=""
           />
-          <h1 className="title">Preguntas Frecuentes</h1>
+          <h1 className="title">Frequently Asked Questions</h1>
       </banner>
       
       <section className="faqs">
       <div className="card-faq mx-auto">
       <Accordion>
       <Accordion.Item className='mb-4 border-0' eventKey="0">
-        <Accordion.Header>¿Cuáles son los medios de pago?</Accordion.Header>
+        <Accordion.Header>What are the payment methods?</Accordion.Header>
         <Accordion.Body>
-          Aceptamos pagos con cualquier tarjeta de crédito, débito o Mercado Pago.
+        We accept payments with any credit card, debit card, or Mercado Pago.
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item className='mb-4 border-0' eventKey="1">
-        <Accordion.Header>Quiero comprar las entradas con la tarjeta de una persona que no irá al evento. ¿Qué debo hacer?</Accordion.Header>
+        <Accordion.Header> I want to buy tickets with a card from someone who will not attend the event, what should I do?</Accordion.Header>
         <Accordion.Body>
-          Al momento de realizar la compra deberás completar los datos del comprador con los datos del titular de la tarjeta. Una vez realizada la misma, te brindaremos un link de compra desde donde podrás personalizar las entradas.
+        When making the purchase, you will need to fill in the buyer’s details with the cardholder’s details. Once the purchase is made, we will provide you with a purchase link from where you can customize the tickets.
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item className='mb-4 border-0' eventKey="2">
-        <Accordion.Header>Compré entradas y no puedo asistir al evento. ¿Es posible transferir las entradas a otra persona?</Accordion.Header>
+        <Accordion.Header>I bought tickets and I can’t attend the event, is it possible to transfer the tickets to another person?</Accordion.Header>
         <Accordion.Body>
-          Sí. Deberás ingresar al link de compra que te enviamos vía mail cuando realizaste la compra y desde allí podrás cambiar el nombre de las entradas que desees transferir.
+        Yes. You will need to go to the purchase link that we sent you by email when you made the purchase, and from there you can change the name of the tickets you wish to transfer.
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item className='mb-4 border-0' eventKey="3">
-        <Accordion.Header>¿Qué debo presentar al momento de ingresar?</Accordion.Header>
+        <Accordion.Header>What should I present when entering?</Accordion.Header>
         <Accordion.Body>
-          En el control de accesos deberás presentar tu entrada impresa o en tu celular. Por seguridad, también te recomendamos asistir con tu DNI.
+        At the access control, you will need to present your ticket printed or on your phone. For security, we also recommend you to attend with your ID.
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item className='mb-4 border-0' eventKey="4">
-        <Accordion.Header>¿Cómo funciona el control de accesos?</Accordion.Header>
+        <Accordion.Header>How does the access control work?</Accordion.Header>
         <Accordion.Body>
-        Realizamos un escaneo de los códigos QR de las entradas para validar acceso y evitar el ingreso de entradas duplicadas o falsificadas, ya que solo es posible acreditar códigos QR que se encuentren en la base de datos del evento una única vez.
+        We scan the QR codes of the tickets to validate access and prevent the entry of duplicated or falsified tickets, as it is only possible to accredit QR codes that are in the event database once.
         </Accordion.Body>
       </Accordion.Item>
       <Accordion.Item className='mb-4 border-0' eventKey="5">
-        <Accordion.Header>El evento para el que compré entradas fue cancelado. ¿Cómo solicito el reembolso?</Accordion.Header>
+        <Accordion.Header>The event for which I bought tickets was canceled, how do I request a refund?</Accordion.Header>
         <Accordion.Body>
-        Deberás contactarnos, colocando como asunto: REEMBOLSO.
+        You should contact us, putting as subject: REFUND.
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
       </div>
       </section>
-      
       <Footer/>
     </main>
   );

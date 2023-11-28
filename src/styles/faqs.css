@@ -7,11 +7,12 @@
 .banner-faq .title {
     position: absolute;
     top: 25%;
-    left: 20%;
+    left: 23%;
     transform: translate(-50%, -50%);
     color: var(--bg-main-color);
     font-size: 2em;
-    font-family: var(--Montserrat-bold);
+    font-family: 'montserrat', sans-serif;
+    font-weight: bold;
     font-variant: small-caps;
 }
 /*Se estiliza section*/
@@ -37,7 +38,8 @@
     background-color: var(--green-light-color);
     padding: 2rem;
     border-radius: 50px!important;
-    font-family: var(--Montserrat-semibold);
+    font-family: 'montserrat', sans-serif;
+    font-weight: bolder;
     color: var(--bg-main-color);
 }
 .card-faq .accordion-item {
@@ -50,19 +52,20 @@
   .card-faq .accordion-body {
     color: var(--white-color);
 } 
-  @media (max-width: 1200px){
-    .banner .title{
-        left: 25%;
+
+  @media (max-width: 1024px){
+    .banner-faq .title{
+        left: 30%;
         top: 30%;
   }
 }
 @media (max-width: 990px){
-    .banner .title{
+    .banner-faq .title{
         left: 35%;
   }
 }
 @media (max-width: 655px){
-    .banner .title{
+    .banner-faq .title{
         left: 40%; 
   }
 }
@@ -76,5 +79,5 @@
     .card-faq .accordion-button:not(.collapsed){
     border-radius: 0!important;
 }  
-}
+};
  

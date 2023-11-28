@@ -2,10 +2,10 @@
   height: 100%;
 }
 
-.hero__container-hover:hover {
+/* .hero__container-hover:hover {
   transition: all 0.3s ease-in-out;
   box-shadow: 0 0 5px -1px var(--green-light-color);
-}
+} */
 .hero__text-green {
   color: var(--green-light-color);
 }
@@ -13,4 +13,13 @@
 .hero__text-hover:hover span {
   transition: all 0.3s ease-in-out;
   text-shadow: 0 0 3px var(--green-light-color);
+}
+
+.textShadow {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.777);
+}
+
+.text-bigger:hover {
+  transition: all 0.3ss ease-in-out;
+  transform: scale(1.1);
 }
