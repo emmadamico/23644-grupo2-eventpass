@@ -1,32 +1,106 @@
-.description-container {
-    background-image: url(../../public/img/background.jpg);
-    background-position: center center;
-    background-size: cover;
+.description__header {
+  position: relative;
 }
 
-hr {
-    background: greenyellow;
-    height: .25rem;
-    width: 10rem;
-    margin-bottom: 2rem;
-    border: none;
-    opacity: 1;
+.description__title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  
+}
+
+.description-container {
+  /* background-image: url(../../public/img/background.jpg);
+  background-position: center center;
+  background-size: cover; */
+}
+
+.description-container i {
+color: var(--green-light-color);
+transition: all .5;
+}
+
+.otherEventsContainer {
+background-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn__black-green {
+background-color: var(--bg-secondary-color) !important;
+color: white !important;
+transition: all .5;
+
+&:hover {
+  background-color: var(--green-light-color) !important;
+  color:#2d2929 !important;
+
+  & i {
+    color: black;
+  }
+}
+
+}
+
+.linea-color {
+height: .2rem;
+width: 5rem;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+background: linear-gradient(-45deg, var(--green-light-color), var(--green-color));
+background-size: 400% 400%;
+animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+0% {
+  background-position: 0% 50%;
+}
+50% {
+  background-position: 100% 50%;
+}
+100% {
+  background-position: 0% 50%;
+}
 }
 
 .fade-enter {
-    opacity: 0;
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+
+@media (max-width: 992px) {
+
+  .description__header {
+    margin-top: 3.5rem;
+    position: static;
+
+    & h1 {
+      text-align: center;
+    }
+  
+    & a {
+      margin: auto;
+      width: 50% !important;
+    }
+    
   }
   
-  .fade-enter-active {
-    opacity: 1;
-    transition: opacity 500ms;
+  .description__title {
+    position: static;
+    transform: translate(0%,0%);
   }
-  
-  .fade-exit {
-    opacity: 1;
-  }
-  
-  .fade-exit-active {
-    opacity: 0;
-    transition: opacity 500ms;
-  }
+
+}
