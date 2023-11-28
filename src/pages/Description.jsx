@@ -60,7 +60,7 @@ const Description = () => {
     <>
       <MyNavbar />
 
-      <div className="description-container">
+      <div className="description-container background">
         <div className=" position-relative">
           {eventData ? (
             <img
