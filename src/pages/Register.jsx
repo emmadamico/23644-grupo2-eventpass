@@ -90,7 +90,7 @@ export function Register() {
     <>
       <MyNavbar />
 
-      <div className="form-container d-flex flex-column justify-content-center align-items-center mt-5">
+      <div className="form-container d-flex flex-column justify-content-center align-items-center mt-5 background">
         <h2 className="title-register text-center mt-4 text-white">Register Your Profile</h2>
         <h4 className="subtitle-register text-center mt-2 text-white">
           Signup and get ready to live amazing moments
