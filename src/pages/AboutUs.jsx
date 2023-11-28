@@ -24,7 +24,6 @@ export function About() {
                 We are a group of students learning to be REACT programmers.
               </Accordion.Body>
             </Accordion.Item>
-            
           </Accordion>
         </div>
       </section>
