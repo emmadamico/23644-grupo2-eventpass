@@ -1,3 +1,4 @@
+Description_component
 .description__header {
   position: relative;
 }
@@ -19,6 +20,7 @@
 .description-container i {
 color: var(--green-light-color);
 transition: all .5;
+
 }
 
 .otherEventsContainer {

@@ -71,12 +71,12 @@ export function TicketCustom() {
             <h6 className="titulo-personalizar">Write a message:</h6>
             <input onChange={textomensaje} className="form-control d-block" type="text" placeholder="Write your special message here" name="mensaje" id="" />
           </div>
-          <div class="btn-group dropdown mx-2">
-            <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div className="btn-group dropdown mx-2">
+            <button className="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               Color
             </button>
-            <ul class="dropdown-menu">
-              <li><p class="dropdown-item m-auto">
+            <ul className="dropdown-menu">
+              <li><p className="dropdown-item m-auto">
                 <input
                   type="color"
                   value={setColor}
@@ -85,13 +85,15 @@ export function TicketCustom() {
               </li>
             </ul>
           </div>
-          <div class="btn-group dropdown mx-2">
-            <button class="btn btn-dark dropdown-toggle btn-transparent" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+          <div className="btn-group dropdown mx-2">
+            <button className="btn btn-dark dropdown-toggle btn-transparent" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+
               Size
             </button>
-            <ul class="dropdown-menu">
+            <ul className="dropdown-menu">
              
-               <li><p class="dropdown-item m-auto">
+               <li><p className="dropdown-item m-auto">
                 <input
                   type="range"
                   min={10}

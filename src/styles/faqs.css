@@ -16,11 +16,6 @@
     font-variant: small-caps;
 }
 /*Se estiliza section*/
-.faqs{
-    background-image: url(../../public/background.png);
-    background-repeat: no-repeat;
-    background-size:cover;
-}
 .card-faq{
     width: 90%;
     height: auto;

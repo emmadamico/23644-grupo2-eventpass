@@ -35,13 +35,13 @@ export function Login() {
   return (
     <div>
       <MyNavbar />
-      <div className="body-container">
+      <div>
         <div className="form-login form-container mx-auto flex-column justify-content-center align-items-center mt-5">
           <div className="row justify-content-center align-items-center">
             <div className="col-md-8">
 
               <div
-                className="cardgral card p-7"
+                className="cardgral card p-7 mt-5 mb-5"
                 style={{
                   borderRadius: "1rem",
                   textAlign: "center",

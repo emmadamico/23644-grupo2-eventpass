@@ -1,9 +1,3 @@
-/*background de profile-main*/
-.profile {
-  background-image: url(../../public/background.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 /*Se estiliza banner*/
 .banner-profile img {
   width: 100%;

@@ -16,7 +16,7 @@ export function FAQ() {
           <h1 className="title">Frequently Asked Questions</h1>
       </banner>
       
-      <section className="faqs">
+      <section>
       <div className="card-faq mx-auto">
       <Accordion>
       <Accordion.Item className='mb-4 border-0' eventKey="0">
