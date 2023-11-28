@@ -1,18 +1,28 @@
-/* body {
-  background-color: #000000;
-} */
-
-/* h2 {
+.title-register{
   font-family: var(--Montserrat-bold);
+  font-variant: small-caps;
   color: var(--white-color);
 }
 
-h4 {
+.subtitle-register{
   font-family: var(--Montserrat-regular);
   color: var(--white-color);
 }
 
-label {
+.register-label{
   font-family: var(--Montserrat-regular);
   color: var(--white-color);
-} */
+} 
+
+.register-input {
+  background-color: var(--white-color);
+  color: var(--bg-secondary-color);
+}
+
+.signup-register {
+  background-color: var(--green-light-color);
+}
+
+.register-validation {
+  color: var(--green-light-color);
+}
