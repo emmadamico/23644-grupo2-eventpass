@@ -61,10 +61,7 @@ const Description = () => {
       <MyNavbar />
 
       <div className="description-container">
-        <div
-          className="position-relative"
-          style={{ height: "80vh", overflow: "hidden", objectFit: "cover" }}
-        >
+        <div className=" position-relative">
           {eventData ? (
             <img
               src={
@@ -96,46 +93,48 @@ const Description = () => {
                   </a>
                 </div>
                 <div className="col-lg-6 mb-3">
-                {!showPurchase ? (
-                  <div className="text-white glass-bg rounded-4 px-3 py-3">
-                    <h3>
-                      {eventData
-                        ? formatEventDate(eventData.dates.start.localDate)
-                        : ""}
-                    </h3>
-                    <div className="my-2">
-                      <h4 className="p-0 m-0">
-                        {eventData && eventData._embedded?.venues[0]?.name
-                          ? eventData._embedded.venues[0].name
-                          : "Place "}
-                      </h4>
-                      <p className="p-0 m-0">
-                        {eventData &&
-                        eventData._embedded?.venues[0]?.address.line1
-                          ? eventData._embedded.venues[0].address.line1
-                          : "Adress "}
-                      </p>
-                      <p className="p-0 m-0 fw-bold">
-                        {eventData && eventData._embedded?.venues[0]?.city.name
-                          ? eventData._embedded.venues[0].city.name +
-                            ", " +
-                            eventData._embedded.venues[0].state.name
-                          : "city"}
-                      </p>
-                    </div>
+                  {!showPurchase ? (
+                    <div className="text-white glass-bg rounded-4 px-3 py-3">
+                      <h3>
+                        {eventData
+                          ? formatEventDate(eventData.dates.start.localDate)
+                          : ""}
+                      </h3>
+                      <div className="my-2">
+                        <h4 className="p-0 m-0">
+                          {eventData && eventData._embedded?.venues[0]?.name
+                            ? eventData._embedded.venues[0].name
+                            : "Place "}
+                        </h4>
+                        <p className="p-0 m-0">
+                          {eventData &&
+                          eventData._embedded?.venues[0]?.address.line1
+                            ? eventData._embedded.venues[0].address.line1
+                            : "Adress "}
+                        </p>
+                        <p className="p-0 m-0 fw-bold">
+                          {eventData &&
+                          eventData._embedded?.venues[0]?.city.name
+                            ? eventData._embedded.venues[0].city.name +
+                              ", " +
+                              eventData._embedded.venues[0].state.name
+                            : "city"}
+                        </p>
+                      </div>
 
-                    <span
-                      className="btn btn-dark w-100 rounded rounded-5 py-2" onClick={() => {
-                        console.log('Setting showPurchase to true');
-                        setShowPurchase(true);
-                      }} // Cuando se hace clic en "Get Ticket", cambia showPurchase a true
-                    >
-                      Get Ticket
-                    </span>
-                  </div>
-                ) : (
+                      <span
+                        className="btn btn-dark w-100 rounded rounded-5 py-2"
+                        onClick={() => {
+                          console.log("Setting showPurchase to true");
+                          setShowPurchase(true);
+                        }} // Cuando se hace clic en "Get Ticket", cambia showPurchase a true
+                      >
+                        Get Ticket
+                      </span>
+                    </div>
+                  ) : (
                     <Purchase eventData={eventData} />
-                )}
+                  )}
                 </div>
               </div>
             </div>

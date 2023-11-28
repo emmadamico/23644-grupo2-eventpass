@@ -17,7 +17,6 @@
 }
 
 .sports__card-bg2 {
-
   background-image: url(/public/basket_player2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -30,7 +29,6 @@
   background-image: url(/public/basket_player.jpg);
 
   background-position: bottom;
-
 }
 
 .sports__card-bg3 {
@@ -55,6 +53,6 @@
 }
 .sports__card-bg4:hover {
   transition: all 0.5s ease-in-out;
-  background-image: url(/public/besiball_ball.jpg);
-  background-position: center;
+  background-image: url(/public/jugador-portero-hockey-sobre-hielo-meta-accion-red-neuronal-generada-ai.jpg);
+  background-position: right;
 }

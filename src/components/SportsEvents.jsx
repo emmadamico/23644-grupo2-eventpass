@@ -12,6 +12,7 @@ export function SportsEvents() {
   const elementos = 200;
   const [index, setIndex] = useState(0);
   const [filteredEvents, setFilteredEvents] = useState([]);
+  const [restEvents, setRestEvents] = useState([]);
   const selectedSegmentId = "KZFzniwnSyZfZ7v7nJ";
 
   const handleIncrementPage = () => {
@@ -27,23 +28,41 @@ export function SportsEvents() {
   const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&size=${elementos}&segmentId=KZFzniwnSyZfZ7v7nE`;
 
   let { data: events, isPending, error, performFetch } = useFetch(url);
-  console.log(events);
   console.log(isPending, error);
+  console.log("Events:", events);
+
   useEffect(() => {
+    const genreNamesSet = new Set();
+
+    for (let key in events) {
+      if (events.hasOwnProperty(key)) {
+        const event = events[key];
+        event._embedded?.attractions[0]?.classifications.forEach(
+          (classification) => {
+            genreNamesSet.add(classification.genre?.name);
+          }
+        );
+      }
+    }
+
+    console.log("Nombre de genres:", genreNamesSet);
+
     const filteredEvents = events?._embedded?.events.filter((event) => {
       return event._embedded?.attractions[0]?.classifications.some(
         (classification) => {
-          return classification.genre?.id === "KnvZfZ7vAde";
+          return classification.genre?.name === "Football";
         }
       );
     });
+    const restEvents = events?._embedded?.events.filter((event) => {
+      return !filteredEvents.includes(event);
+    });
     setFilteredEvents(filteredEvents);
-    console.log(filteredEvents);
-
-    console.log(typeof events);
+    setRestEvents(restEvents);
+    console.log("Filtered Events: ", filteredEvents);
+    console.log("Rest Events: ", restEvents);
   }, [index, events]);
 
-  //Ordena al azar los eventos
   // const shuffledEvents = data?._embedded?.events
   //   ? [...data._embedded.events].sort(() => Math.random() * 10 - 5)
   //   : [];
@@ -64,8 +83,6 @@ export function SportsEvents() {
           {isPending && (
             <section
               style={{ minHeight: "23.9rem" }}
-
-
               className="col-12 col-md-6 col-lg-8 mt-5 pt-1  px-0 w-100 d-flex align-items-center justify-content-center "
             >
               <article className="d-flex flex-column w-100 align-items-center">
