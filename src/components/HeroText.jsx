@@ -2,8 +2,8 @@ import "../styles/HeroText.css";
 export function HeroText() {
   return (
     <>
-      <section className="p-0 m-0 hero__text-wrapper d-flex align-items-center glass-bg">
-        <article className="row m-0 p-0 w-100  hero__text-hover text-bigger">
+      <section className="p-0 m-0 hero__text-wrapper d-flex align-items-center">
+        <article className="row m-0 p-0 w-100  hero__text-hover text-bigger glass-bg">
           <div className="col-12 col-lg-5 p-0 m-0 ">
             <h2 className="p-0 m-0 display-1 fw-bold text-center text-lg-end hero__text-green fst-italic textShadow animate__animated animate__bounce animate__slower">
               <span>Feel</span>
