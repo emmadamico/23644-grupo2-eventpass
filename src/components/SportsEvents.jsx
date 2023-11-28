@@ -14,6 +14,12 @@ export function SportsEvents() {
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [restEvents, setRestEvents] = useState([]);
   const selectedSegmentId = "KZFzniwnSyZfZ7v7nJ";
+  const [genreName, setGenreName] = useState("Basketball");
+
+  const handleGenreName = (key) => {
+    setGenreName(key);
+    console.log(key);
+  };
 
   const handleIncrementPage = () => {
     setIndex((prevIndex) =>
@@ -27,7 +33,12 @@ export function SportsEvents() {
 
   const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&size=${elementos}&segmentId=KZFzniwnSyZfZ7v7nE`;
 
-  let { data: events, isPending, error, performFetch } = useFetch(url);
+  let {
+    data: events,
+    isPending,
+    error,
+    performFetch,
+  } = useFetch(url, [genreName]);
   console.log(isPending, error);
   console.log("Events:", events);
 
@@ -50,7 +61,7 @@ export function SportsEvents() {
     const filteredEvents = events?._embedded?.events.filter((event) => {
       return event._embedded?.attractions[0]?.classifications.some(
         (classification) => {
-          return classification.genre?.name === "Football";
+          return classification.genre?.name === genreName;
         }
       );
     });
@@ -61,7 +72,7 @@ export function SportsEvents() {
     setRestEvents(restEvents);
     console.log("Filtered Events: ", filteredEvents);
     console.log("Rest Events: ", restEvents);
-  }, [index, events]);
+  }, [index, genreName, events]);
 
   // const shuffledEvents = data?._embedded?.events
   //   ? [...data._embedded.events].sort(() => Math.random() * 10 - 5)
@@ -78,7 +89,7 @@ export function SportsEvents() {
       </div>
 
       <section className=" row p-0 m-0 d-flex">
-        <PopularSports />
+        <PopularSports handleGenreName={handleGenreName} />
         <section className="px-0 col-12 col-md-8 col-lg-8 d-flex flex-column">
           {isPending && (
             <section
@@ -99,7 +110,7 @@ export function SportsEvents() {
           )}
           {!isPending && events && (
             <>
-              {filteredEvents && (
+              {filteredEvents.length > 0 ? (
                 <div
                   className="m-0 p-0 px-0  card__container"
                   key={filteredEvents[index].id}
@@ -146,6 +157,23 @@ export function SportsEvents() {
                     </div>
                   </div>
                 </div>
+              ) : (
+                <section className="d-flex flex-column align-items-center justify-content-center mt-5">
+                  <article>
+                    <h3 className="versalita text-white">
+                      No hay eventos cercanos
+                    </h3>
+                  </article>
+                  <article className="d-flex flex-column w-100 align-items-center">
+                    <h2 className="display-4">
+                      {" "}
+                      EVENT
+                      <strong className="fst-italic text__light-green">
+                        PASS
+                      </strong>
+                    </h2>
+                  </article>
+                </section>
               )}
             </>
           )}

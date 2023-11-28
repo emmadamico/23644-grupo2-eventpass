@@ -1,5 +1,6 @@
-.padding__right {
+.popularSports__wrapper {
   padding-right: 1.5rem;
+  min-height: 26.7rem;
 }
 
 .sports__card-bg1 {
