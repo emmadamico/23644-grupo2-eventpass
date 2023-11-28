@@ -34,7 +34,7 @@ export function Profile() {
   return (
     <>
       <MyNavbar />
-      <main className="profile">
+      <main>
         <banner className="banner-profile">
           <img src="/banner.png" alt="" />
           <h1 className="title">Mi cuenta</h1>

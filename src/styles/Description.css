@@ -1,9 +1,3 @@
-.description-container {
-    background-image: url(../../public/img/background.jpg);
-    background-position: center center;
-    background-size: cover;
-}
-
 hr {
     background: greenyellow;
     height: .25rem;
