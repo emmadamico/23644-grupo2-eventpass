@@ -61,7 +61,11 @@ export function SportsEvents() {
     const filteredEvents = events?._embedded?.events.filter((event) => {
       return event._embedded?.attractions[0]?.classifications.some(
         (classification) => {
-          return classification.genre?.name === genreName;
+
+          return (
+            classification.genre && classification.genre?.name === genreName
+          );
+
         }
       );
     });
@@ -110,7 +114,9 @@ export function SportsEvents() {
           )}
           {!isPending && events && (
             <>
-              {filteredEvents.length > 0 ? (
+
+              {filteredEvents && filteredEvents.length > 0 ? (
+
                 <div
                   className="m-0 p-0 px-0  card__container"
                   key={filteredEvents[index].id}
@@ -158,15 +164,17 @@ export function SportsEvents() {
                   </div>
                 </div>
               ) : (
-                <section className="d-flex flex-column align-items-center justify-content-center mt-5">
+
+                <section className="d-flex flex-column align-items-center center mt-5">
                   <article>
                     <h3 className="versalita text-white">
-                      No hay eventos cercanos
+                      Sorry, no upcoming events soon.
+
                     </h3>
                   </article>
                   <article className="d-flex flex-column w-100 align-items-center">
                     <h2 className="display-4">
-                      {" "}
+
                       EVENT
                       <strong className="fst-italic text__light-green">
                         PASS
