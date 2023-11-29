@@ -8,7 +8,8 @@ import { Filter } from "./Filter";
 import { PagerButtons } from "./Pager";
 import "../styles/Events.css";
 export default function Events() {
-  const elementos = 3;
+  const [elementos, setElementos] = useState(calculateElementCount());
+
   //Paginador
   const [page, setPage] = useState(1);
 
@@ -35,6 +36,35 @@ export default function Events() {
   let { data, isPending, error, performFetch } = useFetch(url);
   //console.log(isPending, error);
 
+  useEffect(() => {
+    // Actualizar la URL cuando cambia el número de elementos
+    const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
+    performFetch(url);
+  }, [page, elementos]);
+  //Para calcular el return de elemntos segun tamaño de pantalla
+  useEffect(() => {
+    const handleResize = () => {
+      setElementos(calculateElementCount());
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  function calculateElementCount() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth >= 1024) {
+      return 3;
+    } else if (screenWidth <= 475) {
+      return 1;
+    } else {
+      return 2;
+    }
+  }
   useEffect(() => {
     const fetchData = async () => {
       let newUrl = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;

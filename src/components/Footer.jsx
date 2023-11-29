@@ -10,7 +10,7 @@ export function Footer() {
             <article className="col-12 col-md-6 col-lg-4 order-1 ">
               <Link
                 to={"/"}
-                className="d-flex align-items-center justify-content-center"
+                className=" d-flex align-items-center justify-content-center"
               >
                 <img
                   src="/logoEventPass.png"
@@ -23,13 +23,13 @@ export function Footer() {
               <h5 className="text-white">Follow Us</h5>
               <div className="d-flex align-items-center gap-4 mt-3">
                 <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-facebook fs-4" />
+                  <i className="bi bi-facebook fs-4 grey-color" />
                 </a>
                 <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-instagram fs-4" />
+                  <i className="bi bi-instagram fs-4 grey-color" />
                 </a>
                 <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-twitter fs-4"></i>
+                  <i className="bi bi-twitter fs-4 grey-color"></i>
                 </a>
               </div>
             </article>

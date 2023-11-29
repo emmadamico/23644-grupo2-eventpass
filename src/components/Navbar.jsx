@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import "../styles/Navbar.css";
+import { LoggedButton } from "./LoggedButton";
 export function MyNavbar() {
-  const [logged, isLogged] = useState(false);
+  const [logged, setLogged] = useState(false);
 
   const handleLoggedClick = () => {
-    isLogged(true);
-  };
-
-  const handleUnloggedClick = () => {
-    isLogged(false);
+    setLogged(!logged);
   };
 
   return (
@@ -47,10 +44,11 @@ export function MyNavbar() {
                       Signup
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <Button variant="" onClick={handleLoggedClick}>
-                      Logged
-                    </Button>
+                  <li className="nav-item d-flex align-items-center justify-content-center">
+                    <LoggedButton
+                      isLogged={logged}
+                      handleLoggedClick={handleLoggedClick}
+                    />
                   </li>
                 </>
               )}
@@ -72,10 +70,11 @@ export function MyNavbar() {
                       Mi Profile
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <Button variant="" onClick={handleUnloggedClick}>
-                      Unlogged
-                    </Button>
+                  <li className="nav-item d-flex align-items-center justify-content-center">
+                    <LoggedButton
+                      isLogged={logged}
+                      handleLoggedClick={handleLoggedClick}
+                    />
                   </li>
                 </>
               )}

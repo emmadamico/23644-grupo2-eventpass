@@ -7,7 +7,7 @@ import { Fav } from "./Fav";
 import { PagerButtons } from "./Pager";
 import "../styles/MusicEvents.css";
 export function MusicEvents() {
-  const elementos = 4;
+  const [elementos, setElementos] = useState(calculateElementCount());
   //Paginador
   const [page, setPage] = useState(1);
 
@@ -31,6 +31,30 @@ export function MusicEvents() {
   useEffect(() => {
     performFetch(url);
   }, [url]);
+  //Para calcular el return de elemntos segun tamaño de pantalla
+  useEffect(() => {
+    const handleResize = () => {
+      setElementos(calculateElementCount());
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  function calculateElementCount() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth >= 1024) {
+      return 4;
+    } else if (screenWidth <= 475) {
+      return 1;
+    } else {
+      return 2;
+    }
+  }
   return (
     <>
       <Container>
