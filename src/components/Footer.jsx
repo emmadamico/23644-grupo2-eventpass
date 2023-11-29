@@ -23,13 +23,13 @@ export function Footer() {
               <h5 className="text-white">Follow Us</h5>
               <div className="d-flex align-items-center gap-4 mt-3">
                 <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-facebook fs-4 grey-color" />
+                  <i className="bi bi-facebook fs-4 grey-link" />
                 </a>
                 <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-instagram fs-4 grey-color" />
+                  <i className="bi bi-instagram fs-4 grey-link" />
                 </a>
                 <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-twitter fs-4 grey-color"></i>
+                  <i className="bi bi-twitter fs-4 grey-link"></i>
                 </a>
               </div>
             </article>

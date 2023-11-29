@@ -7,11 +7,14 @@ import { Fav } from "./Fav";
 import { Filter } from "./Filter";
 import { PagerButtons } from "./Pager";
 import "../styles/Events.css";
-export default function Events() {
-  const [elementos, setElementos] = useState(calculateElementCount());
 
-  //Paginador
+export default function Events() {
+  const [selectedSegmentId, setSelectedSegmentId] = useState(null);
   const [page, setPage] = useState(1);
+
+  const elementos = 3;
+
+  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
 
   //Manejadores de paginador
   const handleIncrementPage = () => {
@@ -22,49 +25,17 @@ export default function Events() {
     setPage(page > 1 ? page - 1 : page);
   };
 
-  const [selectedSegmentId, setSelectedSegmentId] = useState(null);
-
   const handleSegmentClick = (segmentId) => {
     setSelectedSegmentId(segmentId);
     console.log("Segment ID seleccionado:", segmentId);
   };
 
-  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
-  //console.log(url);
-
+  // Maneja el llamado a la api y trae los datos
   // eslint-disable-next-line no-unused-vars
   let { data, isPending, error, performFetch } = useFetch(url);
   //console.log(isPending, error);
 
-  useEffect(() => {
-    // Actualizar la URL cuando cambia el número de elementos
-    const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
-    performFetch(url);
-  }, [page, elementos]);
-  //Para calcular el return de elemntos segun tamaño de pantalla
-  useEffect(() => {
-    const handleResize = () => {
-      setElementos(calculateElementCount());
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  function calculateElementCount() {
-    const screenWidth = window.innerWidth;
-
-    if (screenWidth >= 1024) {
-      return 3;
-    } else if (screenWidth <= 475) {
-      return 1;
-    } else {
-      return 2;
-    }
-  }
+  //Utiliza el componente filter para traer el valor del segmentId, y aqui se compone dinamicamente la url par filtrar los elementos segun este valor
   useEffect(() => {
     const fetchData = async () => {
       let newUrl = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
@@ -86,6 +57,7 @@ export default function Events() {
     ? [...data._embedded.events].sort(() => Math.random() * 10 - 5)
     : [];
   //console.log(data._embedded?.events[0]?.classifications[0]?.segment?.name);
+
   return (
     <>
       <Filter onSegmentClick={handleSegmentClick} />

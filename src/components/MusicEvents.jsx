@@ -6,10 +6,12 @@ import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
 import { PagerButtons } from "./Pager";
 import "../styles/MusicEvents.css";
+
 export function MusicEvents() {
-  const [elementos, setElementos] = useState(calculateElementCount());
-  //Paginador
   const [page, setPage] = useState(1);
+
+  const elementos = 4;
+  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}&segmentId=KZFzniwnSyZfZ7v7nJ`;
 
   //Manejadores de paginador
   const handleIncrementPage = () => {
@@ -20,41 +22,14 @@ export function MusicEvents() {
     setPage(page > 1 ? page - 1 : page);
   };
 
-  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}&segmentId=KZFzniwnSyZfZ7v7nJ`;
-
+  // Maneja el llamado a la api y trae los datos
   let { data, isPending, error, performFetch } = useFetch(url);
 
-  //Ordena al azar los eventos
-  const shuffledEvents = data?._embedded?.events
-    ? [...data._embedded.events].sort(() => Math.random() * 10 - 5)
-    : [];
+  //Vuelve a llamar a la pai cuando cambia la url
   useEffect(() => {
     performFetch(url);
   }, [url]);
-  //Para calcular el return de elemntos segun tamaño de pantalla
-  useEffect(() => {
-    const handleResize = () => {
-      setElementos(calculateElementCount());
-    };
 
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  function calculateElementCount() {
-    const screenWidth = window.innerWidth;
-
-    if (screenWidth >= 1024) {
-      return 4;
-    } else if (screenWidth <= 475) {
-      return 1;
-    } else {
-      return 2;
-    }
-  }
   return (
     <>
       <Container>

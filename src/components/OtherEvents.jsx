@@ -5,15 +5,18 @@ import { Fav } from "./Fav";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import { PagerButtons } from "./Pager";
-
 import "../styles/OtherEvents.css";
 
 export default function OtherEvents() {
-  const [elementos, setElementos] = useState(calculateElementCount());
   const [page, setPage] = useState(1);
+
+  const elementos = 4;
   let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
+
+  // Maneja el llamado a la api y trae los datos
   let { data, isPending, error, performFetch } = useFetch(url);
 
+  //Manejadores de paginador
   const handleIncrementPage = () => {
     setPage(page + 1);
     performFetch(url);
@@ -24,36 +27,11 @@ export default function OtherEvents() {
     performFetch(url);
   };
 
+  // Actualizar la URL cuando cambia el número de elementos o pagina
   useEffect(() => {
-    // Actualizar la URL cuando cambia el número de elementos
     url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
     performFetch(url);
   }, [page, elementos]);
-
-  //Para calcular el return de elemntos segun tamaño de pantalla
-  useEffect(() => {
-    const handleResize = () => {
-      setElementos(calculateElementCount());
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  function calculateElementCount() {
-    const screenWidth = window.innerWidth;
-
-    if (screenWidth >= 1024) {
-      return 4;
-    } else if (screenWidth <= 475) {
-      return 1;
-    } else {
-      return 2;
-    }
-  }
 
   useEffect(() => {}, [url]);
   return (
