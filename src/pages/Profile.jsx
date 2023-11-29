@@ -37,23 +37,23 @@ export function Profile() {
       <main>
         <banner className="banner-profile">
           <img src="/banner.png" alt="" />
-          <h1 className="title">Mi cuenta</h1>
-          <p className="p-profile">Modifica tus datos de cuenta y contacto</p>
+          <h1 className="title versalita">My Profile</h1>
+          <p className="p-profile">Modify your account and contact details</p>
         </banner>
 
-        <div className="card-user mx-auto">
+        <div className="card-user mx-auto glass-bg ">
           <Tabs
             defaultActiveKey="user-info"
             id="fill-tab-example"
             className="mb-3"
             fill
           >
-            <Tab eventKey="user-info" title="Información personal">
+            <Tab eventKey="user-info" title="Personal Information">
               <section className="form-container d-flex flex-column justify-content-center align-items-center m-5">
                 <form className="d-flex flex-column align-items-end p-3 user-form">
                   <div className="form-item mt-3">
                     <label>
-                      Nombre:
+                      Name:
                       <input
                         className="mx-3 border-0 input-form"
                         type="text"
@@ -64,7 +64,7 @@ export function Profile() {
                   </div>
                   <div className="form-item mt-3">
                     <label>
-                      Apellido:
+                    Last Name:
                       <input
                         className="mx-3 border-0 input-form"
                         type="text"
@@ -90,26 +90,26 @@ export function Profile() {
                       type="button"
                       onClick={handleCancel}
                     >
-                      Cancelar
+                      Cancel
                     </button>
                     <button
                       className="save-btn"
                       type="button"
                       onClick={handleSave}
                     >
-                      Guardar cambios
+                      Save changes
                     </button>
                   </div>
                 </form>
               </section>
             </Tab>
 
-            <Tab eventKey="password" title="Contraseña">
-              <section className="form-container d-flex flex-column justify-content-center align-items-center">
-                <form className="d-flex flex-column justify-content-center align-items-end p-3 user-form m-5">
-                  <div className="form-item mt-3">
+            <Tab eventKey="password" title="Password">
+              <section className="d-flex flex-column justify-content-center align-items-center">
+                <form className="d-flex flex-column justify-content-center align-items-end p-3 user-form mt-5 mb-5">
+                  <div className="form-item">
                     <label>
-                      Contraseña actual:
+                      Current Password:
                       <input
                         className="mx-3 border-0 input-form"
                         type="password"
@@ -120,7 +120,7 @@ export function Profile() {
                   </div>
                   <div className="form-item mt-3">
                     <label>
-                      Nueva contraseña:
+                      New Password:
                       <input
                         className="mx-3 border-0 input-form"
                         type="password"
@@ -131,7 +131,7 @@ export function Profile() {
                   </div>
                   <div className="form-item mt-3">
                     <label>
-                      Repita contraseña:
+                      Confirm Password:
                       <input
                         className="mx-3 border-0 input-form"
                         type="password"
@@ -146,14 +146,14 @@ export function Profile() {
                       type="button"
                       onClick={handlePasswordCancel}
                     >
-                      Cancelar
+                      Cancel
                     </button>
                     <button
                       className="save-btn"
                       type="button"
                       onClick={handlePasswordChange}
                     >
-                      Cambiar contraseña
+                      Change Password
                     </button>
                   </div>
                 </form>
