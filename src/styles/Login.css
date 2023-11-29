@@ -20,11 +20,7 @@
   width: 100%;
   max-width: 500px; 
   padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
-  background-image: url('/public/background.png'); 
-  background-position: center; 
-    background-repeat: no-repeat; 
+ 
 }
 
 .cardgral-body {

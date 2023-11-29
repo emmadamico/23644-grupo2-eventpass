@@ -4,7 +4,7 @@ import "../styles/Footer.css";
 export function Footer() {
   return (
     <>
-      <footer className="footer__bg w-100  mt-5 border-top border-1 border-dark">
+      <footer className="footer__bg w-100  mt-5 border-top border-1 border-dark bg-black">
         <section className="container py-4 ">
           <div className="row m-0 p-0">
             <article className="col-12 col-md-6 col-lg-4 order-1 ">
