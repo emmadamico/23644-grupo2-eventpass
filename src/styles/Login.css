@@ -1,26 +1,11 @@
-
-
-
-
-.body-container {
-  background-image: url('/public/background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
-  max-width: 1200px;
-  margin: 0 auto;
-}
 .form-container {
   margin-top: 100px; 
 }
 .cardgral {
-
   width: 100%;
   max-width: 500px; 
   padding: 20px;
- 
+  background-color:transparent !important;
 }
 
 .cardgral-body {
@@ -64,3 +49,7 @@ button.py-2:hover {
 .forget {
   color: #eff5f1;
 }
+
+
+
+
