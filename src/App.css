@@ -63,7 +63,3 @@ Link {
   transition: color 0.3s ease-in-out;
   color: var(--white-hover-color) !important;
 }
-
-.grey-color {
-  color: var(--link-color);
-}

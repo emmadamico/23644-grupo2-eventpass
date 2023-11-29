@@ -94,7 +94,7 @@ export default function Events() {
           {isPending ? (
             "loading"
           ) : selectedSegmentId !== null ? (
-            <h3 className="text-white versalita">
+            <h3 className="text-white versalita ">
               {data._embedded?.events[0]?.classifications[0]?.segment?.name
                 ? data._embedded?.events[0]?.classifications[0]?.segment?.name
                 : "Category"}
@@ -142,7 +142,7 @@ export default function Events() {
                     </div>
                     <div className="d-flex align-items-center justify-content-between">
                       <Link to={`/description/:${event.id}`} className="hover">
-                        <button className="btn btn-dark rounded-pill">
+                        <button className="btn btn-dark rounded-pill btn__black-green">
                           See More
                         </button>
                       </Link>
