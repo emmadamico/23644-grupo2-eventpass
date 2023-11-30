@@ -13,11 +13,11 @@ export function FAQ() {
             src="/banner.png"
             alt=""
           />
-          <h1 className="title">Frequently Asked Questions</h1>
+          <h1 className="title versalita">Frequently Asked Questions</h1>
       </banner>
       
       <section>
-      <div className="card-faq mx-auto">
+      <div className="card-faq mx-auto glass-bg">
       <Accordion>
       <Accordion.Item className='mb-4 border-0' eventKey="0">
         <Accordion.Header>What are the payment methods?</Accordion.Header>
