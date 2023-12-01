@@ -19,6 +19,7 @@ export function Profile() {
    // Agregamos estados para los mensajes de error
    const [passwordError, setPasswordError] = useState("");
    const [repeatPasswordError, setRepeatPasswordError] = useState("");
+   const [emailError, setEmailError] = useState("");
    
    useEffect(() => {
     // Recuperar los detalles del usuario de localStorage
@@ -32,7 +33,17 @@ export function Profile() {
     setEmail(storedEmail);
   }, []);
 
+  const validateEmail = (email) => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
   const handleSave = () => {
+    if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email.');
+      return;
+    }
+
     localStorage.setItem('firstName', name);
     localStorage.setItem('lastName', lastName);
     localStorage.setItem('email', email); // se Guarda la nueva información del usuario en localStorage
@@ -56,7 +67,7 @@ export function Profile() {
     // Verificamos si el usuario ha realizado cambios
     if (name === storedName && lastName === storedLastName && email === storedEmail) {
       // Si el usuario no realizó cambios, se lo lleva a la página de inicio
-      window.location.href = '/pages/Home'; 
+      window.location.href = '/'; 
     } else {
       // Si realizó cambios, se restablece el estado del componente a los detalles originales del usuario
       setName(storedName);
@@ -67,7 +78,7 @@ export function Profile() {
   const handlePasswordCancel = () => {
     if (currentPassword === "" && newPassword === "" && repeatPassword === "") {
       // Si los campos de contraseña están vacíos, se redirige al usuario a la página de inicio
-      window.location.href = '/pages/Home';
+      window.location.href = '/';
     } else {
       // Si los campos de contraseña no están vacíos, se restablecen las contraseñas al estado inicial
       setCurrentPassword("");
@@ -135,6 +146,7 @@ export function Profile() {
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        placeholder="Name"
                       />
                     </label>
                   </div>
@@ -146,6 +158,7 @@ export function Profile() {
                         type="text"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
+                        placeholder="Last Name"
                       />
                     </label>
                   </div>
@@ -157,8 +170,10 @@ export function Profile() {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your Email"
                       />
                     </label>
+                    {emailError && <p className="error-message">{emailError}</p>}
                   </div>
                   <div className="btn mt-3">
                     <button
@@ -191,6 +206,7 @@ export function Profile() {
                         type="password"
                         value={currentPassword}
                         onChange={(e) => setCurrentPassword(e.target.value)}
+                        placeholder="Enter your current password"
                       />
                     </label>
                     {passwordError && <p className="error-message">{passwordError}</p>}
@@ -203,6 +219,7 @@ export function Profile() {
                         type="password"
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
+                        placeholder="Enter your new password"
                       />
                     </label>
                   </div>
@@ -214,6 +231,7 @@ export function Profile() {
                         type="password"
                         value={repeatPassword}
                         onChange={(e) => setRepeatPassword(e.target.value)}
+                        placeholder="Confirm your new password"
                       />
                     </label>
                     {repeatPasswordError && <p className="error-message">{repeatPasswordError}</p>}
