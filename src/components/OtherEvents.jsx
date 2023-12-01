@@ -26,12 +26,11 @@ export default function OtherEvents() {
     setPage(page > 1 ? page - 1 : page);
     performFetch(url);
   };
-
+  url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elements}`;
   // Actualizar la URL cuando cambia el número de elementos o pagina
   useEffect(() => {
-    url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elements}`;
     performFetch(url);
-  }, [page, elements]);
+  }, [page, elements, performFetch, url]);
 
   useEffect(() => {
     const handleResize = () => {
