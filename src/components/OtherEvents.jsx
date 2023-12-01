@@ -8,10 +8,10 @@ import { PagerButtons } from "./Pager";
 import "../styles/OtherEvents.css";
 
 export default function OtherEvents() {
+  const [elements, setElements] = useState(4);
   const [page, setPage] = useState(1);
 
-  const elementos = 4;
-  let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
+  let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elements}`;
 
   // Maneja el llamado a la api y trae los datos
   let { data, isPending, error, performFetch } = useFetch(url);
@@ -29,11 +29,35 @@ export default function OtherEvents() {
 
   // Actualizar la URL cuando cambia el número de elementos o pagina
   useEffect(() => {
-    url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
+    url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elements}`;
     performFetch(url);
-  }, [page, elementos]);
+  }, [page, elements]);
 
-  useEffect(() => {}, [url]);
+  useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      let newElements;
+
+      if (windowWidth <= 576) {
+        newElements = 1;
+      } else if (windowWidth >= 577 && windowWidth <= 768) {
+        newElements = 2;
+      } else {
+        newElements = 4;
+      }
+
+      setElements(newElements);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {}, [url, elements]);
   return (
     <>
       <Container>

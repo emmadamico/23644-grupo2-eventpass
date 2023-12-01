@@ -55,3 +55,9 @@
   background-image: url(/public/jugador-portero-hockey-sobre-hielo-meta-accion-red-neuronal-generada-ai.jpg);
   background-position: top;
 }
+
+@media (min-width: 1023px) and (max-width: 1439px) {
+  .popularSports__wrapper {
+    min-height: 22rem;
+  }
+}

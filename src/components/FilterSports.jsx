@@ -13,7 +13,7 @@ export function FilterSports({ onSegmentClick }) {
         <NavLink
           className="versalita Link px-2 px-md-0"
           activeClassName=""
-          onClick={() => onSegmentClick("todos")} // Puedes asignar cualquier id que desees, en este caso, estoy utilizando "todos"
+          onClick={() => onSegmentClick("todos")}
         >
           All
         </NavLink>

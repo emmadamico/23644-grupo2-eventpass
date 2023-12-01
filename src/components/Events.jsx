@@ -9,12 +9,11 @@ import { PagerButtons } from "./Pager";
 import "../styles/Events.css";
 
 export default function Events() {
+  const [elements, setElements] = useState(3);
   const [selectedSegmentId, setSelectedSegmentId] = useState(null);
   const [page, setPage] = useState(1);
 
-  const elementos = 3;
-
-  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
+  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elements}`;
 
   //Manejadores de paginador
   const handleIncrementPage = () => {
@@ -38,7 +37,7 @@ export default function Events() {
   //Utiliza el componente filter para traer el valor del segmentId, y aqui se compone dinamicamente la url par filtrar los elementos segun este valor
   useEffect(() => {
     const fetchData = async () => {
-      let newUrl = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
+      let newUrl = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elements}`;
 
       if (selectedSegmentId === "todos") {
         setSelectedSegmentId(null);
@@ -56,7 +55,34 @@ export default function Events() {
   const shuffledEvents = data?._embedded?.events
     ? [...data._embedded.events].sort(() => Math.random() * 10 - 5)
     : [];
-  //console.log(data._embedded?.events[0]?.classifications[0]?.segment?.name);
+
+  //Maneja la cantidad de elementos q devuelve el llamado a la api segun ancho de navegador
+  useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      let newElements;
+
+      if (windowWidth <= 768) {
+        newElements = 1;
+      } else if (windowWidth >= 777 && windowWidth <= 991) {
+        newElements = 2;
+      } else if (windowWidth >= 992) {
+        newElements = 3;
+      }
+
+      setElements(newElements);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [window.innerWidth]);
+  useEffect(() => {
+    performFetch(url);
+  }, [url, elements]);
 
   return (
     <>

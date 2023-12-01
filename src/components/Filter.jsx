@@ -14,7 +14,7 @@ export function Filter({ onSegmentClick }) {
         <NavLink
           className="versalita Link px-4 px-md-0"
           activeClassName=""
-          onClick={() => onSegmentClick("todos")} // Puedes asignar cualquier id que desees, en este caso, estoy utilizando "todos"
+          onClick={() => onSegmentClick("todos")}
         >
           All
         </NavLink>
@@ -23,7 +23,7 @@ export function Filter({ onSegmentClick }) {
           if (segment) {
             return (
               <NavLink
-                className="versalita Link"
+                className="versalita Link d-flex flex-wrap px-2 px-md-0"
                 key={segment.id}
                 activeClassName=""
                 onClick={() => onSegmentClick(segment.id)}
