@@ -4,7 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 export function FilterSports({ onSegmentClick }) {
   let url = `https://app.ticketmaster.com/discovery/v2/classifications/KZFzniwnSyZfZ7v7nE.json?apikey=${process.env.REACT_APP_CONSUMER_KEY}`;
 
-  const { data, isPending, error } = useFetch(url);
+  const { data } = useFetch(url);
 
   //console.log(selectedSegmentId);
   return (

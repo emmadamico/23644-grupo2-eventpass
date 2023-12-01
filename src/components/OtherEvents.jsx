@@ -14,7 +14,7 @@ export default function OtherEvents() {
   let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elements}`;
 
   // Maneja el llamado a la api y trae los datos
-  let { data, isPending, error, performFetch } = useFetch(url);
+  let { data, isPending, performFetch } = useFetch(url);
 
   //Manejadores de paginador
   const handleIncrementPage = () => {

@@ -23,7 +23,7 @@ export function MusicEvents() {
   };
 
   // Maneja el llamado a la api y trae los datos
-  let { data, isPending, error, performFetch } = useFetch(url);
+  let { data, isPending, performFetch } = useFetch(url);
 
   //Vuelve a llamar a la pai cuando cambia la url
 
@@ -66,7 +66,7 @@ export function MusicEvents() {
       performFetch(url);
       setShouldFetch(false);
     }
-  }, [url, elements, shouldFetch]);
+  }, [url, elements, shouldFetch, performFetch]);
 
   // ...
 

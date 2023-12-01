@@ -17,7 +17,7 @@ export function SportsEvents() {
 
   const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&size=${elementos}&segmentId=KZFzniwnSyZfZ7v7nE`;
 
-  let { data: events, isPending, error } = useFetch(url, [genreName]);
+  let { data: events, isPending } = useFetch(url, [genreName]);
   //console.log(isPending, error);
   //console.log("Events:", events);
 
