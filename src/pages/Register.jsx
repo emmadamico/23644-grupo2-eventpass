@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 import "../styles/Register.css";
 
 export function Register() {
-
+  const navigate = useNavigate();
   const securityQuestions = [
     "What is your favorite color?",
     "In which city were you born?",
@@ -20,13 +22,11 @@ export function Register() {
     confirmPassword: '',
     termsAccepted: false,
     selectedSecurityQuestion: "", // Campo para almacenar la pregunta seleccionada
-    securityAnswers: ["", "", ""], 
+    securityAnswers: "", 
   });
 
   // Estado local para manejar las validaciones y mensajes de error
-  const [errors, setErrors] = useState({
-    securityAnswers: {}
-  });
+  const [errors, setErrors] = useState({});
 
   // Función para manejar cambios en los campos del formulario
   const handleChange = (e) => {
@@ -41,25 +41,56 @@ export function Register() {
   };
 
   // Función para manejar el envío del formulario
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-
     // Realizar validaciones antes de enviar los datos
     const validationErrors = validateForm(formData);
     setErrors(validationErrors);
 
-    // Si no hay errores, puedes enviar los datos al servidor aquí
-    if (Object.keys(validationErrors).length === 0) {
-      // Enviar datos al servidor o realizar otras acciones
-      console.log('Datos válidos, enviando formulario:', formData);
+    try {
+      if (Object.keys(validationErrors).length === 0) {
+        const response = await fetch('http://localhost:5000/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstName: formData.firstName, 
+            lastName: formData.lastName, 
+            email: formData.email, 
+            password: formData.password, 
+            selectedSecurityQuestion: securityQuestions[formData.selectedSecurityQuestion], 
+            termsAccepted: formData.termsAccepted, 
+            securityAnswers: formData.securityAnswers
+          })
+        });
+        const data = await response.json();
+        console.log(data);
+        if(data.error){
+          Swal.fire({
+            title: 'ERROR',
+            text: data.error,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+        if(data.msg){
+          Swal.fire({
+            title: 'Congratulations!',
+            text: data.msg,
+            icon: 'success',
+            confirmButtonText: 'OK'
+          }).then(function(){navigate("/login")});
+        }
+      }
+    } catch (error) {
+      console.error('Error en la solicitud:', error);
     }
   };
 
   // Función para realizar las validaciones del formulario
   const validateForm = (data) => {
-    const errors = {
-      securityAnswers: {}
-    };
+    const errors = {};
 
     // Validación para campos obligatorios
     if (!data.firstName.trim()) {
@@ -80,8 +111,16 @@ export function Register() {
       errors.password = 'Required field';
     }
 
+    if (!data.confirmPassword.trim()) {
+      errors.confirmPassword = 'Required field';
+    }
+
     if (data.password !== data.confirmPassword) {
       errors.confirmPassword = 'Passwords do not match';
+    }
+
+    if (!/(?=.*[A-Z])(?=.*\d).{8,}/.test(data.password) && data.password) {
+      errors.password = 'Password must be greater than 8 and contain at least one uppercase letter, one lowercase letter, one special character, and one number';
     }
 
     if (!data.termsAccepted) {
@@ -93,11 +132,10 @@ export function Register() {
       errors.selectedSecurityQuestion = "Please select a security question";
     }
 
-    data.securityAnswers.forEach((answer, index) => {
-      if (!answer.trim() && data.selectedSecurityQuestion === securityQuestions[index]) {
-        errors.securityAnswers[index] = "Answer is required for the selected question";
-      }
-    });
+    if (!data.securityAnswers) {
+      errors.securityAnswers = "Required field";
+    }
+    
 
     return errors;
   };
@@ -235,21 +273,13 @@ export function Register() {
                 className="register-input px-5 py-2 border-0 rounded-pill"
                 type="text"
                 id="securityAnswer"
-                name={`securityAnswers[${formData.selectedSecurityQuestion}]`} // Cambiar el índice según la pregunta seleccionada
-                value={
-                  formData.selectedSecurityQuestion >= 0
-                    ? formData.securityAnswers[formData.selectedSecurityQuestion]
-                    : ""
-                }
+                name="securityAnswers"
+                value={formData.securityAnswers}
                 placeholder="Enter Security Answer"
                 onChange={handleChange}
                 disabled={!formData.selectedSecurityQuestion} // Deshabilitar si no se ha seleccionado una pregunta
               />
-              {formData.selectedSecurityQuestion >= 0 && errors.securityAnswers[formData.selectedSecurityQuestion] && (
-                <small className="register-validation px-3 pt-2">
-                  {errors.securityAnswers[formData.selectedSecurityQuestion]}
-                </small>
-              )}
+              {errors.securityAnswers && <small className="register-validation px-3 pt-2">{errors.securityAnswers}</small>}
             </div>
           </div>
 
@@ -261,8 +291,12 @@ export function Register() {
               <input
                 className="bg-dark"
                 type="checkbox"
-                name="terminos"
+                name="termsAccepted"
+                id="termsAccepted"
+                value={formData.termsAccepted}
+                onChange={handleChange}
               ></input>
+              {errors.termsAccepted && <small className="register-validation px-3 pt-2">{errors.termsAccepted}</small>}
             </div>
             <button type="submit" className="signup-register col border-0 rounded-pill px-3 py-2">Sign up</button>
           </div>
