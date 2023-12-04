@@ -5,6 +5,12 @@ import "../styles/Register.css";
 
 export function Register() {
 
+  const securityQuestions = [
+    "What is your favorite color?",
+    "In which city were you born?",
+    "What is your first pet's name?"
+  ];
+
   // Estado local para almacenar los datos del formulario
   const [formData, setFormData] = useState({
     firstName: '',
@@ -13,10 +19,14 @@ export function Register() {
     password: '',
     confirmPassword: '',
     termsAccepted: false,
+    selectedSecurityQuestion: "", // Campo para almacenar la pregunta seleccionada
+    securityAnswers: ["", "", ""], 
   });
 
   // Estado local para manejar las validaciones y mensajes de error
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({
+    securityAnswers: {}
+  });
 
   // Función para manejar cambios en los campos del formulario
   const handleChange = (e) => {
@@ -47,7 +57,9 @@ export function Register() {
 
   // Función para realizar las validaciones del formulario
   const validateForm = (data) => {
-    const errors = {};
+    const errors = {
+      securityAnswers: {}
+    };
 
     // Validación para campos obligatorios
     if (!data.firstName.trim()) {
@@ -76,6 +88,17 @@ export function Register() {
       errors.termsAccepted = 'You must accept the terms and conditions';
     }
 
+    // Validación para preguntas y respuestas de seguridad
+    if (!data.selectedSecurityQuestion) {
+      errors.selectedSecurityQuestion = "Please select a security question";
+    }
+
+    data.securityAnswers.forEach((answer, index) => {
+      if (!answer.trim() && data.selectedSecurityQuestion === securityQuestions[index]) {
+        errors.securityAnswers[index] = "Answer is required for the selected question";
+      }
+    });
+
     return errors;
   };
 
@@ -100,7 +123,7 @@ export function Register() {
             <label htmlFor="firstName" className="register-label text-white px-3 py-2">First Name</label>
             <div className="d-flex flex-column">
             <input
-              className="register-input px-3 py-2 border-0 rounded-pill"
+              className="register-input px-5 py-2 border-0 rounded-pill"
               type="text"
               id="firstName"
               name="firstName"
@@ -116,7 +139,7 @@ export function Register() {
             <label htmlFor="lastName" className="register-label text-white px-3 py-2">Last Name</label>
             <div className="d-flex flex-column">
             <input
-              className="register-input px-3 py-2 border-0 rounded-pill"
+              className="register-input px-5 py-2 border-0 rounded-pill"
               type="text"
               id="lastName"
               name="lastName"
@@ -132,7 +155,7 @@ export function Register() {
             <label htmlFor="email" className="register-label text-white px-3 py-2">E-mail</label>
             <div className="d-flex flex-column">
             <input
-              className="register-input px-3 py-2 border-0 rounded-pill"
+              className="register-input px-5 py-2 border-0 rounded-pill"
               type="email"
               id="email"
               name="email"
@@ -148,7 +171,7 @@ export function Register() {
             <label htmlFor="password" className="register-label text-white px-3 py-2">Password</label>
             <div className="d-flex flex-column">
             <input
-              className="register-input px-3 py-2 border-0 rounded-pill"
+              className="register-input px-5 py-2 border-0 rounded-pill"
               type="password"
               id="password"
               name="password"
@@ -164,7 +187,7 @@ export function Register() {
             <label htmlFor="confirmPassword" className="register-label text-white px-3 py-2">Repeat Password</label>
             <div className="d-flex flex-column">
             <input
-              className="input-register px-3 py-2 border-0 rounded-pill"
+              className="input-register px-5 py-2 border-0 rounded-pill"
               type="password"
               id="confirmPassword"
               name="confirmPassword"
@@ -173,6 +196,60 @@ export function Register() {
               onChange={handleChange}
             ></input>
             {errors.confirmPassword && <small className="register-validation px-3 pt-2">{errors.confirmPassword}</small>}
+            </div>
+          </div>
+
+          <div className="form-items mt-3 d-flex gap-3">
+            <label htmlFor="selectedSecurityQuestion" className="register-label text-white px-3 py-2">
+              Select Security Question
+            </label>
+            <div className="d-flex flex-column">
+              <select
+                className="register-input px-3 py-2 border-0 rounded-pill"
+                id="selectedSecurityQuestion"
+                name="selectedSecurityQuestion"
+                value={formData.selectedSecurityQuestion}
+                onChange={handleChange}
+              >
+                <option value="" disabled>
+                  Choose a security question
+                </option>
+                {securityQuestions.map((question, index) => (
+                  <option key={index} value={index}>
+                    {question}
+                  </option>
+                ))}
+              </select>
+              {errors.selectedSecurityQuestion && (
+                <small className="register-validation px-3 pt-2">{errors.selectedSecurityQuestion}</small>
+              )}
+            </div>
+          </div>
+
+          <div className="form-items mt-3 d-flex gap-3">
+            <label htmlFor="securityAnswer" className="register-label text-white px-3 py-2">
+              Security Answer
+            </label>
+            <div className="d-flex flex-column">
+              <input
+                className="register-input px-5 py-2 border-0 rounded-pill"
+                type="text"
+                id="securityAnswer"
+                name={`securityAnswers[${formData.selectedSecurityQuestion}]`} // Cambiar el índice según la pregunta seleccionada
+                value={
+                  formData.selectedSecurityQuestion >= 0
+                    ? formData.securityAnswers[formData.selectedSecurityQuestion]
+                    : ""
+                }
+                placeholder="Enter Security Answer"
+                onChange={handleChange}
+                disabled={!formData.selectedSecurityQuestion} // Deshabilitar si no se ha seleccionado una pregunta
+              />
+              {formData.selectedSecurityQuestion >= 0 && errors.securityAnswers[formData.selectedSecurityQuestion] && (
+                <small className="register-validation px-3 pt-2">
+                  {errors.securityAnswers[formData.selectedSecurityQuestion]}
+                </small>
+              )}
             </div>
           </div>
 
