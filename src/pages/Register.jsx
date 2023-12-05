@@ -114,7 +114,7 @@ export function Register() {
       <MyNavbar />
 
       <div className="form-container d-flex flex-column justify-content-center align-items-center mt-5">
-        <h2 className="title-register text-center mt-4 text-white">Register Your Profile</h2>
+        <h2 className="title-register versalita text-center mt-4 text-white">Register Your Profile</h2>
         <h4 className="subtitle-register text-center mt-2 text-white">
           Signup and get ready to live amazing moments
         </h4>
@@ -264,7 +264,7 @@ export function Register() {
                 name="terminos"
               ></input>
             </div>
-            <button type="submit" className="signup-register col border-0 rounded-pill px-3 py-2">Sign up</button>
+            <button type="submit" className="signup-register col border-0 rounded-pill px-5 py-2">Sign up</button>
           </div>
         </form>
       </div>
