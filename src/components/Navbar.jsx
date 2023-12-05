@@ -1,21 +1,26 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+
 import "../styles/Navbar.css";
 export function MyNavbar() {
-  const [logged, isLogged] = useState(false);
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("LoggedIn")
+  );
 
-  const handleLoggedClick = () => {
-    isLogged(true);
+  const handleLoggedOut = () => {
+    localStorage.clear();
+    setIsLoggedIn(false);
+    navigate("/");
+    window.location.reload(true);
   };
 
-  const handleUnloggedClick = () => {
-    isLogged(false);
-  };
-
+  useEffect(() => {
+    setIsLoggedIn(localStorage.getItem("LoggedIn"));
+  }, []);
   return (
     <Navbar bg="black" variant="dark" expand="sm" fixed="top">
       <Container>
@@ -35,27 +40,7 @@ export function MyNavbar() {
         <Navbar.Collapse id="navbarID">
           <Nav className="w-100 d-flex justify-content-end">
             <ul className="nav" id="navBar__Collapse">
-              {!logged && (
-                <>
-                  <li className="nav-item">
-                    <Link to={"/login"} className="nav-link Link">
-                      Login
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link to={"/register"} className="nav-link Link">
-                      Signup
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Button variant="" onClick={handleLoggedClick}>
-                      Logged
-                    </Button>
-                  </li>
-                </>
-              )}
-
-              {logged && (
+              {isLoggedIn === "true" ? (
                 <>
                   <li className="nav-item">
                     <Link to={"/mytickets"} className="nav-link Link">
@@ -69,13 +54,29 @@ export function MyNavbar() {
                   </li>
                   <li className="nav-item">
                     <Link to={"/profile"} className="nav-link Link">
-                      Mi Profile
+                      My Profile
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Button variant="" onClick={handleUnloggedClick}>
-                      Unlogged
-                    </Button>
+                    <Link
+                      onClick={handleLoggedOut}
+                      className="nav-link text-danger fw-bold"
+                    >
+                      Logout
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <Link to={"/login"} className="nav-link Link">
+                      Login
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link to={"/register"} className="nav-link Link">
+                      Signup
+                    </Link>
                   </li>
                 </>
               )}

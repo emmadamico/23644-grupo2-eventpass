@@ -1,0 +1,93 @@
+/*Se estiliza banner de about*/
+.banner-about img {
+    width: 100%;
+    height: 30rem; 
+    object-fit: cover;
+}
+.banner-about .title {
+    position: absolute;
+    top: 25%;
+    left: 23%;
+    transform: translate(-50%, -50%);
+    color: var(--bg-main-color);
+    font-size: 2em;
+    font-family: 'montserrat', sans-serif;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+/*Se estiliza section*/
+.card-about{
+    width: 90%;
+    height: auto;
+    border-radius: 50px;
+    background-color: rgba(90, 85, 85, 0);
+    backdrop-filter: blur(2px) brightness(0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+    top: -180px;
+    padding: 6rem;
+}
+/*Se sobreescriben estilos de bootstrap*/
+.card-about .accordion-button.collapsed, 
+.card-about .accordion-button:not(.collapsed){
+    background-color: var(--green-light-color);
+    padding: 2rem;
+    border-radius: 50px!important;
+    font-family: 'montserrat', sans-serif;
+    font-weight: bolder;
+    color: var(--bg-main-color);
+}
+.card-about .accordion-item {
+    background-color: transparent;
+}
+.card-about .accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem rgba(12, 255, 0, 0.5);
+  }
+
+.card-about .accordion-body {
+    color: var(--white-color);
+} 
+
+.custom-accordion  {
+    font-size: 1.5rem;
+}
+
+.custom-accordion .accordion-header {
+    text-align: center;
+}
+  
+.custom-accordion .accordion-body {
+    color: var(--white-color);
+}
+
+  @media (max-width: 1024px){
+    .banner-about .title{
+        left: 30%;
+        top: 30%;
+  }
+}
+@media (max-width: 990px){
+    .banner-about .title{
+        left: 35%;
+  }
+}
+@media (max-width: 655px){
+    .banner-about .title{
+        left: 40%; 
+  }
+}
+@media (max-width: 570px){
+    .card-about{
+        width: 100%;
+        padding: 20% 0;
+        border-radius: 0;
+    }
+    .card-about .accordion-button.collapsed, 
+    .card-about .accordion-button:not(.collapsed){
+    border-radius: 0!important;
+}
+
+
+
+};
+ 
