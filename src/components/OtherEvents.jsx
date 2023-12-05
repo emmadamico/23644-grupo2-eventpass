@@ -27,6 +27,7 @@ export default function OtherEvents() {
     performFetch(url);
   };
   url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elements}`;
+
   // Actualizar la URL cuando cambia el número de elementos o pagina
   useEffect(() => {
     performFetch(url);

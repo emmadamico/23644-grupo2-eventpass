@@ -72,7 +72,7 @@ export function MusicEvents() {
 
   useEffect(() => {
     setShouldFetch(true);
-  }, [page]);
+  }, [page, elements]);
 
   console.log(url);
   console.log(elements);
@@ -137,7 +137,6 @@ export function MusicEvents() {
                               image.width === 640 && image.height === 360
                           )?.url || event.images[0].url
                         }
-                        className=""
                         fluid
                         rounded
                       />

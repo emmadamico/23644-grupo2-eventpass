@@ -61,3 +61,9 @@
     min-height: 22rem;
   }
 }
+
+@media (min-width: 767px) and (max-width: 1022px) {
+  .popularSports__wrapper {
+    min-height: 16rem;
+  }
+}
