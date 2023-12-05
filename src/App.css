@@ -14,36 +14,6 @@
   src: url("./assets/fonts/Montserrat-Bold.otf") format("opentype");
 }
 
-/* Resets */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  max-width: 100vw;
-  min-height: 100vh;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-}
-
-body {
-  width: 100%;
-  height: 100%;
-  background-color: var(--bg-main-color);
-  font-family: var(--Montserrat-regular) !important;
-}
-a {
-  text-decoration: none;
-}
-
-ul,
-ol,
-li {
-  list-style: none;
-}
-
 /* Root Var */
 :root {
   --bg-main-color: #000000;
@@ -55,6 +25,8 @@ li {
   --green-color: #08b100;
   --green-light-color: #0cff00;
 
+  --link-color: #272626;
+
   --Montserrat-regular: "Montserrat Regular", sans-serif;
   --Montserrat-semibold: "Montserrat SemiBold", sans-serif;
   --Montserrat-bold: "Montserrat Bold", sans-serif;
@@ -62,19 +34,36 @@ li {
 
 /* Custom Styles */
 
-.text__light-green {
-  color: var(--green-light-color);
+.glass-bg {
+  background-color: rgba(90, 85, 85, 0);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(2px) brightness(0.7);
 }
 
-.navbar-brand#logo__title:hover strong.text__light-green {
-  transition: all 0.3s ease-in-out;
-  text-shadow: 0 0 3px var(--green-light-color);
+.box__shadow-inset {
+  box-shadow: rgba(149, 149, 159, 0.25) 0px 50px 100px -20px,
+    rgba(254, 254, 254, 0.3) 0px 30px 60px -30px,
+    rgba(21, 149, 60, 0.35) 0px -2px 6px 0px inset !important;
 }
-.Link {
+
+.box__shadow {
+  box-shadow: rgba(255, 255, 255, 0.16) 0px 1px 4px;
+}
+
+.versalita {
+  font-variant: small-caps;
+}
+
+Link {
   color: var(--white-color) !important;
 }
 
 .Link:hover {
   transition: color 0.3s ease-in-out;
   color: var(--white-hover-color) !important;
+}
+
+.grey-link {
+  color: var(--link-color) !important;
 }

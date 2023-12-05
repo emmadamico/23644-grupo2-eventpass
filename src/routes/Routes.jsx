@@ -6,11 +6,14 @@ import { FAQ } from "../pages/FAQ";
 import { NotFound } from "../pages/Error404";
 import { Profile } from "../pages/Profile";
 import { Tickets } from "../pages/Tickets";
-import { About } from "../pages/AboutUs";
+import { AboutUs } from "../pages/AboutUs";
 
 import Description from "../pages/Description";
 
 // import { customTicket } from "../pages/TicketCustom";  REVISAR
+//ruta de prueba:
+import { TicketCustom } from "../pages/TicketCustom";
+import { CustomerSupport } from "../pages/CustomerSupport";
 
 export function Rutas() {
   return (
@@ -21,8 +24,12 @@ export function Rutas() {
       <Route path="/description/:eventId" element={<Description />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/mytickets" element={<Tickets />} />
-      <Route path="/about" element={<About />} />
+      <Route path="/about" element={<AboutUs />} />
       {/* <Route path="/mytickets/customticket" element={<customTicket/>} />  REVISAR */}
+      {/*Ruta de prueba*/}
+      <Route path="/customticket" element={<TicketCustom />} />
+      <Route path="/customerSupport" element={<CustomerSupport />} />
+
       <Route path="/faq" element={<FAQ />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

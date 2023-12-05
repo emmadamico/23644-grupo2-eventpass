@@ -1,0 +1,21 @@
+.otherEventCard {
+    border: 3px solid transparent;
+    overflow: hidden;
+
+    &:hover {
+        border: 2px solid var(--green-light-color);;
+        -webkit-box-shadow: 0px 0px 33px 3px var(--green-light-color);;
+        -moz-box-shadow: 0px 0px 33px 3px var(--green-light-color);;
+        box-shadow: 0px 0px 33px 3px var(--green-light-color);;
+        transition: all .3s;
+    }
+
+    & img {
+        opacity: .6;
+    }
+    &:hover img {
+        opacity: 1;
+        transform: scale(1.4) rotate(4deg);
+        transition: all .5s;
+    }
+}
