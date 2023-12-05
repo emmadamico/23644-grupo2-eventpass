@@ -12,6 +12,9 @@ export default function Events() {
   const [elements, setElements] = useState(3);
   const [selectedSegmentId, setSelectedSegmentId] = useState(null);
   const [page, setPage] = useState(1);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("LoggedIn")
+  );
 
   const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elements}`;
 
@@ -82,8 +85,21 @@ export default function Events() {
   }, []);
   useEffect(() => {
     performFetch(url);
-  }, [url, elements, performFetch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url, elements, isLoggedIn]);
 
+  useEffect(() => {
+    const handleStorageChange = () => {
+      setIsLoggedIn(localStorage.getItem("LoggedIn"));
+      performFetch(url);
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, [performFetch, url]);
   return (
     <>
       <Filter onSegmentClick={handleSegmentClick} />
@@ -125,47 +141,56 @@ export default function Events() {
       )}
       {!isPending && data && (
         <Container className="p-0">
-          <section className="row p-0 m-0 card__container">
-            {shuffledEvents.map((event) => (
-              <div
-                className="col-12 col-md-6 col-lg-4  m-0 p-0 px-0 py-2 p-md-2 card__container"
-                key={event.id}
-              >
-                <div className="position-relative d-flex align-items-center card__container">
-                  <div className="position-absolute z-2 px-2 w-100 py-2 d-flex flex-column gap-2 card__text ">
-                    <h5 className="m-0 p-0 versalita">{event.name}</h5>
-                    <div className="d-flex align-items-center justify-content-between">
-                      <p className="m-0 p-0">{event.dates?.start?.localDate}</p>
-                      <p className="m-0 p-0">{event.dates?.start?.localTime}</p>
+          {
+            <section className="row p-0 m-0 card__container">
+              {shuffledEvents.map((event) => (
+                <div
+                  className="col-12 col-md-6 col-lg-4  m-0 p-0 px-0 py-2 p-md-2 card__container"
+                  key={event.id}
+                >
+                  <div className="position-relative d-flex align-items-center card__container">
+                    <div className="position-absolute z-2 px-2 w-100 py-2 d-flex flex-column gap-2 card__text ">
+                      <h5 className="m-0 p-0 versalita">{event.name}</h5>
+                      <div className="d-flex align-items-center justify-content-between">
+                        <p className="m-0 p-0">
+                          {event.dates?.start?.localDate}
+                        </p>
+                        <p className="m-0 p-0">
+                          {event.dates?.start?.localTime}
+                        </p>
+                      </div>
+                      <div className="d-flex align-items-center justify-content-between">
+                        <Link
+                          to={`/description/:${event.id}`}
+                          className="hover"
+                        >
+                          <button className="btn btn-dark rounded-pill btn__black-green">
+                            See More
+                          </button>
+                        </Link>
+                        {isLoggedIn && <Fav isLoggedIn={isLoggedIn} />}
+                      </div>
                     </div>
-                    <div className="d-flex align-items-center justify-content-between">
-                      <Link to={`/description/:${event.id}`} className="hover">
-                        <button className="btn btn-dark rounded-pill btn__black-green">
-                          See More
-                        </button>
-                      </Link>
-                      <Fav />
+                    <div className=" z-1 rounded ">
+                      {event.images && event.images.length > 0 && (
+                        <Image
+                          src={
+                            event.images.find(
+                              (image) =>
+                                image.width === 640 && image.height === 360
+                            )?.url || event.images[0].url
+                          }
+                          className=""
+                          fluid
+                          rounded
+                        />
+                      )}
                     </div>
-                  </div>
-                  <div className=" z-1 rounded ">
-                    {event.images && event.images.length > 0 && (
-                      <Image
-                        src={
-                          event.images.find(
-                            (image) =>
-                              image.width === 640 && image.height === 360
-                          )?.url || event.images[0].url
-                        }
-                        className=""
-                        fluid
-                        rounded
-                      />
-                    )}
                   </div>
                 </div>
-              </div>
-            ))}
-          </section>
+              ))}
+            </section>
+          }
         </Container>
       )}
     </>
