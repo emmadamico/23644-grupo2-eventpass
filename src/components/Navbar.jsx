@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import "../styles/Navbar.css";
 
+import "../styles/Navbar.css";
 export function MyNavbar() {
+  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("LoggedIn")
   );
 
   const handleLoggedOut = () => {
     localStorage.clear();
-    setIsLoggedIn(null);
+    setIsLoggedIn(false);
+    navigate("/");
+    window.location.reload(true);
   };
 
   useEffect(() => {
@@ -57,7 +60,7 @@ export function MyNavbar() {
                   <li className="nav-item">
                     <Link
                       onClick={handleLoggedOut}
-                      className="nav-link text-danger"
+                      className="nav-link text-danger fw-bold"
                     >
                       Logout
                     </Link>

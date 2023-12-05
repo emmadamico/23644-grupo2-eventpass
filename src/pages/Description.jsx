@@ -44,7 +44,7 @@ const Description = () => {
 
     fetchEventDetails();
     window.scrollTo(0, 0);
-  }, [url, eventData.priceRanges]);
+  }, [url]);
   const formatEventDate = (dateString) => {
     const eventDate = new Date(dateString);
     return eventDate.toLocaleDateString("en-EN", {
