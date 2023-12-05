@@ -49,7 +49,7 @@ export default function Events() {
     };
 
     fetchData();
-  }, [selectedSegmentId, page]);
+  }, [selectedSegmentId, page, elements, performFetch]);
 
   //Ordena al azar los eventos
   const shuffledEvents = data?._embedded?.events
@@ -79,10 +79,10 @@ export default function Events() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [window.innerWidth]);
+  }, []);
   useEffect(() => {
     performFetch(url);
-  }, [url, elements]);
+  }, [url, elements, performFetch]);
 
   return (
     <>
