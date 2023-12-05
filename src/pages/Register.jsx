@@ -1,9 +1,17 @@
 import { useState } from "react"
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 import "../styles/Register.css";
 
 export function Register() {
+  const navigate = useNavigate();
+  const securityQuestions = [
+    "What is your favorite color?",
+    "In which city were you born?",
+    "What is your first pet's name?"
+  ];
 
   // Estado local para almacenar los datos del formulario
   const [formData, setFormData] = useState({
@@ -13,6 +21,8 @@ export function Register() {
     password: '',
     confirmPassword: '',
     termsAccepted: false,
+    selectedSecurityQuestion: "", // Campo para almacenar la pregunta seleccionada
+    securityAnswers: "", 
   });
 
   // Estado local para manejar las validaciones y mensajes de error
@@ -31,17 +41,50 @@ export function Register() {
   };
 
   // Función para manejar el envío del formulario
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-
     // Realizar validaciones antes de enviar los datos
     const validationErrors = validateForm(formData);
     setErrors(validationErrors);
 
-    // Si no hay errores, puedes enviar los datos al servidor aquí
-    if (Object.keys(validationErrors).length === 0) {
-      // Enviar datos al servidor o realizar otras acciones
-      console.log('Datos válidos, enviando formulario:', formData);
+    try {
+      if (Object.keys(validationErrors).length === 0) {
+        const response = await fetch('http://localhost:5000/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstName: formData.firstName, 
+            lastName: formData.lastName, 
+            email: formData.email, 
+            password: formData.password, 
+            selectedSecurityQuestion: securityQuestions[formData.selectedSecurityQuestion], 
+            termsAccepted: formData.termsAccepted, 
+            securityAnswers: formData.securityAnswers
+          })
+        });
+        const data = await response.json();
+        console.log(data);
+        if(data.error){
+          Swal.fire({
+            title: 'ERROR',
+            text: data.error,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          });
+        }
+        if(data.msg){
+          Swal.fire({
+            title: 'Congratulations!',
+            text: data.msg,
+            icon: 'success',
+            confirmButtonText: 'OK'
+          }).then(function(){navigate("/login")});
+        }
+      }
+    } catch (error) {
+      console.error('Error en la solicitud:', error);
     }
   };
 
@@ -68,13 +111,31 @@ export function Register() {
       errors.password = 'Required field';
     }
 
+    if (!data.confirmPassword.trim()) {
+      errors.confirmPassword = 'Required field';
+    }
+
     if (data.password !== data.confirmPassword) {
       errors.confirmPassword = 'Passwords do not match';
+    }
+
+    if (!/(?=.*[A-Z])(?=.*\d).{8,}/.test(data.password) && data.password) {
+      errors.password = 'Password must be greater than 8 and contain at least one uppercase letter, one lowercase letter, one special character, and one number';
     }
 
     if (!data.termsAccepted) {
       errors.termsAccepted = 'You must accept the terms and conditions';
     }
+
+    // Validación para preguntas y respuestas de seguridad
+    if (!data.selectedSecurityQuestion) {
+      errors.selectedSecurityQuestion = "Please select a security question";
+    }
+
+    if (!data.securityAnswers) {
+      errors.securityAnswers = "Required field";
+    }
+    
 
     return errors;
   };
@@ -100,7 +161,7 @@ export function Register() {
             <label htmlFor="firstName" className="register-label text-white px-3 py-2">First Name</label>
             <div className="d-flex flex-column">
             <input
-              className="register-input px-3 py-2 border-0 rounded-pill"
+              className="register-input px-5 py-2 border-0 rounded-pill"
               type="text"
               id="firstName"
               name="firstName"
@@ -116,7 +177,7 @@ export function Register() {
             <label htmlFor="lastName" className="register-label text-white px-3 py-2">Last Name</label>
             <div className="d-flex flex-column">
             <input
-              className="register-input px-3 py-2 border-0 rounded-pill"
+              className="register-input px-5 py-2 border-0 rounded-pill"
               type="text"
               id="lastName"
               name="lastName"
@@ -132,7 +193,7 @@ export function Register() {
             <label htmlFor="email" className="register-label text-white px-3 py-2">E-mail</label>
             <div className="d-flex flex-column">
             <input
-              className="register-input px-3 py-2 border-0 rounded-pill"
+              className="register-input px-5 py-2 border-0 rounded-pill"
               type="email"
               id="email"
               name="email"
@@ -148,7 +209,7 @@ export function Register() {
             <label htmlFor="password" className="register-label text-white px-3 py-2">Password</label>
             <div className="d-flex flex-column">
             <input
-              className="register-input px-3 py-2 border-0 rounded-pill"
+              className="register-input px-5 py-2 border-0 rounded-pill"
               type="password"
               id="password"
               name="password"
@@ -164,7 +225,7 @@ export function Register() {
             <label htmlFor="confirmPassword" className="register-label text-white px-3 py-2">Repeat Password</label>
             <div className="d-flex flex-column">
             <input
-              className="input-register px-3 py-2 border-0 rounded-pill"
+              className="input-register px-5 py-2 border-0 rounded-pill"
               type="password"
               id="confirmPassword"
               name="confirmPassword"
@@ -176,6 +237,52 @@ export function Register() {
             </div>
           </div>
 
+          <div className="form-items mt-3 d-flex gap-3">
+            <label htmlFor="selectedSecurityQuestion" className="register-label text-white px-3 py-2">
+              Select Security Question
+            </label>
+            <div className="d-flex flex-column">
+              <select
+                className="register-input px-3 py-2 border-0 rounded-pill"
+                id="selectedSecurityQuestion"
+                name="selectedSecurityQuestion"
+                value={formData.selectedSecurityQuestion}
+                onChange={handleChange}
+              >
+                <option value="" disabled>
+                  Choose a security question
+                </option>
+                {securityQuestions.map((question, index) => (
+                  <option key={index} value={index}>
+                    {question}
+                  </option>
+                ))}
+              </select>
+              {errors.selectedSecurityQuestion && (
+                <small className="register-validation px-3 pt-2">{errors.selectedSecurityQuestion}</small>
+              )}
+            </div>
+          </div>
+
+          <div className="form-items mt-3 d-flex gap-3">
+            <label htmlFor="securityAnswer" className="register-label text-white px-3 py-2">
+              Security Answer
+            </label>
+            <div className="d-flex flex-column">
+              <input
+                className="register-input px-5 py-2 border-0 rounded-pill"
+                type="text"
+                id="securityAnswer"
+                name="securityAnswers"
+                value={formData.securityAnswers}
+                placeholder="Enter Security Answer"
+                onChange={handleChange}
+                disabled={!formData.selectedSecurityQuestion} // Deshabilitar si no se ha seleccionado una pregunta
+              />
+              {errors.securityAnswers && <small className="register-validation px-3 pt-2">{errors.securityAnswers}</small>}
+            </div>
+          </div>
+
           <div className="form-items d-flex justify-content-end align-items-center flex-row mt-2 gap-3 mt-3">
             <div className="d-flex align-items-center gap-1">
               <label className="text-white">
@@ -184,8 +291,12 @@ export function Register() {
               <input
                 className="bg-dark"
                 type="checkbox"
-                name="terminos"
+                name="termsAccepted"
+                id="termsAccepted"
+                value={formData.termsAccepted}
+                onChange={handleChange}
               ></input>
+              {errors.termsAccepted && <small className="register-validation px-3 pt-2">{errors.termsAccepted}</small>}
             </div>
             <button type="submit" className="signup-register col border-0 rounded-pill px-3 py-2">Sign up</button>
           </div>

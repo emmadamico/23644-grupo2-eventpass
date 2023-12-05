@@ -1,75 +1,164 @@
 import "../App.css";
 import "../styles/profile.css";
-import { useState } from "react";
+import { useState, useEffect} from "react";
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
+import Swal from 'sweetalert2';
 
 export function Profile() {
   const [name, setName] = useState("");
-  const [surname, setSurname] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
 
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  const handlePasswordCancel = () => {
-    //lógica para manejar la cancelación del cambio de contraseña
-  };
+   // Agregamos estados para los mensajes de error
+   const [passwordError, setPasswordError] = useState("");
+   const [repeatPasswordError, setRepeatPasswordError] = useState("");
+   const [emailError, setEmailError] = useState("");
+   
+   useEffect(() => {
+    // Recuperar los detalles del usuario de localStorage
+    const storedName = localStorage.getItem('firstName');
+    const storedLastName = localStorage.getItem('lastName');
+    const storedEmail = localStorage.getItem('email');
 
-  const handlePasswordChange = () => {
-    // lógica para manejar el cambio de contraseña
-  };
+    // Actualizar el estado del componente con los detalles del usuario
+    setName(storedName);
+    setLastName(storedLastName);
+    setEmail(storedEmail);
+  }, []);
 
-  const handleCancel = () => {
-    //lógica para manejar la cancelación de los cambios
-  };
+  const validateEmail = (email) => {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
 
   const handleSave = () => {
-    //lógica para guardar los cambios
-  };
+    if (!validateEmail(email)) {
+      setEmailError('Please enter a valid email.');
+      return;
+    }
 
+    localStorage.setItem('firstName', name);
+    localStorage.setItem('lastName', lastName);
+    localStorage.setItem('email', email); // se Guarda la nueva información del usuario en localStorage
+  
+    Swal.fire({
+      title: 'Saved!',
+      text: 'Your changes have been saved successfully.',
+      icon: 'success',
+      confirmButtonText: 'Accept'
+    });
+  
+    return; // se informa al usuario que sus cambios se han guardado correctamente
+  };
+  
+  const handleCancel = () => {
+    //lógica para manejar la cancelación de los cambios
+    // se recuperan los detalles del usuario de localStorage
+    const storedName = localStorage.getItem('firstName');
+    const storedLastName = localStorage.getItem('lastName');
+    const storedEmail = localStorage.getItem('email');
+    // Verificamos si el usuario ha realizado cambios
+    if (name === storedName && lastName === storedLastName && email === storedEmail) {
+      // Si el usuario no realizó cambios, se lo lleva a la página de inicio
+      window.location.href = '/'; 
+    } else {
+      // Si realizó cambios, se restablece el estado del componente a los detalles originales del usuario
+      setName(storedName);
+      setLastName(storedLastName);
+      setEmail(storedEmail);
+  }
+  };
+  const handlePasswordCancel = () => {
+    if (currentPassword === "" && newPassword === "" && repeatPassword === "") {
+      // Si los campos de contraseña están vacíos, se redirige al usuario a la página de inicio
+      window.location.href = '/';
+    } else {
+      // Si los campos de contraseña no están vacíos, se restablecen las contraseñas al estado inicial
+      setCurrentPassword("");
+      setNewPassword("");
+      setRepeatPassword("");
+    }
+    };
+    const handlePasswordChange = () => {
+      // lógica para manejar el cambio de contraseña
+      // se Recupera la contraseña actual del usuario de localStorage
+      const storedPassword = localStorage.getItem('password');
+      //se la compara con la contraseña que el usuaeio ponga en el input
+      if (currentPassword !== storedPassword) {
+        setPasswordError('The current password is incorrect.');
+        return;
+      }
+      
+      if (newPassword !== repeatPassword) {
+        setRepeatPasswordError('The passwords do not match.');
+        return;
+      }
+      
+      // se actualiza la contraseña almacenada con la nueva contraseña
+      localStorage.setItem('password', newPassword);
+      setPasswordError('');
+      setRepeatPasswordError('');
+  
+      //se restablecen las contraseñas al estado inicial
+        setCurrentPassword("");
+        setNewPassword("");
+        setRepeatPassword("");
+  
+        Swal.fire({
+          title: 'Success!',
+          text: 'Your password has been successfully changed.',
+          icon: 'success',
+          confirmButtonText: 'Accept'
+        });
+    };
   return (
     <>
       <MyNavbar />
       <main>
         <banner className="banner-profile">
           <img src="/banner.png" alt="" />
-          <h1 className="title">Mi cuenta</h1>
-          <p className="p-profile">Modifica tus datos de cuenta y contacto</p>
+          <h1 className="title versalita">My Profile</h1>
+          <p className="p-profile">Modify your account and contact details</p>
         </banner>
 
-        <div className="card-user mx-auto">
+        <div className="card-user mx-auto glass-bg ">
           <Tabs
             defaultActiveKey="user-info"
             id="fill-tab-example"
             className="mb-3"
             fill
           >
-            <Tab eventKey="user-info" title="Información personal">
+            <Tab eventKey="user-info" title="Personal Information">
               <section className="form-container d-flex flex-column justify-content-center align-items-center m-5">
                 <form className="d-flex flex-column align-items-end p-3 user-form">
                   <div className="form-item mt-3">
                     <label>
-                      Nombre:
+                      Name:
                       <input
                         className="mx-3 border-0 input-form"
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        placeholder="Name"
                       />
                     </label>
                   </div>
                   <div className="form-item mt-3">
                     <label>
-                      Apellido:
+                    Last Name:
                       <input
                         className="mx-3 border-0 input-form"
                         type="text"
-                        value={surname}
-                        onChange={(e) => setSurname(e.target.value)}
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        placeholder="Last Name"
                       />
                     </label>
                   </div>
@@ -81,8 +170,10 @@ export function Profile() {
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your Email"
                       />
                     </label>
+                    {emailError && <p className="error-message">{emailError}</p>}
                   </div>
                   <div className="btn mt-3">
                     <button
@@ -90,55 +181,60 @@ export function Profile() {
                       type="button"
                       onClick={handleCancel}
                     >
-                      Cancelar
+                      Cancel
                     </button>
                     <button
                       className="save-btn"
                       type="button"
                       onClick={handleSave}
                     >
-                      Guardar cambios
+                      Save changes
                     </button>
                   </div>
                 </form>
               </section>
             </Tab>
 
-            <Tab eventKey="password" title="Contraseña">
-              <section className="form-container d-flex flex-column justify-content-center align-items-center">
-                <form className="d-flex flex-column justify-content-center align-items-end p-3 user-form m-5">
-                  <div className="form-item mt-3">
+            <Tab eventKey="password" title="Password">
+              <section className="d-flex flex-column justify-content-center align-items-center">
+                <form className="d-flex flex-column justify-content-center align-items-end p-3 user-form mt-5 mb-5">
+                  <div className="form-item">
                     <label>
-                      Contraseña actual:
+                      Current Password:
                       <input
                         className="mx-3 border-0 input-form"
                         type="password"
                         value={currentPassword}
                         onChange={(e) => setCurrentPassword(e.target.value)}
+                        placeholder="Enter your current password"
                       />
                     </label>
+                    {passwordError && <p className="error-message">{passwordError}</p>}
                   </div>
                   <div className="form-item mt-3">
                     <label>
-                      Nueva contraseña:
+                      New Password:
                       <input
                         className="mx-3 border-0 input-form"
                         type="password"
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
+                        placeholder="Enter your new password"
                       />
                     </label>
                   </div>
                   <div className="form-item mt-3">
                     <label>
-                      Repita contraseña:
+                      Confirm Password:
                       <input
                         className="mx-3 border-0 input-form"
                         type="password"
                         value={repeatPassword}
                         onChange={(e) => setRepeatPassword(e.target.value)}
+                        placeholder="Confirm your new password"
                       />
                     </label>
+                    {repeatPasswordError && <p className="error-message">{repeatPasswordError}</p>}
                   </div>
                   <div className="btn mt-3">
                     <button
@@ -146,14 +242,14 @@ export function Profile() {
                       type="button"
                       onClick={handlePasswordCancel}
                     >
-                      Cancelar
+                      Cancel
                     </button>
                     <button
                       className="save-btn"
                       type="button"
                       onClick={handlePasswordChange}
                     >
-                      Cambiar contraseña
+                      Change Password
                     </button>
                   </div>
                 </form>
