@@ -1,12 +1,12 @@
-
 .form-container {
-  margin-top: 100px; 
+  margin-top: 100px;
 }
 .cardgral {
   width: 100%;
-  max-width: 500px; 
+  max-width: 500px;
   padding: 20px;
-  background-color:transparent !important;
+
+  background-color: transparent !important;
 }
 
 .cardgral-body {
@@ -19,12 +19,12 @@
 }
 
 .card-body .form-label {
-  color: #faf7f7; 
+  color: #faf7f7;
 }
 
 .form-group {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
 }
 
 .form-group .form-label {
@@ -34,11 +34,8 @@
 .card .form-control {
   height: 40px;
   border-radius: 50px;
-  flex-grow: 1; 
+  flex-grow: 1;
 }
-
-
-
 
 button.py-2:hover {
   background-color: var(--white-hover-color);
@@ -50,3 +47,7 @@ button.py-2:hover {
 .forget {
   color: #eff5f1;
 }
+
+
+
+

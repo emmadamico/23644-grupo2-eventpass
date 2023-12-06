@@ -152,7 +152,7 @@ export function Profile() {
                   </div>
                   <div className="form-item mt-3">
                     <label>
-                    Last Name:
+                      Last Name:
                       <input
                         className="mx-3 border-0 input-form"
                         type="text"
