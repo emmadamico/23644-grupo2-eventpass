@@ -38,7 +38,8 @@
 }
 
 button.py-2:hover {
-  background-color: var(--white-hover-color);
+  border: none;
+  background-color: var(--green-light-color);
 }
 
 .form-check-label {
@@ -47,6 +48,8 @@ button.py-2:hover {
 .forget {
   color: #eff5f1;
 }
+
+
 
 
 
