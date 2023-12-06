@@ -76,13 +76,12 @@ export function Login() {
       }
     }
   };
-
-  const handleSecuritySubmit = () => {
-    // Aquí puedes enviar la respuesta de seguridad al servidor si es necesario.
-    // Luego, cierra el modal y realiza cualquier acción adicional necesaria.
+  const handleSecuritySubmit = async () => {
+    // Para enviar larespuesta de seguridad al servidor aquí si es necesario.
+    
     setShowModal(false);
     window.scrollTo(0, 0);
-  };
+  }; 
 
   const handleForgotPassword = async (e) => {
     e.preventDefault();
@@ -94,7 +93,7 @@ export function Login() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: email, // Agregar el correo electrónico ingresado por el usuario
+          email: email, 
         }),
       });
       const data = await response.json();
@@ -136,7 +135,8 @@ export function Login() {
               >
                 <div className="card-body glass-bg" style={{ borderRadius: '50px' }}>
 
-                  <h3 className="mb-4">LOGIN IN TO MY ACCOUNT</h3>
+                <h3 className="mb-4" >LOGIN TO MY ACCOUNT</h3>
+
                   <Form>
                     <Form.Group as={Row} className="mb-3">
                       <Form.Label column sm="12" md="12" lg="12">
