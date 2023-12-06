@@ -25,6 +25,8 @@
   --green-color: #08b100;
   --green-light-color: #0cff00;
 
+  --link-color: #272626;
+
   --Montserrat-regular: "Montserrat Regular", sans-serif;
   --Montserrat-semibold: "Montserrat SemiBold", sans-serif;
   --Montserrat-bold: "Montserrat Bold", sans-serif;
@@ -60,4 +62,8 @@ Link {
 .Link:hover {
   transition: color 0.3s ease-in-out;
   color: var(--white-hover-color) !important;
+}
+
+.grey-link {
+  color: var(--link-color) !important;
 }

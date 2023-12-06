@@ -154,7 +154,8 @@ const Description = () => {
               <div className="row">
                 <div className="col-lg-6">
                   <h2 className="versalita">
-                    {/* <i className="bi bi-file-earmark-text me-2"></i>*/}Description: 
+                    {/* <i className="bi bi-file-earmark-text me-2"></i>*/}
+                    Description:
                   </h2>
                   <div className="linea-color mb-3"></div>
                   {eventData.info ? (
@@ -199,15 +200,21 @@ const Description = () => {
                   )}
 
                   <h2 className="versalita mb-3">
-                    {/* <i className="bi bi-exclamation-circle me-2"></i>*/}Important: 
+                    {/* <i className="bi bi-exclamation-circle me-2"></i>*/}
+                    Important:
                   </h2>
                   <div className="linea-color mb-3"></div>
                   <p className="lh-1 mb-5">
-                    ** The purchase of a maximum of 4 tickets per user per operation is allowed. If purchases that do not comply with what is established are detected, they will be canceled.
+                    ** The purchase of a maximum of 4 tickets per user per
+                    operation is allowed. If purchases that do not comply with
+                    what is established are detected, they will be canceled.
                   </p>
                   <h3 className="versalita">Visit our section </h3>
                   <div className="linea-color mb-3"></div>
-                  <Link to={"/faq"} className="btn btn__black-green rounded rounded-5 mb-5">
+                  <Link
+                    to={"/faq"}
+                    className="btn btn__black-green rounded rounded-5 mb-5"
+                  >
                     Frequent questions{" "}
                     <i className="bi bi-box-arrow-up-right ms-2"></i>
                   </Link>
@@ -249,7 +256,7 @@ const Description = () => {
                 </div>
                 <div className="col-lg-6">
                   <h2 className="versalita">
-                    {/* <i className="bi bi-geo-alt-fill me-2"></i>*/}Location: 
+                    {/* <i className="bi bi-geo-alt-fill me-2"></i>*/}Location:
                   </h2>
                   <div className="linea-color mb-3"></div>
                   <iframe
@@ -279,7 +286,6 @@ const Description = () => {
         <div className="otherEventsContainer">
           <OtherEvents />
         </div>
-        
       </div>
 
       <Footer />
