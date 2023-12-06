@@ -1,12 +1,5 @@
 .title-register{
   font-family: var(--Montserrat-bold);
-  font-variant: small-caps;
-  color: var(--white-color);
-}
-
-.subtitle-register{
-  font-family: var(--Montserrat-regular);
-  color: var(--white-color);
 }
 
 .register-label{
