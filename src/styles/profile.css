@@ -95,3 +95,31 @@
       left: 38%;
 }
 }
+
+@media (max-width: 576px) {
+  .card-user .nav-tabs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-user, .user-form, .form-item, .form-container  {
+    width: 100% !important;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .form-container {
+    padding: 10px; /* Ajusta según tus preferencias */
+  }
+
+  .btn {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn button {
+    margin: 5px 0;
+  }
+};
