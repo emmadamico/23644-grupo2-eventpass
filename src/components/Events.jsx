@@ -6,6 +6,8 @@ import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
 import { Filter } from "./Filter";
 import { PagerButtons } from "./Pager";
+import Loader from "./Loader";
+
 import "../styles/Events.css";
 
 export default function Events() {
@@ -124,20 +126,19 @@ export default function Events() {
         </div>
       </Container>
       {isPending && (
-        <Container>
-          <section className="mt-5 pt-1 w-100 d-flex align-items-center justify-content-ccenter ">
-            <article className="d-flex flex-column w-100 align-items-center">
-              <h3 className="text-white text-center w-100 display-5">
-                Loading...
-              </h3>
-              <h2 className="display-4">
-                {" "}
-                EVENT
-                <strong className="fst-italic text__light-green">PASS</strong>
-              </h2>
-            </article>
-          </section>
-        </Container>
+        <section className="mt-5 pt-1 w-100 d-flex align-items-center justify-content-center ">
+          <article className="d-flex flex-column w-100 align-items-center">
+            <Loader />
+            <h3 className="text-white text-center w-100 display-5">
+              Loading...
+            </h3>
+            <h2 className="display-4">
+              {" "}
+              EVENT
+              <strong className="fst-italic text__light-green">PASS</strong>
+            </h2>
+          </article>
+        </section>
       )}
       {!isPending && data && (
         <Container className="p-0">
