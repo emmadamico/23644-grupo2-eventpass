@@ -77,7 +77,7 @@ export function Login() {
     }
   };
   const handleSecuritySubmit = async () => {
-    // Para enviar larespuesta de seguridad al servidor aquí si es necesario.
+    // Para enviar la respuesta de seguridad al servidor.
     
     setShowModal(false);
     window.scrollTo(0, 0);
@@ -106,7 +106,7 @@ export function Login() {
           confirmButtonText: 'OK',
         });
       } else if (data.securityQuestion) {
-        // Mostrar el modal con la pregunta de seguridad
+        // Mostrar el modal con la pregunta de seguridad.
         setSecurityQuestion(data.securityQuestion);
         setShowModal(true);
       }
