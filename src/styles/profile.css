@@ -90,7 +90,6 @@
   .p-profile{
     left: 27%;
 }
-
 }
 @media (max-width: 990px){
   .banner-profile .title{
@@ -109,6 +108,9 @@
    left: 28%;
    top: 20%;
   }
+  .p-profile{
+    left: 38%;
+}
   
   .form-item {
     text-align: center;
