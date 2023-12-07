@@ -14,8 +14,9 @@
 }
 
 .card-body h3 {
-  color: #faf7f7;
-  font-family: var(--Montserrat-semibold);
+  font-Family: var(--Montserrat-bold);
+  font-Variant: small-caps;
+  color: var(--white-color);
 }
 
 .card-body .form-label {
@@ -38,7 +39,8 @@
 }
 
 button.py-2:hover {
-  background-color: var(--white-hover-color);
+  border: none;
+  background-color: var(--green-light-color);
 }
 
 .form-check-label {
@@ -47,6 +49,8 @@ button.py-2:hover {
 .forget {
   color: #eff5f1;
 }
+
+
 
 
 
