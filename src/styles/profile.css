@@ -7,8 +7,8 @@
 .banner-profile .title,
 .p-profile {
   position: absolute;
-  top: 25%;
-  left: 20%;
+  top: 20%;
+  left: 13%;
   transform: translate(-50%, -50%);
   color: var(--bg-main-color);
   font-size: 2em;
@@ -16,8 +16,8 @@
   font-weight: bold;
 }
 .p-profile {
-  top: 35%;
-  left: 30%;
+  top: 30%;
+  left: 22.5%;
   font-size: 1.5em;
 }
 /*card principal*/
@@ -64,7 +64,6 @@
 .cancel-btn:hover {
   background-color: rgb(31, 31, 31, 0.9);
 }
-
 .save-btn {
   font-size: 1em;
   background-color: var(--green-light-color);
@@ -74,51 +73,61 @@
   transition: all 0.3s ease-in-out;
   border: none;
 }
-
 .save-btn:hover {
   background-color: rgba(11, 200, 0);
 }
-
 .input-form {
   width: 500px;
   padding: 0.5rem;
   border-radius: 50px;
+  max-width: 100%;
 }
-
 .error-message {
   color: red;
   font-size: 0.8em;
 }
-
-@media (max-width: 990px){
+@media (max-width: 1024px){
   .p-profile{
-      left: 38%;
-}
+    left: 27%;
 }
 
+}
+@media (max-width: 990px){
+  .banner-profile .title{
+    left: 16.5%;
+   }
+  .p-profile{
+    left: 35%;
+}
+.card-user{
+  width: 100%;
+  border-radius: 0;
+}
+}
 @media (max-width: 576px) {
-  .card-user .nav-tabs {
+  .banner-profile .title{
+   left: 28%;
+   top: 20%;
+  }
+  
+  .form-item {
+    text-align: center;
+  }
+  .user-form label {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .card-user, .user-form, .form-item, .input-form{
+    width: 100%;
+  }
+  .nav-tabs {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
-
-  .card-user, .user-form, .form-item, .form-container  {
-    width: 100% !important;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-  }
-
-  .form-container {
-    padding: 10px; /* Ajusta según tus preferencias */
-  }
-
   .btn {
     flex-direction: column;
     align-items: center;
   }
-
   .btn button {
     margin: 5px 0;
   }

@@ -136,9 +136,9 @@ export function Profile() {
             fill
           >
             <Tab eventKey="user-info" title="Personal Information">
-              <section className="form-container d-flex flex-column justify-content-center align-items-center m-5">
-                <form className="d-flex flex-column align-items-end p-3 user-form">
-                  <div className="form-item mt-3">
+              <section className="d-flex flex-column justify-content-center align-items-center">
+                <form className="d-flex flex-column justify-content-center align-items-end p-3 user-form mt-3 mb-5">
+                  <div className="form-item">
                     <label>
                       Name:
                       <input
@@ -151,7 +151,7 @@ export function Profile() {
                     </label>
                   </div>
                   <div className="form-item mt-3">
-                    <label>
+                    <label >
                       Last Name:
                       <input
                         className="mx-3 border-0 input-form"
@@ -197,7 +197,7 @@ export function Profile() {
 
             <Tab eventKey="password" title="Password">
               <section className="d-flex flex-column justify-content-center align-items-center">
-                <form className="d-flex flex-column justify-content-center align-items-end p-3 user-form mt-5 mb-5">
+                <form className="d-flex flex-column justify-content-center align-items-end p-3 user-form mt-3 mb-5">
                   <div className="form-item">
                     <label>
                       Current Password:
