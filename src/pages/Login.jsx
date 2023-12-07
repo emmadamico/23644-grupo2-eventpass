@@ -230,7 +230,7 @@ export function Login() {
                 />
               </Col>
             </Form.Group>
-            <Button variant="primary" style={{backgroundColor:'var(--link-color)',border:'none', borderRadius: '50px' }} type="submit">
+            <Button className="boton-modal" variant="primary" style={{backgroundColor:'var(--link-color)',border:'none', borderRadius: '50px' }} type="submit">
               Submit
             </Button>
           </Form>
