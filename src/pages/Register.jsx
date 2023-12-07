@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { useNavigate } from "react-router-dom";
@@ -27,6 +27,11 @@ export function Register() {
 
   // Estado local para manejar las validaciones y mensajes de error
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    // Al montar el componente, realiza un scroll hasta la parte superior
+    window.scrollTo(0, 0);
+  }, []);
 
   // Función para manejar cambios en los campos del formulario
   const handleChange = (e) => {
@@ -144,6 +149,7 @@ export function Register() {
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
+
   };
 
 
@@ -152,11 +158,11 @@ export function Register() {
       <MyNavbar />
 
       <div className="form-container d-flex flex-column justify-content-center align-items-center mt-5">
-        <h2 className="title-register text-center mt-4 text-white">Register Your Profile</h2>
+        <h2 className="title-register versalita text-center mt-4 text-white">Register Your Profile</h2>
         <h4 className="subtitle-register text-center mt-2 text-white">
           Signup and get ready to live amazing moments
         </h4>
-        <form onSubmit={handleSubmit} className="d-flex flex-column justify-content-center align-items-end p-3">
+        <form onSubmit={handleSubmit} className="d-flex flex-column justify-content-center align-items-end glass-bg p-5 mt-4 rounded-5">
           <div className="form-items mt-3 d-flex gap-3">
             <label htmlFor="firstName" className="register-label text-white px-3 py-2">First Name</label>
             <div className="d-flex flex-column">
@@ -298,7 +304,7 @@ export function Register() {
               ></input>
               {errors.termsAccepted && <small className="register-validation px-3 pt-2">{errors.termsAccepted}</small>}
             </div>
-            <button type="submit" className="signup-register col border-0 rounded-pill px-3 py-2">Sign up</button>
+            <button type="submit" className="signup-register col border-0 rounded-pill px-5 py-2">Sign up</button>
           </div>
         </form>
       </div>
