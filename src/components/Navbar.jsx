@@ -60,7 +60,7 @@ export function MyNavbar() {
                   <li className="nav-item">
                     <Link
                       onClick={handleLoggedOut}
-                      className="nav-link text-danger fw-bold"
+                      className="nav-link text-danger fw-bold logout"
                     >
                       Logout
                     </Link>
