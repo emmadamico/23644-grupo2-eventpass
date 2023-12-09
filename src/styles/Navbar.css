@@ -16,7 +16,14 @@
   transition: color 0.3s ease-in-out;
   color: var(--white-hover-color) !important;
 }
+.logout {
+  transition: all 0.3s ease-in-out;
+}
 
+.logout:hover {
+  color: red;
+  text-shadow: 0 0 3px red;
+}
 /* MediaQuerys */
 
 @media (max-width: 575px) {
