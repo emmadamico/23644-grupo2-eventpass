@@ -15,7 +15,7 @@ export function About() {
     },
     {
       name: 'Daniela Homobono',
-      imageSrc: './team/danih.jpeg',
+      imageSrc: './team/danih.jpg',
       description: '¡Hi! I’m Daniela, An event enthusiast and a passionate programming learner.',
       linkedin: 'https://linkedin.com/in/daniela-homobono-08b627250',
       
@@ -43,7 +43,7 @@ export function About() {
     },
     {
       name: 'Emmanuel Angel Nenadovit',
-      imageSrc: './team/ema.jpeg',
+      imageSrc: './team/emma.jpg',
       description: 'My name is Emmanuel, I’m 34 years old. I’m a computer engineer and I work in a cybersecurity company. I like traveling, being with friends and video games.',
       linkedin: 'https://www.linkedin.com/in/emmanuel-angel-nenadovit-47036b96/',
       
@@ -80,11 +80,11 @@ export function About() {
                   <Card.Body>
                     <Card.Title>{member.name}</Card.Title>
                     <Card.Text>{member.description}</Card.Text>
-                    {member.linkedin && (
-                      <Card.Text>
-                        LinkedIn: <a href={member.linkedin} target="_blank" rel="noopener noreferrer">{member.name}</a>
-                      </Card.Text>
-                    )}
+                    
+                    <Card.Text>
+                      LinkedIn: <a href={member.linkedin} target="_blank" rel="noopener noreferrer">{member.name}</a>
+                    </Card.Text>
+                  
                   </Card.Body>
                   <Card.Footer>
                     <small className="text-muted">CODO a CODO 🚀</small>

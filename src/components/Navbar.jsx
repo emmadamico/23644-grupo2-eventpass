@@ -13,7 +13,7 @@ export function MyNavbar() {
 
   const handleLoggedOut = () => {
     localStorage.clear();
-    setIsLoggedIn(false);
+    //setIsLoggedIn(false);
     navigate("/");
     window.location.reload(true);
   };
