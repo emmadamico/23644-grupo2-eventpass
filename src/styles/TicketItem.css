@@ -39,6 +39,28 @@
 .border__green {
   border-left: solid 2px var(--green-light-color) !important;
 }
+
+.qr__container {
+  max-width: 100%;
+  width: 100%;
+  max-height: auto;
+}
+
+.qr {
+  max-width: 100%;
+  height: auto;
+}
+
+.ticket__name-secondary {
+  font-size: 0.75rem;
+}
+
+.ticket__dates-secondary {
+  font-size: 0.55rem;
+  font-weight: bold;
+  text-wrap: balance;
+}
+
 /* .ticket__item {
   min-height: 12rem;
 } */
@@ -57,5 +79,28 @@
     font-size: 0.45rem;
     font-weight: bold;
     text-wrap: balance;
+  }
+  .ticket__name-secondary {
+    font-size: 0.6rem;
+  }
+
+  .ticket__dates-secondary {
+    font-size: 0.45rem;
+  }
+}
+
+@media (max-width: 769px) {
+  .ticket__name-secondary {
+    font-size: 0.4rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ticket__dates-secondary {
+    font-size: 0.38rem;
+  }
+  .qr {
+    padding: 0rem !important;
   }
 }
