@@ -1,0 +1,61 @@
+.ticket__bg {
+  background-image: url(/public/patternpad.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-height: fit-content;
+}
+
+.ticket__name {
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ticket__dates {
+  font-size: 0.65rem;
+  font-weight: bold;
+  text-wrap: balance;
+}
+
+.ticket__stadium {
+  font-size: 0.9rem;
+}
+.ticket__data-wrapper {
+  height: 100%;
+}
+
+.ticket__EP-url {
+  color: var(--green-light-color);
+  font-style: italic;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(-360);
+}
+
+.border__green {
+  border-left: solid 2px var(--green-light-color) !important;
+}
+/* .ticket__item {
+  min-height: 12rem;
+} */
+
+@media (max-width: 1024px) {
+  .ticket__name {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ticket__stadium {
+    font-size: 0.65rem;
+  }
+  .ticket__dates {
+    font-size: 0.45rem;
+    font-weight: bold;
+    text-wrap: balance;
+  }
+}
