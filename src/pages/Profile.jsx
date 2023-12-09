@@ -17,9 +17,12 @@ export function Profile() {
   const [repeatPassword, setRepeatPassword] = useState("");
 
    // Agregamos estados para los mensajes de error
+   const [currentPasswordError, setCurrentPasswordError] = useState("");
    const [passwordError, setPasswordError] = useState("");
    const [repeatPasswordError, setRepeatPasswordError] = useState("");
    const [emailError, setEmailError] = useState("");
+   const [nameError, setNameError] = useState("");
+   const [lastNameError, setLastNameError] = useState("");
    
    useEffect(() => {
     // Recuperar los detalles del usuario de localStorage
@@ -38,24 +41,93 @@ export function Profile() {
     return re.test(String(email).toLowerCase());
   }
 
-  const handleSave = () => {
+  const handleSave = async() => {
+    setEmailError(""); 
+    setLastNameError(""); 
+    setNameError("");
+
+    if (!name && !lastName && email){
+      setNameError('Required field');
+      setLastNameError('Required field');
+      if (!validateEmail(email)) {
+        setEmailError('Please enter a valid email.');
+      }
+      return;
+    } else if (!name && lastName && !email){
+      setNameError('Required field');
+      setEmailError('Required field');
+      return;
+    } else if (name && !lastName && !email){
+      setLastNameError('Required field');
+      setEmailError('Required field');
+      return;
+    } else if (!name && !lastName && !email){
+      setNameError('Required field');
+      setLastNameError('Required field');
+      setEmailError('Required field');
+      return;
+    }
+
+    if (!name){
+      setNameError('Required field');
+      if (!validateEmail(email)) {
+        setEmailError('Please enter a valid email.');
+      }
+      return;
+    }
+
+    if (!lastName){
+      setLastNameError('Required field');
+      if (!validateEmail(email)) {
+        setEmailError('Please enter a valid email.');
+      }
+      return;
+    }
+
+    if (!email){
+      setEmailError('Required field');
+      return;
+    }
+
     if (!validateEmail(email)) {
       setEmailError('Please enter a valid email.');
       return;
     }
 
-    localStorage.setItem('firstName', name);
-    localStorage.setItem('lastName', lastName);
-    localStorage.setItem('email', email); // se Guarda la nueva información del usuario en localStorage
-  
-    Swal.fire({
-      title: 'Saved!',
-      text: 'Your changes have been saved successfully.',
-      icon: 'success',
-      confirmButtonText: 'Accept'
-    });
-  
-    return; // se informa al usuario que sus cambios se han guardado correctamente
+    try {
+      const response = await fetch('http://localhost:5000/auth/updateUserInfo', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: name,
+          lastName: lastName,
+          email: localStorage.getItem('email'),
+          newEmail: email,
+          password: "",
+          newPassw: "",
+          repeatPassw: "",
+          securityAnswers: ""
+        }),
+      });
+      const data = await response.json();
+
+      if (data.msg) {
+        localStorage.setItem('firstName', name);
+        localStorage.setItem('lastName', lastName);
+        localStorage.setItem('email', email);
+
+        Swal.fire({
+          title: 'Saved!',
+          text: 'Your changes have been saved successfully.',
+          icon: 'success',
+          confirmButtonText: 'Accept'
+        }).then(setEmailError(""), setLastNameError(""), setNameError(""));
+      }
+    } catch (error) {
+      console.error('Error en la solicitud:', error);
+    }
   };
   
   const handleCancel = () => {
@@ -86,37 +158,101 @@ export function Profile() {
       setRepeatPassword("");
     }
     };
-    const handlePasswordChange = () => {
-      // lógica para manejar el cambio de contraseña
-      // se Recupera la contraseña actual del usuario de localStorage
-      const storedPassword = localStorage.getItem('password');
-      //se la compara con la contraseña que el usuaeio ponga en el input
-      if (currentPassword !== storedPassword) {
-        setPasswordError('The current password is incorrect.');
+    const handlePasswordChange = async() => {
+      
+      setCurrentPasswordError("");
+      setPasswordError("");
+      setRepeatPasswordError("");
+
+      if (!currentPassword && !newPassword && !repeatPassword){
+        setCurrentPasswordError('Required field');
+        setPasswordError('Required field');
+        setRepeatPasswordError('Required field');
+        return;
+      } else if (!currentPassword && newPassword && !repeatPassword){
+        setCurrentPasswordError('Required field');
+        setRepeatPasswordError('Required field');
+        if (!/(?=.*[A-Z])(?=.*\d).{8,}/.test(newPassword)) {
+          setPasswordError('Password must be greater than 8 and contain at least one uppercase letter, one lowercase letter, one special character, and one number');
+        }
+        return;
+      } else if (currentPassword && !newPassword && !repeatPassword){
+        setPasswordError('Required field');
+        setRepeatPasswordError('Required field');
+        return;
+      } else if (!currentPassword && !newPassword && repeatPassword){
+        setPasswordError('Required field');
+        setCurrentPasswordError('Required field');
+        return;
+      } else if (!currentPassword && newPassword && repeatPassword){
+        setCurrentPasswordError('Required field');
+        if (!/(?=.*[A-Z])(?=.*\d).{8,}/.test(newPassword)) {
+          setPasswordError('Password must be greater than 8 and contain at least one uppercase letter, one lowercase letter, one special character, and one number');
+        }
+        if (newPassword !== repeatPassword){
+          setRepeatPasswordError('Password do not match');
+        }
+        return;
+      } else if (currentPassword && !newPassword && repeatPassword){
+        setPasswordError('Required field');
+        return;
+      } else if (currentPassword && newPassword && !repeatPassword){
+        setRepeatPasswordError('Required field');
+        if (!/(?=.*[A-Z])(?=.*\d).{8,}/.test(newPassword)) {
+          setPasswordError('Password must be greater than 8 and contain at least one uppercase letter, one lowercase letter, one special character, and one number');
+        }
         return;
       }
-      
-      if (newPassword !== repeatPassword) {
-        setRepeatPasswordError('The passwords do not match.');
+
+      if (newPassword !== repeatPassword){
+        setRepeatPasswordError('Password do not match');
         return;
       }
-      
-      // se actualiza la contraseña almacenada con la nueva contraseña
-      localStorage.setItem('password', newPassword);
-      setPasswordError('');
-      setRepeatPasswordError('');
-  
-      //se restablecen las contraseñas al estado inicial
-        setCurrentPassword("");
-        setNewPassword("");
-        setRepeatPassword("");
-  
-        Swal.fire({
-          title: 'Success!',
-          text: 'Your password has been successfully changed.',
-          icon: 'success',
-          confirmButtonText: 'Accept'
+
+      if (!/(?=.*[A-Z])(?=.*\d).{8,}/.test(newPassword) && newPassword) {
+        setPasswordError('Password must be greater than 8 and contain at least one uppercase letter, one lowercase letter, one special character, and one number');
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:5000/auth/updateUserInfo', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstName: "",
+            lastName: "",
+            email: localStorage.getItem('email'),
+            newEmail: "",
+            password: currentPassword,
+            newPassw: newPassword,
+            repeatPassw: repeatPassword,
+            securityAnswers: ""
+          }),
         });
+        const data = await response.json();
+  
+        if (data.errorPassw) {
+          Swal.fire({
+            title: 'Error',
+            text: 'Please, verify your password.',
+            icon: 'error',
+            confirmButtonText: 'Close'
+          });
+        }
+
+        if (data.msg) {
+          Swal.fire({
+            title: 'Saved!',
+            text: 'Your password has been updated.',
+            icon: 'success',
+            confirmButtonText: 'Accept'
+          }).then(setCurrentPassword(""), setNewPassword(""), setRepeatPassword(""));
+        }
+      } catch (error) {
+        console.error('Error en la solicitud:', error);
+      }
     };
   return (
     <>
@@ -149,6 +285,7 @@ export function Profile() {
                         placeholder="Name"
                       />
                     </label>
+                    {nameError && <p className="error-message">{nameError}</p>}
                   </div>
                   <div className="form-item mt-3">
                     <label >
@@ -161,6 +298,7 @@ export function Profile() {
                         placeholder="Last Name"
                       />
                     </label>
+                    {lastNameError && <p className="error-message">{lastNameError}</p>}
                   </div>
                   <div className="form-item mt-3">
                     <label>
@@ -209,7 +347,7 @@ export function Profile() {
                         placeholder="Enter your current password"
                       />
                     </label>
-                    {passwordError && <p className="error-message">{passwordError}</p>}
+                    {currentPasswordError && <p className="error-message">{currentPasswordError}</p>}
                   </div>
                   <div className="form-item mt-3">
                     <label>
@@ -222,6 +360,7 @@ export function Profile() {
                         placeholder="Enter your new password"
                       />
                     </label>
+                    {passwordError && <p className="error-message">{passwordError}</p>}
                   </div>
                   <div className="form-item mt-3">
                     <label>
