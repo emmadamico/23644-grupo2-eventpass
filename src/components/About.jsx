@@ -64,9 +64,6 @@ export function About() {
     },
   ]
   
-  // const initialActiveEventKeys = teamMembers.map((member, index) => index.toString());
-  // const [activeEventKeys] = useState(initialActiveEventKeys);
-  
   return (
     <main>
       <banner className='banner-about'>
