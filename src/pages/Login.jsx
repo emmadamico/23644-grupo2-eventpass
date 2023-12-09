@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Row, Col, Modal } from 'react-bootstrap';
 import { MyNavbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
+import { LoginPasswordChange } from '../pages/LoginPasswordChange'; 
 import Swal from 'sweetalert2';
 import '../App.css';
 import '../styles/Login.css';
@@ -16,8 +18,8 @@ export function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showModal, setShowModal] = useState(false);
-  const [securityQuestion, setSecurityQuestion] = useState('');
-  const [securityAnswer, setSecurityAnswer] = useState('');
+  
+  const [showPasswordChangeForm, setShowPasswordChangeForm] = useState(false);
 
   useEffect(() => {
     const storedEmail = localStorage.getItem('email');
@@ -64,16 +66,16 @@ export function Login() {
           });
         }
 
-        if (data.securityQuestion) {
-          setSecurityQuestion(data.securityQuestion);
-          setShowModal(true);
-        }
+        
 
         if (data.msg) {
           localStorage.setItem('email', email);
           localStorage.setItem('firstName', data.name)
           localStorage.setItem('lastName', data.last)
           localStorage.setItem('LoggedIn', true);
+
+          window.scrollTo(0, 0);
+          
           navigate('/');
         }
       } catch (error) {
@@ -81,43 +83,15 @@ export function Login() {
       }
     }
   };
-  const handleSecuritySubmit = async () => {
-    // Para enviar la respuesta de seguridad al servidor.
-    
-    setShowModal(false);
-    window.scrollTo(0, 0);
-  }; 
+   
 
   const handleForgotPassword = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await fetch('http://localhost:5000/auth/forgotPassword', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: email, 
-        }),
-      });
-      const data = await response.json();
-
-      if (data.error) {
-        Swal.fire({
-          title: 'ERROR',
-          text: 'Email not found. Please, try again.',
-          icon: 'error',
-          confirmButtonText: 'OK',
-        });
-      } else if (data.securityQuestion) {
-        // Mostrar el modal con la pregunta de seguridad.
-        setSecurityQuestion(data.securityQuestion);
-        setShowModal(true);
-      }
-    } catch (error) {
-      console.error('Error en la solicitud:', error);
-    }
+    e.preventDefault();        
+       
+        setShowModal(false); 
+        setShowPasswordChangeForm(true);
+       navigate('/forgot-password');   
+    
   };
 
   return (
@@ -212,12 +186,12 @@ export function Login() {
 
       <Footer />
 
+      
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Did you forget your password?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* Formulario para ingresar el correo electrónico */}
           <Form onSubmit={handleForgotPassword}>
             <Form.Group as={Row} className="mb-3">
               <Form.Label column sm="12" md="12" lg="12">
@@ -226,7 +200,6 @@ export function Login() {
               <Col sm="12" md="12" lg="12">
                 <Form.Control
                   type="email"
-                  
                   className="py-2"
                   style={{ borderRadius: '50px' }}
                   value={email}
@@ -235,21 +208,34 @@ export function Login() {
                 />
               </Col>
             </Form.Group>
-            <Button className="boton-modal" variant="primary" style={{backgroundColor:'var(--link-color)',border:'none', borderRadius: '50px' }} type="submit">
+            <Button
+            variant="secondary"
+            style={{ borderRadius: '50px' }}
+            onClick={() => setShowModal(false)}
+          >
+            Close
+          </Button>
+          <Button
+              className="boton-modal"
+              variant="primary"
+              style={{
+                backgroundColor: 'var(--link-color)',
+                border: 'none',
+                borderRadius: '50px',
+              }}
+              type="submit"
+            >
               Submit
             </Button>
           </Form>
-          
         </Modal.Body>
-        <Modal.Footer>
-             <Button variant="secondary" style={{ borderRadius: '50px' }} onClick={() => setShowModal(false)}>
-            Close
-          </Button>
-          <Button variant="primary" className="boton-modal"style={{backgroundColor:'var(--link-color)',border:'none', borderRadius: '50px' }} onClick={handleSecuritySubmit}>
-            Submit
-          </Button>
-        </Modal.Footer>
+        
+          
+      
+        
       </Modal>
+
+     
     </div>
   );
 }
