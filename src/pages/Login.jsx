@@ -71,6 +71,8 @@ export function Login() {
 
         if (data.msg) {
           localStorage.setItem('email', email);
+          localStorage.setItem('firstName', data.name)
+          localStorage.setItem('lastName', data.last)
           localStorage.setItem('LoggedIn', true);
           navigate('/');
         }
@@ -251,8 +253,3 @@ export function Login() {
     </div>
   );
 }
-
-
-
-
-

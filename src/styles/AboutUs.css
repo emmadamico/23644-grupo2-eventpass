@@ -58,7 +58,7 @@
 
 .card-about .card-body {
     color: var(--black-color);
-    text-align: justify;
+    text-align: left;
 }
 
 .card-about .card-footer {
@@ -91,49 +91,6 @@
 
 @media (max-width: 570px) {
     .card-about {
-=======
-.card-about .accordion-item {
-    background-color: transparent;
-}
-.card-about .accordion-button:focus {
-    box-shadow: 0 0 0 0.25rem rgba(12, 255, 0, 0.5);
-  }
-
-.card-about .accordion-body {
-    color: var(--white-color);
-} 
-
-.custom-accordion  {
-    font-size: 1.5rem;
-}
-
-.custom-accordion .accordion-header {
-    text-align: center;
-}
-  
-.custom-accordion .accordion-body {
-    color: var(--white-color);
-}
-
-  @media (max-width: 1024px){
-    .banner-about .title{
-        left: 30%;
-        top: 30%;
-  }
-}
-@media (max-width: 990px){
-    .banner-about .title{
-        left: 35%;
-  }
-}
-@media (max-width: 655px){
-    .banner-about .title{
-        left: 40%; 
-  }
-}
-@media (max-width: 570px){
-    .card-about{
-
         width: 100%;
         padding: 20% 0;
         border-radius: 0;
