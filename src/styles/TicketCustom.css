@@ -1,148 +1,138 @@
 /* encabezado */
-.encabezado{
-    margin: 10px;
-    margin-top: 15px;
-    padding: 5px 10px;
+.encabezado {
+  margin: 10px;
+  margin-top: 15px;
+  padding: 5px 10px;
 }
 
-.encabezado p{
-    color: #ffffff;
-    font-weight: bold;
+.encabezado p {
+  color: #ffffff;
+  font-weight: bold;
 }
-
 
 /* conteiner */
 
-.titulo-personalizar{
-    color: #ffffff;
-    padding: 6px 12px;
-    
+.titulo-personalizar {
+  color: #ffffff;
+  padding: 6px 12px;
 }
 
-.conteiner-personalizar{
-    background-color: rgba(90, 85, 85, 0);
-    backdrop-filter: blur(2px) brightness(0.7);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    margin: 3em;
-    padding: 2em;
-    border-radius: 10px;
+.conteiner-personalizar {
+  background-color: rgba(90, 85, 85, 0);
+  backdrop-filter: blur(2px) brightness(0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin: 3em;
+  padding: 2em;
+  border-radius: 10px;
 }
 
-@media(max-width:425px){
-    .conteiner-personalizar{
-        padding: 1rem;
-    }
-
+@media (max-width: 425px) {
+  .conteiner-personalizar {
+    padding: 1rem;
+  }
 }
-.imagenes{
-    padding: 2em;
+.imagenes {
+  padding: 2em;
 }
 
-.imagenes img{
-    object-fit: cover; 
-    width: 8em;
-    height: 8em;
-    border-radius: 10px;
-
+.imagenes img {
+  object-fit: cover;
+  width: 8em;
+  height: 8em;
+  border-radius: 10px;
 }
 
 .imagenes img:hover {
-    cursor: pointer; 
-    transform: scale(1.1);
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+@media (max-width: 425px) {
+  .imagenes img {
+    width: 2rem;
+    height: 2rem;
   }
-
-@media(max-width:425px){
-    .imagenes img{
-        width: 2rem;
-        height: 2rem;
-    }
 }
 
-.conteiner-mensaje{
-    margin-bottom: 1rem;
+.conteiner-mensaje {
+  margin-bottom: 1rem;
 }
-
 
 /* Contenedor personalizable */
 
 .fondo {
-    position: relative;
-    width: 70%; 
-    height: 70vh; 
-    overflow: hidden;
-    border-radius: 10px;
+  position: relative;
+  width: 70%;
+  height: 70vh;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
-@media(max-width:1060px){
-    .fondo {
-        width: 70%; 
-        height: 50vh;    
-    }   
+@media (max-width: 1060px) {
+  .fondo {
+    width: 70%;
+    height: 50vh;
+  }
 }
-
-
 
 .img-fondo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; 
-    position: absolute;
-    top: 0;
-    left: 0;
-    
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 .contenido-superpuesto {
-    position: relative;
-    z-index: 1; 
+  position: relative;
+  z-index: 1;
 }
-
 
 .contenido-superpuesto img {
-    width: 40%; 
-    height: auto; 
-    margin: 6rem 15rem 5rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 1.5);
+  width: 40%;
+  height: auto;
+  margin: 6rem 15rem 5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1.5);
 }
 
-@media(max-width:790px){
-    .contenido-superpuesto img{
-        width: 50%;
-        margin: 5rem 9rem 2rem;
-    }
+@media (max-width: 790px) {
+  .contenido-superpuesto img {
+    width: 50%;
+    margin: 5rem 9rem 2rem;
+  }
 }
 
-@media(max-width:425px){
-    .contenido-superpuesto img{
-        width: 70%;
-        margin: 5rem 3rem 2rem;
-    }
+@media (max-width: 425px) {
+  .contenido-superpuesto img {
+    width: 70%;
+    margin: 5rem 3rem 2rem;
+  }
 }
 
-.contenido-superpuesto p{
-    color: #ffffff;
-    font-weight: bold;
+.contenido-superpuesto p {
+  color: #ffffff;
+  font-weight: bold;
 }
 
 .contenido-superpuesto div {
-    padding: 5rem;
-    position: absolute;
-    color: white; 
-    font-size: 16px; 
+  padding: 5rem;
+  position: absolute;
+  color: white;
+  font-size: 16px;
 }
-
 
 /* compartir descargar */
-.texto-verde{
-    color: #0CFF00;
+.texto-verde {
+  color: #0cff00;
 }
-.descarga:hover{
-    color: #7ef818;
-    padding: 1rem;
-    border-radius: 10px;
-    border: solid #272925;
+.descarga:hover {
+  color: #7ef818;
+  padding: 1rem;
+  border-radius: 10px;
+  border: solid #272925;
 }
 
-.compartir{
-    background-color: black;
-    margin: 1rem;
+.compartir {
+  background-color: black;
+  margin: 1rem;
 }
