@@ -25,11 +25,8 @@ export function Rutas() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/mytickets" element={<Tickets />} />
       <Route path="/about" element={<AboutUs />} />
-      {/* <Route path="/mytickets/customticket" element={<customTicket/>} />  REVISAR */}
-      {/*Ruta de prueba*/}
-      <Route path="/customticket" element={<TicketCustom />} />
+      <Route path="/customticket/:ticketData" element={<TicketCustom />} />
       <Route path="/customerSupport" element={<CustomerSupport />} />
-
       <Route path="/faq" element={<FAQ />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
