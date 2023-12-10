@@ -24,7 +24,9 @@ export function TicketItem() {
   }, []);
 
   const ticketItems =
+
     ticketDataArray && ticketDataArray.length > 0 ? (
+
       ticketDataArray.map((ticketData) => (
         <section className="">
           <article
@@ -134,9 +136,11 @@ export function TicketItem() {
         </section>
       ))
     ) : (
+
       <article className="text-white">
         No hay datos de tickets disponibles(En construccion)
       </article>
+
     );
 
   return ticketItems;
