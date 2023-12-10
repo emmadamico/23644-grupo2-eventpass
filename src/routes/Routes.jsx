@@ -1,12 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
+import { LoginPasswordChange } from "../pages/LoginPasswordChange";
 import { Register } from "../pages/Register";
 import { FAQ } from "../pages/FAQ";
 import { NotFound } from "../pages/Error404";
 import { Profile } from "../pages/Profile";
 import { Tickets } from "../pages/Tickets";
-import { About } from "../pages/AboutUs";
+import { AboutUs } from "../pages/AboutUs";
 
 import Description from "../pages/Description";
 
@@ -24,11 +25,11 @@ export function Rutas() {
       <Route path="/description/:eventId" element={<Description />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/mytickets" element={<Tickets />} />
-      <Route path="/about" element={<About />} />
-      {/* <Route path="/mytickets/customticket" element={<customTicket/>} />  REVISAR */}
-      {/*Ruta de prueba*/}
-      <Route path="/customticket" element={<TicketCustom />} />
+      <Route path="/about" element={<AboutUs />} />
+      <Route path="/customticket/:ticketData" element={<TicketCustom />} />
       <Route path="/customerSupport" element={<CustomerSupport />} />
+
+      <Route path="/forgot-password" element={<LoginPasswordChange />}/>
 
       <Route path="/faq" element={<FAQ />} />
       <Route path="*" element={<NotFound />} />

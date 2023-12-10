@@ -6,10 +6,12 @@ import Container from "react-bootstrap/Container";
 import { Fav } from "./Fav";
 import { PagerButtons } from "./Pager";
 import "../styles/MusicEvents.css";
+
 export function MusicEvents() {
-  const elementos = 4;
-  //Paginador
+  const [elements, setElements] = useState(4);
   const [page, setPage] = useState(1);
+
+  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elements}&segmentId=KZFzniwnSyZfZ7v7nJ`;
 
   //Manejadores de paginador
   const handleIncrementPage = () => {
@@ -20,17 +22,61 @@ export function MusicEvents() {
     setPage(page > 1 ? page - 1 : page);
   };
 
-  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}&segmentId=KZFzniwnSyZfZ7v7nJ`;
+  // Maneja el llamado a la api y trae los datos
+  let { data, isPending, performFetch } = useFetch(url);
 
-  let { data, isPending, error, performFetch } = useFetch(url);
+  //Vuelve a llamar a la pai cuando cambia la url
 
-  //Ordena al azar los eventos
-  const shuffledEvents = data?._embedded?.events
-    ? [...data._embedded.events].sort(() => Math.random() * 10 - 5)
-    : [];
+  //Maneja la cantidad de elementos q devuelve el llamado a la api segun ancho de navegador
   useEffect(() => {
-    performFetch(url);
-  }, [url]);
+    let timeoutId;
+
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+
+      timeoutId = setTimeout(() => {
+        const windowWidth = window.innerWidth;
+        let newElements;
+
+        if (windowWidth <= 768) {
+          newElements = 1;
+        } else if (windowWidth >= 777 && windowWidth <= 991) {
+          newElements = 2;
+        } else if (windowWidth >= 992) {
+          newElements = 4;
+        }
+
+        setElements(newElements);
+      }, 500); // Ajusta el tiempo de espera según tus necesidades
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const [shouldFetch, setShouldFetch] = useState(true);
+
+  useEffect(() => {
+    if (shouldFetch) {
+      performFetch(url);
+      setShouldFetch(false);
+    }
+  }, [url, elements, shouldFetch, performFetch]);
+
+  // ...
+
+  useEffect(() => {
+    setShouldFetch(true);
+  }, [page, elements]);
+
+  console.log(url);
+  console.log(elements);
+  console.log(window.innerWidth);
   return (
     <>
       <Container>
@@ -91,7 +137,6 @@ export function MusicEvents() {
                               image.width === 640 && image.height === 360
                           )?.url || event.images[0].url
                         }
-                        className=""
                         fluid
                         rounded
                       />

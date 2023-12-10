@@ -9,18 +9,24 @@ import { PopularSports } from "./PopularSports";
 import "../styles/SportsEvents.css";
 
 export function SportsEvents() {
-  const elementos = 200;
   const [index, setIndex] = useState(0);
   const [filteredEvents, setFilteredEvents] = useState([]);
-  const [restEvents, setRestEvents] = useState([]);
-  const selectedSegmentId = "KZFzniwnSyZfZ7v7nJ";
   const [genreName, setGenreName] = useState("Basketball");
+
+  const elementos = 200;
+
+  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&size=${elementos}&segmentId=KZFzniwnSyZfZ7v7nE`;
+
+  let { data: events, isPending } = useFetch(url, [genreName]);
+  //console.log(isPending, error);
+  //console.log("Events:", events);
 
   const handleGenreName = (key) => {
     setGenreName(key);
     console.log(key);
   };
 
+  //Cambio la logica por defecto del componente buttos para recorrer los elementos
   const handleIncrementPage = () => {
     setIndex((prevIndex) =>
       prevIndex < filteredEvents.length - 1 ? prevIndex + 1 : prevIndex
@@ -31,33 +37,7 @@ export function SportsEvents() {
     setIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
   };
 
-  const url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&size=${elementos}&segmentId=KZFzniwnSyZfZ7v7nE`;
-
-  let {
-    data: events,
-    isPending,
-    error,
-    performFetch,
-  } = useFetch(url, [genreName]);
-  console.log(isPending, error);
-  console.log("Events:", events);
-
   useEffect(() => {
-    const genreNamesSet = new Set();
-
-    for (let key in events) {
-      if (events.hasOwnProperty(key)) {
-        const event = events[key];
-        event._embedded?.attractions[0]?.classifications.forEach(
-          (classification) => {
-            genreNamesSet.add(classification.genre?.name);
-          }
-        );
-      }
-    }
-
-    console.log("Nombre de genres:", genreNamesSet);
-
     const filteredEvents = events?._embedded?.events.filter((event) => {
       return event._embedded?.attractions[0]?.classifications.some(
         (classification) => {
@@ -67,18 +47,9 @@ export function SportsEvents() {
         }
       );
     });
-    const restEvents = events?._embedded?.events.filter((event) => {
-      return !filteredEvents.includes(event);
-    });
     setFilteredEvents(filteredEvents);
-    setRestEvents(restEvents);
-    console.log("Filtered Events: ", filteredEvents);
-    console.log("Rest Events: ", restEvents);
+    //console.log("Filtered Events: ", filteredEvents);
   }, [index, genreName, events]);
-
-  // const shuffledEvents = data?._embedded?.events
-  //   ? [...data._embedded.events].sort(() => Math.random() * 10 - 5)
-  //   : [];
 
   return (
     <Container className="px-0  mt-5 pt-5">
