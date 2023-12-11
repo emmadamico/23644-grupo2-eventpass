@@ -64,7 +64,7 @@ export function TicketCustom() {
     <>
       <Header />
       <MyNavbar />
-      <div>
+      <div className="vh-100">
         <div className="encabezado text-center">
           <p>
             Do you want to surprise someone with a ticket to this event? Gift a

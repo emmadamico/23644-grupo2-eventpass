@@ -169,7 +169,9 @@ export default function Events() {
                             See More
                           </button>
                         </Link>
-                        {isLoggedIn && <Fav isLoggedIn={isLoggedIn} />}
+                        {isLoggedIn && (
+                          <Fav isLoggedIn={isLoggedIn} eventFav={event} />
+                        )}
                       </div>
                     </div>
                     <div className=" z-1 rounded ">

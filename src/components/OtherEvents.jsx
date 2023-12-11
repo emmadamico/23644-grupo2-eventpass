@@ -110,7 +110,7 @@ export default function OtherEvents() {
                           See More
                         </button>
                       </Link>
-                      <Fav />
+                      <Fav eventFav={event} />
                     </div>
                   </div>
                   <div className=" z-1 rounded ">
