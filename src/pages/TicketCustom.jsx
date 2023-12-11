@@ -12,6 +12,7 @@ import "../styles/TicketItem.css";
 export function TicketCustom() {
   const [mensaje, setMensaje] = useState("Write your special message here");
   const [imgfondo, setImgfondo] = useState("../img/img5.jpg");
+  
 
   const [color, setColor] = useState("");
   const [size, setSize] = useState(20);
@@ -21,10 +22,13 @@ export function TicketCustom() {
 
   const tickets = JSON.parse(localStorage.getItem("ticketDataArray"));
   console.log(tickets);
+
   const selectedTicket = tickets.find(
     (ticket) => ticket.id === ticketData.substring(1)
   );
   console.log(selectedTicket);
+
+  
 
   function getRandomNumber() {
     const min = 22;
@@ -32,6 +36,8 @@ export function TicketCustom() {
     const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     return randomNumber;
   }
+
+  // Mensajes fondo y estilos
   const textomensaje = (e) => {
     setMensaje(e.target.value);
   };
@@ -52,7 +58,7 @@ export function TicketCustom() {
   };
 
   const descarga = (e) => {
-    html2canvas(document.querySelector("#exportar")).then(function (canvas) {
+    html2canvas(document.querySelector("#exportar"), { useCORS: true }).then(function (canvas) {
       let img = canvas.toDataURL("regaloImg/png");
       let link = document.createElement("a");
       link.download = "regalo.png";
@@ -60,6 +66,8 @@ export function TicketCustom() {
       link.click();
     });
   };
+  
+
   return (
     <>
       <Header />
@@ -205,7 +213,7 @@ export function TicketCustom() {
 
         <figure className=" fondo text-center m-auto" id="exportar">
           <img className="img-fondo" src={imgfondo} alt="" srcset="" />
-          <div className="">
+          <div className="ticket-content">
             <div className="row m-0 p-0 z-3 position-relative">
               <div className="col-lg-2"></div>
               <div className="col-12 col-lg-8">
@@ -257,6 +265,7 @@ export function TicketCustom() {
                       className="z-1 w-100"
                       fluid
                     />
+                   
                     <div className="position-absolute z-3 d-flex flex-column w-100 justify-content-center ticket__data-wrapper">
                       <div className="glass-bg p-0 py-1 py-lg-3">
                         <div className="row m-0 p-0 pb-2 mx-3 border-1 border-bottom border-white">
@@ -326,22 +335,22 @@ export function TicketCustom() {
           <ul className="list-unstyled d-flex flex-wrap gap-3 align-items-center">
             <li>
               <a href="http://" target="_blank" rel="noopener noreferrer">
-                <i className="bi bi-facebook fs-4" />
+                <i className="bi bi-facebook fs-4 grey-link" />
               </a>
             </li>
             <li>
               <a href="http://" target="_blank" rel="noopener noreferrer">
-                <i className="bi bi-instagram fs-4" />
+                <i className="bi bi-instagram fs-4 grey-link" />
               </a>
             </li>
             <li>
               <a href="http://" target="_blank" rel="noopener noreferrer">
-                <i className="bi bi-twitter fs-4"></i>
+                <i className="bi bi-twitter fs-4 grey-link"></i>
               </a>
             </li>
             <li>
               <a href="http://" target="_blank" rel="noopener noreferrer">
-                <i className="bi bi-whatsapp fs-4"></i>
+                <i className="bi bi-whatsapp fs-4 grey-link"></i>
               </a>
             </li>
           </ul>
