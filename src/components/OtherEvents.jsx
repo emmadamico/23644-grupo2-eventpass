@@ -5,15 +5,18 @@ import { Fav } from "./Fav";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import { PagerButtons } from "./Pager";
-
 import "../styles/OtherEvents.css";
 
 export default function OtherEvents() {
-  const elementos = 4;
+  const [elements, setElements] = useState(4);
   const [page, setPage] = useState(1);
-  let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elementos}`;
-  let { data, isPending, error, performFetch } = useFetch(url);
 
+  let url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elements}`;
+
+  // Maneja el llamado a la api y trae los datos
+  let { data, isPending, performFetch } = useFetch(url);
+
+  //Manejadores de paginador
   const handleIncrementPage = () => {
     setPage(page + 1);
     performFetch(url);
@@ -23,15 +26,38 @@ export default function OtherEvents() {
     setPage(page > 1 ? page - 1 : page);
     performFetch(url);
   };
+  url = `${process.env.REACT_APP_URL}${process.env.REACT_APP_CONSUMER_KEY}&page=${page}&size=${elements}`;
 
-  //console.log(data, isPending, error);
+  // Actualizar la URL cuando cambia el número de elementos o pagina
+  useEffect(() => {
+    performFetch(url);
+  }, [page, elements, performFetch, url]);
 
-  // Función para realizar el desplazamiento al principio de la página
+  useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      let newElements;
 
-  // const shuffledEvents = data?._embedded?.events
-  //   ? [...data._embedded.events].sort(() => Math.random() * 10 - 5)
-  //   : [];
-  useEffect(() => {}, [url]);
+      if (windowWidth <= 576) {
+        newElements = 1;
+      } else if (windowWidth >= 577 && windowWidth <= 768) {
+        newElements = 2;
+      } else {
+        newElements = 4;
+      }
+
+      setElements(newElements);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {}, [url, elements]);
   return (
     <>
       <Container>

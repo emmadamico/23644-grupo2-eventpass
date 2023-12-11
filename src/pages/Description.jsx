@@ -61,7 +61,7 @@ const Description = () => {
       <MyNavbar />
 
       <div className="description-container">
-        <div className=" position-relative">
+        <div className="description__header">
           {eventData ? (
             <img
               src={
@@ -76,7 +76,7 @@ const Description = () => {
             <p>Cargando imagen...</p>
           )}
 
-          <div className="position-absolute w-100 top-50 start-50 translate-middle">
+          <div className="w-100 description__title">
             <div className="container">
               <div className="row ">
                 <div className="col-lg-6 d-flex flex-column gap-4 px-3 py-3">
@@ -89,7 +89,7 @@ const Description = () => {
                     target="blank_"
                     className="btn btn-light rounded-pill w-25"
                   >
-                    <i class="bi bi-geo-alt me-2"></i>Ver en Mapa
+                    <i className="bi bi-geo-alt me-2"></i>Map
                   </a>
                 </div>
                 <div className="col-lg-6 mb-3">
@@ -144,7 +144,7 @@ const Description = () => {
         <div>
           {eventData ? (
             <div className="container text-white py-5">
-              <h1 className="mb-3">{eventData.name}</h1>
+              <h1 className="mb-3 d-none d-lg-block">{eventData.name}</h1>
               <p className="">
                 {eventData.promoter && eventData.promoter.description
                   ? eventData.promoter.description
@@ -153,10 +153,11 @@ const Description = () => {
               <hr />
               <div className="row">
                 <div className="col-lg-6">
-                  <h2 className="mb-3">
-                    <i class="bi bi-file-earmark-text me-2"></i>Description:
+                  <h2 className="versalita">
+                    {/* <i className="bi bi-file-earmark-text me-2"></i>*/}
+                    Description:
                   </h2>
-
+                  <div className="linea-color mb-3"></div>
                   {eventData.info ? (
                     <p>{eventData.info}</p>
                   ) : (
@@ -170,20 +171,20 @@ const Description = () => {
                     </p>
                   )}
 
-                  <p>
-                    <i class="bi bi-clock me-2"></i>Date:{" "}
+                  <span className="me-3">
+                    <i className="bi bi-clock me-2"></i>Date:{" "}
                     {eventData.dates.start.localDate}
-                  </p>
-                  <p>
-                    <i class="bi bi-calendar-check me-2"></i>Hora:{" "}
+                  </span>
+                  <span className="me-3">
+                    <i className="bi bi-calendar-check me-2"></i>Hour:{" "}
                     {eventData.dates.start.localTime}
-                  </p>
+                  </span>
 
                   {eventData.priceRanges ? (
-                    <div className="mb-3">
-                      <h2>
-                        <i class="bi bi-cash-coin me-2"></i>Price:
-                      </h2>
+                    <div className="mb-5">
+                      <span className="me-3">
+                        <i className="bi bi-cash me-2"></i>Price:
+                      </span>
                       <span>${eventData.priceRanges[0].min}</span> -{" "}
                       <span>${eventData.priceRanges[0].max}</span>{" "}
                       <span className="bg-success px-1">
@@ -193,21 +194,30 @@ const Description = () => {
                   ) : (
                     <p>
                       <span className="px-2 mb-5 bg-success">
-                        <i class="bi bi-cash me-2"></i>Free
+                        <i className="bi bi-cash me-2"></i>Free
                       </span>
                     </p>
                   )}
 
-                  <h2 className="mb-3">Escenario:</h2>
-
-                  <button
-                    type="button"
-                    className="btn btn-dark w-75 rounded rounded-5 py-2"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
+                  <h2 className="versalita mb-3">
+                    {/* <i className="bi bi-exclamation-circle me-2"></i>*/}
+                    Important:
+                  </h2>
+                  <div className="linea-color mb-3"></div>
+                  <p className="lh-1 mb-5">
+                    ** The purchase of a maximum of 4 tickets per user per
+                    operation is allowed. If purchases that do not comply with
+                    what is established are detected, they will be canceled.
+                  </p>
+                  <h3 className="versalita">Visit our section </h3>
+                  <div className="linea-color mb-3"></div>
+                  <Link
+                    to={"/faq"}
+                    className="btn btn__black-green rounded rounded-5 mb-5"
                   >
-                    Ver Ubicaciones
-                  </button>
+                    Frequent questions{" "}
+                    <i className="bi bi-box-arrow-up-right ms-2"></i>
+                  </Link>
 
                   <div
                     className="modal fade"
@@ -245,30 +255,27 @@ const Description = () => {
                   </div>
                 </div>
                 <div className="col-lg-6">
-                  <h2 className="mb-3">
-                    <i class="bi bi-geo-alt-fill me-2"></i>Ubicación:
+                  <h2 className="versalita">
+                    {/* <i className="bi bi-geo-alt-fill me-2"></i>*/}Location:
                   </h2>
+                  <div className="linea-color mb-3"></div>
                   <iframe
+                    className="mb-3"
                     title={eventData.name}
                     width="100%"
                     height="450"
                     style={{ border: "0" }}
                     src={`https://www.google.com/maps/embed/v1/view?key=AIzaSyDDe3ScyX4InbPvd1xtNjPM3SZraLXueRQ&center=${latitude},${longitude}&zoom=13`}
                   />
-                  <h2 className="mb-3">
-                    <i class="bi bi-exclamation-circle me-2"></i>Importante:
-                  </h2>
 
-                  <small className=" p-0 mb-0 lh-1">
-                    ** Se permite la compra de un máximo de 4 entradas por
-                    usuario y operación. En caso de detectar compras que no
-                    cumplan con lo establecido, las mismas serán dadas de baja.
-                  </small>
-                  <h3 className="mt-3">Visita nuestro apartado de </h3>
-                  <Link to={"/faq"}>
-                    Preguntas Frecuentes{" "}
-                    <i class="bi bi-box-arrow-up-right ms-2"></i>
-                  </Link>
+                  <button
+                    type="button"
+                    className="btn btn__black-green rounded rounded-5 py-2"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                  >
+                    <i className="bi bi-zoom-in me-2"></i>Stage Locations
+                  </button>
                 </div>
               </div>
             </div>
@@ -276,7 +283,9 @@ const Description = () => {
             <p>Cargando detalles del evento...</p>
           )}
         </div>
-        <OtherEvents />
+        <div className="otherEventsContainer">
+          <OtherEvents />
+        </div>
       </div>
 
       <Footer />

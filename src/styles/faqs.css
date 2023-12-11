@@ -13,21 +13,12 @@
     font-size: 2em;
     font-family: 'montserrat', sans-serif;
     font-weight: bold;
-    font-variant: small-caps;
 }
 /*Se estiliza section*/
-.faqs{
-    background-image: url(../../public/background.png);
-    background-repeat: no-repeat;
-    background-size:cover;
-}
 .card-faq{
     width: 90%;
     height: auto;
     border-radius: 50px;
-    background-color: rgba(90, 85, 85, 0);
-    backdrop-filter: blur(2px) brightness(0.7);
-    border: 1px solid rgba(255, 255, 255, 0.12);
     position: relative;
     top: -180px;
     padding: 6rem;
@@ -53,11 +44,11 @@
     color: var(--white-color);
 } 
 
-  @media (max-width: 1024px){
+@media (max-width: 1024px){
     .banner-faq .title{
         left: 30%;
         top: 30%;
-  }
+}
 }
 @media (max-width: 990px){
     .banner-faq .title{

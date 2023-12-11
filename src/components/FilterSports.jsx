@@ -4,7 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 export function FilterSports({ onSegmentClick }) {
   let url = `https://app.ticketmaster.com/discovery/v2/classifications/KZFzniwnSyZfZ7v7nE.json?apikey=${process.env.REACT_APP_CONSUMER_KEY}`;
 
-  const { data, isPending, error } = useFetch(url);
+  const { data } = useFetch(url);
 
   //console.log(selectedSegmentId);
   return (
@@ -13,7 +13,7 @@ export function FilterSports({ onSegmentClick }) {
         <NavLink
           className="versalita Link px-2 px-md-0"
           activeClassName=""
-          onClick={() => onSegmentClick("todos")} // Puedes asignar cualquier id que desees, en este caso, estoy utilizando "todos"
+          onClick={() => onSegmentClick("todos")}
         >
           All
         </NavLink>

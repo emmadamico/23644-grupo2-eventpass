@@ -4,13 +4,13 @@ import "../styles/Footer.css";
 export function Footer() {
   return (
     <>
-      <footer className="footer__bg w-100  mt-5 border-top border-1 border-dark">
+      <footer className="footer__bg w-100  mt-5 border-top border-1 border-dark bg-black">
         <section className="container py-4 ">
           <div className="row m-0 p-0">
             <article className="col-12 col-md-6 col-lg-4 order-1 ">
               <Link
                 to={"/"}
-                className="d-flex align-items-center justify-content-center"
+                className=" d-flex align-items-center justify-content-center"
               >
                 <img
                   src="/logoEventPass.png"
@@ -23,13 +23,13 @@ export function Footer() {
               <h5 className="text-white">Follow Us</h5>
               <div className="d-flex align-items-center gap-4 mt-3">
                 <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-facebook fs-4" />
+                  <i className="bi bi-facebook fs-4 grey-link" />
                 </a>
                 <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-instagram fs-4" />
+                  <i className="bi bi-instagram fs-4 grey-link" />
                 </a>
                 <a href="http://" target="_blank" rel="noopener noreferrer">
-                  <i className="bi bi-twitter fs-4"></i>
+                  <i className="bi bi-twitter fs-4 grey-link"></i>
                 </a>
               </div>
             </article>
@@ -37,7 +37,7 @@ export function Footer() {
               <Link to={"/about"} className="Link fs-5 ">
                 About Us
               </Link>
-              <Link to={"#"} className="Link fs-5">
+              <Link to={"/customerSupport"} className="Link fs-5">
                 Customer Support
               </Link>
               <Link to={"/faq"} className="Link fs-5">

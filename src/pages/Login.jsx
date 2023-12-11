@@ -1,70 +1,132 @@
 
-import React, { useState } from 'react';
-import { Form, Button, Row, Col } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Form, Button, Row, Col, Modal } from 'react-bootstrap';
 import { MyNavbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
+import { LoginPasswordChange } from '../pages/LoginPasswordChange'; 
+import Swal from 'sweetalert2';
+import '../App.css';
+import '../styles/Login.css';
 
-import "../App.css";
-import "../styles/Login.css";
+
+
 
 export function Login() {
+  
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  
+  const [showPasswordChangeForm, setShowPasswordChangeForm] = useState(false);
 
-  const [LooggedIn, setLoggedIn] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+  useEffect(() => {
+    const storedEmail = localStorage.getItem('email');
+    const storedPassword = localStorage.getItem('password');
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "email") {
-      setEmail(value);
-    } else if (name === "password") {
-      setPassword(value);
+    if (storedEmail && storedPassword) {
+      setEmail(storedEmail);
+      setPassword(storedPassword);
     }
-  };
+  }, []);
 
-  const handleLogin = () => {
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (!email || !password) {
+      Swal.fire({
+        title: 'ERROR',
+        text: 'Please, enter your credentials.',
+        icon: 'error',
+        confirmButtonText: 'Close',
+      });
+    }
+
     if (email && password) {
-      setLoggedIn(true);
-    } else {
-      alert("Please, enter your email and password");
+      try {
+        const response = await fetch('http://localhost:5000/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        });
+        const data = await response.json();
+
+        if (data.error || data.errors) {
+          Swal.fire({
+            title: 'ERROR',
+            text: 'Please, verify your credentials',
+            icon: 'error',
+            confirmButtonText: 'OK',
+          });
+        }
+
+        
+
+        if (data.msg) {
+          localStorage.setItem('email', email);
+          localStorage.setItem('firstName', data.name)
+          localStorage.setItem('lastName', data.last)
+          localStorage.setItem('LoggedIn', true);
+
+          window.scrollTo(0, 0);
+          
+          navigate('/');
+        }
+      } catch (error) {
+        console.error('Error en la solicitud:', error);
+      }
     }
   };
+   
 
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();        
+       
+        setShowModal(false); 
+        setShowPasswordChangeForm(true);
+       navigate('/forgot-password');   
+    
+  };
 
   return (
     <div>
       <MyNavbar />
+
       <div className="body-container">
+
         <div className="form-login form-container mx-auto flex-column justify-content-center align-items-center mt-5">
           <div className="row justify-content-center align-items-center">
             <div className="col-md-8">
-
               <div
-                className="cardgral card p-7"
+                className="cardgral card p-7 mt-5 mb-5"
                 style={{
-                  borderRadius: "1rem",
-                  textAlign: "center",
-                  maxWidth: "600px",
-                  margin: "auto",
+                  borderRadius: '1rem',
+                  textAlign: 'center',
+                  maxWidth: '600px',
+                  margin: 'auto',
                 }}
               >
-                <div className="card-body">
-                  <h3 className="mb-4">LOGIN IN TO MY ACCOUNT</h3>
-                  <Form>
+                <div className="card-body glass-bg" style={{ borderRadius: '50px' }}>
 
+                <h3 className="mb-4" >LOGIN TO MY ACCOUNT</h3>
+
+                  <Form>
                     <Form.Group as={Row} className="mb-3">
-                      <Form.Label column sm="3">
+                      <Form.Label column sm="12" md="12" lg="12">
                         E-mail
                       </Form.Label>
-                      <Col sm="9">
+                      <Col sm="12" md="12" lg="12">
                         <Form.Control
                           type="email"
                           placeholder="Enter your email"
                           className="py-2"
-
-                          style={{ borderRadius: "50px" }}
-
+                          style={{ borderRadius: '50px' }}
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           required
@@ -73,17 +135,15 @@ export function Login() {
                     </Form.Group>
 
                     <Form.Group as={Row} className="mb-3">
-                      <Form.Label column sm="3">
+                      <Form.Label column sm="12" md="12" lg="12">
                         Password
                       </Form.Label>
-                      <Col sm="9">
+                      <Col sm="12" md="12" lg="12">
                         <Form.Control
                           type="password"
                           placeholder="Enter your password"
                           className="py-2"
-
-                          style={{ borderRadius: "50px" }}
-
+                          style={{ borderRadius: '50px' }}
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                           required
@@ -96,38 +156,25 @@ export function Login() {
                         <Button
                           variant="light"
                           type="submit"
-                          className="w-100 py-2"
-
-                          style={{ borderRadius: "50px" }}
-
+                          className="w-25 py-2"
+                          style={{ borderRadius: '50px' }}
+                          onClick={handleLogin}
                         >
                           Login
                         </Button>
-                      </Col>
-
-                      <Col className="d-flex align-items-center">
-
-                        <Form.Group
-                          controlId="formBasicCheckbox"
-                          className="mb-0"
-                        >
-       <Form.Check
-                            type="checkbox"
-                            label="Recordarme"
-                            checked={rememberMe}
-                            onChange={() => setRememberMe(!rememberMe)}
-                          />
-                        </Form.Group>
                       </Col>
                     </Row>
                   </Form>
 
                   <div className="row mt-3 d-flex justify-content-center">
                     <div className="row mt-3">
-                      <a className="forget" href="/">
+                      <a
+                        className="forget"
+                        href="#"
+                        onClick={() => setShowModal(true)}
+                      >
                         Did you forget your password?
                       </a>
-
                     </div>
                   </div>
                 </div>
@@ -138,6 +185,57 @@ export function Login() {
       </div>
 
       <Footer />
+
+      
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Did you forget your password?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleForgotPassword}>
+            <Form.Group as={Row} className="mb-3">
+              <Form.Label column sm="12" md="12" lg="12">
+                Enter your email
+              </Form.Label>
+              <Col sm="12" md="12" lg="12">
+                <Form.Control
+                  type="email"
+                  className="py-2"
+                  style={{ borderRadius: '50px' }}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </Col>
+            </Form.Group>
+            <Button
+            variant="secondary"
+            style={{ borderRadius: '50px' }}
+            onClick={() => setShowModal(false)}
+          >
+            Close
+          </Button>
+          <Button
+              className="boton-modal"
+              variant="primary"
+              style={{
+                backgroundColor: 'var(--link-color)',
+                border: 'none',
+                borderRadius: '50px',
+              }}
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
+        </Modal.Body>
+        
+          
+      
+        
+      </Modal>
+
+     
     </div>
   );
 }

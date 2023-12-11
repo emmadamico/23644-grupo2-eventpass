@@ -22,13 +22,11 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
-
   cursor: pointer;
 }
 .sports__card-bg2:hover {
   transition: all 0.5s ease-in-out;
   background-image: url(/public/basket_player.jpg);
-
   background-position: bottom;
 }
 
@@ -55,5 +53,17 @@
 .sports__card-bg4:hover {
   transition: all 0.5s ease-in-out;
   background-image: url(/public/jugador-portero-hockey-sobre-hielo-meta-accion-red-neuronal-generada-ai.jpg);
-  background-position: right;
+  background-position: top;
+}
+
+@media (min-width: 1023px) and (max-width: 1439px) {
+  .popularSports__wrapper {
+    min-height: 22rem;
+  }
+}
+
+@media (min-width: 767px) and (max-width: 1022px) {
+  .popularSports__wrapper {
+    min-height: 16rem;
+  }
 }
