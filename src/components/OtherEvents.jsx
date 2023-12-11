@@ -65,7 +65,10 @@ export default function OtherEvents() {
           {isPending ? (
             "loading"
           ) : (
-            <h3 className="text-white versalita">More Events</h3>
+            <article>
+              <h3 className="text-white versalita">More Events</h3>
+              <div className="linea-color mb-3"></div>
+            </article>
           )}
           <PagerButtons
             handleDecrementPage={handleDecrementPage}

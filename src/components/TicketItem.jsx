@@ -129,12 +129,12 @@ export function TicketItem() {
             </article>
           </div>
           <div className="col-12 col-md-3 p-0 m-0 d-flex flex-column justify-content-center">
-            <p className="p-0 m-0 versalita text-white fw-bold fs-6 mb-3">
-              Lorem, ipsum dolor.
+            <p className="p-0 m-0 versalita text-white fw-bold mb-1 ticket__name">
+              {ticketData.name}
             </p>
             <p>
-              <small className="text-white">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              <small className="text-white lh-sm">
+                Download or customize your ticket, and enjoy your event
               </small>
             </p>
             <div className="d-flex align-items-center justify-content-center">

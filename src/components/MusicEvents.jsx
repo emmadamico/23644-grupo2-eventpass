@@ -81,7 +81,10 @@ export function MusicEvents() {
     <>
       <Container>
         <div className="d-flex align-items-center justify-content-between mt-5 pt-5 mb-2">
-          <h3 className="text-white versalita">Concerts</h3>
+          <article>
+            <h3 className="text-white versalita">Concerts</h3>
+            <div className="linea-color mb-3"></div>
+          </article>
           <PagerButtons
             handleDecrementPage={handleDecrementPage}
             handleIncrementPage={handleIncrementPage}

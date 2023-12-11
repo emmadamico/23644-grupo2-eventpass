@@ -54,7 +54,10 @@ export function SportsEvents() {
   return (
     <Container className="px-0  mt-5 pt-5">
       <div className="d-flex align-items-center justify-content-between p-0 mb-3">
-        <h3 className="text-white versalita">Most Popular Sports</h3>
+        <article>
+          <h3 className="text-white versalita">Most Popular Sports</h3>
+          <div className="linea-color mb-3"></div>
+        </article>
         <PagerButtons
           handleDecrementPage={handleDecrementPage}
           handleIncrementPage={handleIncrementPage}
