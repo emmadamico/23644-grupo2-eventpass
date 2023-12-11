@@ -1,16 +1,11 @@
-
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Row, Col, Modal } from 'react-bootstrap';
 import { MyNavbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
-import { LoginPasswordChange } from '../pages/LoginPasswordChange'; 
 import Swal from 'sweetalert2';
 import '../App.css';
 import '../styles/Login.css';
-
-
-
 
 export function Login() {
   
@@ -52,7 +47,7 @@ export function Login() {
           },
           body: JSON.stringify({
             email: email,
-            password: password,
+            password: password
           }),
         });
         const data = await response.json();
@@ -65,8 +60,6 @@ export function Login() {
             confirmButtonText: 'OK',
           });
         }
-
-        
 
         if (data.msg) {
           localStorage.setItem('email', email);
@@ -87,11 +80,46 @@ export function Login() {
 
   const handleForgotPassword = async (e) => {
     e.preventDefault();        
-       
-        setShowModal(false); 
-        setShowPasswordChangeForm(true);
-       navigate('/forgot-password');   
     
+    if (email) {
+      try {
+        const response = await fetch('http://localhost:5000/auth/getUserSecQuestion/'+ email, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
+        const data = await response.json();
+
+        if (data.error) {
+          Swal.fire({
+            title: 'ERROR',
+            text: 'User not found!',
+            icon: 'error',
+            confirmButtonText: 'Close',
+          });
+        }
+
+        if (data.errors) {
+          Swal.fire({
+            title: 'ERROR',
+            text: 'Sorry, something was wrong',
+            icon: 'error',
+            confirmButtonText: 'Close',
+          });
+        }
+      
+        if (data.msg) {
+          localStorage.setItem('selectedSecurityQuestion', data.selectedSecurityQuestion);
+          localStorage.setItem('email', email);
+          setShowModal(false); 
+          setShowPasswordChangeForm(true);
+          navigate('/forgot-password');
+        }
+      } catch (error) {
+        console.error('Error en la solicitud:', error);
+      }
+    } 
   };
 
   return (
@@ -228,14 +256,8 @@ export function Login() {
               Submit
             </Button>
           </Form>
-        </Modal.Body>
-        
-          
-      
-        
+        </Modal.Body> 
       </Modal>
-
-     
     </div>
   );
 }
