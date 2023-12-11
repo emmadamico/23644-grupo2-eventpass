@@ -29,7 +29,7 @@ export function Rutas() {
       <Route path="/customticket/:ticketData" element={<TicketCustom />} />
       <Route path="/customerSupport" element={<CustomerSupport />} />
 
-      <Route path="/forgot-password" element={<LoginPasswordChange />}/>
+      <Route path="/forgot-password" element={<LoginPasswordChange />} />
 
       <Route path="/faq" element={<FAQ />} />
       <Route path="*" element={<NotFound />} />
