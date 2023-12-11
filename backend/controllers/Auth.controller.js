@@ -9,7 +9,7 @@ export const register = async (req, res) => {
     password,
     selectedSecurityQuestion,
     termsAccepted,
-    securityAnswers,
+    securityAnswers
   } = req.body;
   try {
     //Alternativa buscando por email
@@ -24,7 +24,7 @@ export const register = async (req, res) => {
       password,
       selectedSecurityQuestion,
       termsAccepted,
-      securityAnswers,
+      securityAnswers
     });
 
     await user.save();
@@ -91,7 +91,7 @@ export const updateUserInfo = async (req, res) => {
     password,
     newPassw,
     repeatPassw,
-    securityAnswers,
+    securityAnswers
   } = req.body;
   try {
     let user = "";
@@ -123,10 +123,41 @@ export const updateUserInfo = async (req, res) => {
 
       await User.updateOne({ email }, { $set: { password: user.password } });
       return res.status(200).json({ msg: "User password updated!" });
+    } else if (user && !password && securityAnswers) {
+      if (securityAnswers !== user.securityAnswers) {
+        return res
+          .status(403)
+          .json({ errorAnswer: "Incorrect answer" });
+      }
+      if (newPassw != repeatPassw) {
+        return res
+          .status(403)
+          .json({ errorNewPassw: "Passwords do not match" });
+      }
+      const salt = await bcryptjs.genSalt(10);
+      user.password = await bcryptjs.hash(newPassw, salt);
+
+      await User.updateOne({ email }, { $set: { password: user.password } });
+      return res.status(200).json({ msg: "User password updated!" });
     } else {
       return res.status(404).json({ error: "Sorry, something was wrong!" });
     }
   } catch (error) {
     return res.status(500).json({ error: "Server Error!" });
+  }
+};
+
+export const getUserSecQuestion = async (req, res) => {
+  try {
+    const email  = req.params.email;
+    let user = '';
+    user = await User.findOne({email})
+    if(user){
+      return res.status(200).json({ msg: "OK", selectedSecurityQuestion: user.selectedSecurityQuestion});
+    } else {
+      return res.status(404).json({ error: "User not found!" });
+    }
+  } catch (error) {
+    return res.status(500).json({error: "Server error!"});
   }
 };
