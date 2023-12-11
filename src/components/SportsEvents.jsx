@@ -110,7 +110,7 @@ export function SportsEvents() {
                             See More
                           </button>
                         </Link>
-                        <Fav />
+                        <Fav eventFav={filteredEvents[index]} />
                       </div>
                     </div>
                     <div className="px-0">
