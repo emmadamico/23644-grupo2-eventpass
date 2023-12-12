@@ -8,14 +8,37 @@ import html2canvas from "html2canvas";
 import React, { useState } from "react";
 import "../styles/TicketCustom.css";
 import "../styles/TicketItem.css";
+import "../styles/TicketItem.css";
 
 export function TicketCustom() {
   const [mensaje, setMensaje] = useState("Write your special message here");
   const [imgfondo, setImgfondo] = useState("../img/img5.jpg");
 
   const [color, setColor] = useState("");
+  const [imgfondo, setImgfondo] = useState("../img/img5.jpg");
+
+  const [color, setColor] = useState("");
   const [size, setSize] = useState(20);
 
+  const { ticketData } = useParams();
+  console.log(ticketData);
+
+  const tickets = JSON.parse(localStorage.getItem("ticketDataArray"));
+  console.log(tickets);
+
+  const selectedTicket = tickets.find(
+    (ticket) => ticket.id === ticketData.substring(1)
+  );
+  console.log(selectedTicket);
+
+  function getRandomNumber() {
+    const min = 22;
+    const max = 138;
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    return randomNumber;
+  }
+
+  // Mensajes fondo y estilos
   const { ticketData } = useParams();
   console.log(ticketData);
 
