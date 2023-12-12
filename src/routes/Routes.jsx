@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { Home } from "../pages/Home";
 import { Login } from "../pages/Login";
+import { LoginPasswordChange } from "../pages/LoginPasswordChange";
 import { Register } from "../pages/Register";
 import { FAQ } from "../pages/FAQ";
 import { NotFound } from "../pages/Error404";
@@ -25,10 +26,10 @@ export function Rutas() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/mytickets" element={<Tickets />} />
       <Route path="/about" element={<AboutUs />} />
-      {/* <Route path="/mytickets/customticket" element={<customTicket/>} />  REVISAR */}
-      {/*Ruta de prueba*/}
-      <Route path="/customticket" element={<TicketCustom />} />
+      <Route path="/customticket/:ticketData" element={<TicketCustom />} />
       <Route path="/customerSupport" element={<CustomerSupport />} />
+
+      <Route path="/forgot-password" element={<LoginPasswordChange />} />
 
       <Route path="/faq" element={<FAQ />} />
       <Route path="*" element={<NotFound />} />

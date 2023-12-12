@@ -1,0 +1,128 @@
+.ticket__bg {
+  background-image: url(/public/patternpad.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  max-height: fit-content;
+}
+
+.ticket__name {
+  font-size: 1.1rem !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ticket__dates {
+  font-size: 0.65rem !important;
+  font-weight: bold;
+  text-wrap: balance;
+}
+
+.ticket__stadium {
+  font-size: 0.9rem;
+}
+.ticket__data-wrapper {
+  height: 100%;
+}
+
+.ticket__EP-url {
+  color: var(--green-light-color);
+  font-style: italic;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(-360);
+}
+
+.border__green {
+  border-left: solid 2px var(--green-light-color) !important;
+}
+
+.qr__container {
+  max-width: 100%;
+  width: 100%;
+  max-height: auto;
+}
+
+.qr {
+  max-width: 100%;
+  height: auto;
+}
+
+.ticket__name-secondary {
+  font-size: 0.6rem;
+}
+
+.ticket__dates-secondary {
+  font-size: 0.48rem;
+  font-weight: bold;
+  text-wrap: balance;
+}
+
+/* .ticket__item {
+  min-height: 12rem;
+} */
+
+@media (max-width: 1025px) {
+  .ticket__name {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ticket__stadium {
+    font-size: 0.65rem;
+  }
+  .ticket__dates {
+    font-size: 0.45rem;
+    font-weight: bold;
+    text-wrap: balance;
+  }
+  .ticket__name-secondary {
+    font-size: 0.5rem;
+  }
+
+  .ticket__dates-secondary {
+    font-size: 0.38rem;
+  }
+}
+
+@media (max-width: 769px) {
+  .ticket__name-secondary {
+    font-size: 0.65rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ticket__dates-secondary {
+    font-size: 0.5rem;
+  }
+  .qr {
+    padding: 0rem !important;
+  }
+}
+
+@media (max-width: 426px) {
+  .ticket__name {
+    font-size: 0.7rem !important;
+  }
+  .ticket__dates {
+    font-size: 0.5rem !important;
+  }
+  .ticket__name-secondary {
+    font-size: 0.65rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ticket__dates-secondary {
+    font-size: 0.4rem;
+  }
+  .qr {
+    padding: 0rem !important;
+  }
+}

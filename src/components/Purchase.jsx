@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Swal from 'sweetalert2';
-import '../styles/purchase.css';
+import React, { useState } from "react";
+import Swal from "sweetalert2";
+import "../styles/purchase.css";
 
 const Purchase = ({ eventData }) => {
-  console.log('Rendering Purchase');
+  console.log("Rendering Purchase");
   const formatEventDate = (dateString) => {
     const eventDate = new Date(dateString);
     return eventDate.toLocaleDateString("en-EN", {
@@ -28,24 +28,29 @@ const Purchase = ({ eventData }) => {
 
   const handlePayment = () => {
     Swal.fire({
-      title: 'Payment successful!',
+      title: "Payment successful!",
       html: `Congratulations! You've just bought ${count} tickets.
       <br>You can check out your tickets <a href="/mytickets">here</a>.`,
-      icon: 'success',
-      confirmButtonText: 'Great'
+      icon: "success",
+      confirmButtonText: "Great",
     });
+
+    // Guarda cada compra en un array en localsotrage
+    const ticketDataArray =
+      JSON.parse(localStorage.getItem("ticketDataArray")) || [];
+    ticketDataArray.push(eventData);
+    localStorage.setItem("ticketDataArray", JSON.stringify(ticketDataArray));
+
+    //vuelve a la pagina de inicio luego de efectuar la compra
+    // window.location.href = "/";
   };
   return (
     <div className="col-lg-6 mb-3 w-100 ">
       <div className="text-white glass-bg rounded-4 px-3 py-3 flip-in-ver-left">
-        <h3>
-        {eventData ? eventData.name : "Event Name"}
-        </h3>
+        <h3>{eventData ? eventData.name : "Event Name"}</h3>
         <div className="my-2">
           <h4 className="p-0 m-0">
-          {eventData
-            ? formatEventDate(eventData.dates.start.localDate)
-            : ""}
+            {eventData ? formatEventDate(eventData.dates.start.localDate) : ""}
           </h4>
           <p className="p-0 m-0 fw-bold">
             {eventData && eventData.priceRanges
@@ -53,24 +58,29 @@ const Purchase = ({ eventData }) => {
               : "Price"}
           </p>
         </div>
-          <p className="p-0 m-0 fw-bold">
-            {eventData && eventData._embedded?.venues[0]?.city.name
-              ? eventData._embedded.venues[0].city.name +
-                ", " +
-                eventData._embedded.venues[0].state.name
-              : "city"}
-          </p>
-          <div className='d-flex justify-content-center align-items-center flex-column mb-3 mt-3'>
+        <p className="p-0 m-0 fw-bold">
+          {eventData && eventData._embedded?.venues[0]?.city.name
+            ? eventData._embedded.venues[0].city.name +
+              ", " +
+              eventData._embedded.venues[0].state.name
+            : "city"}
+        </p>
+        <div className="d-flex justify-content-center align-items-center flex-column mb-3 mt-3">
           <p>Select the number of tickets</p>
-            <div>
-              <button onClick={decrementCount} className='btn btn-dark me-4'>-</button>
-              <span className="me-4">{count}</span>
-              <button onClick={incrementCount}className='btn btn-dark'>+</button>
-            </div>
+          <div>
+            <button onClick={decrementCount} className="btn btn-dark me-4">
+              -
+            </button>
+            <span className="me-4">{count}</span>
+            <button onClick={incrementCount} className="btn btn-dark">
+              +
+            </button>
           </div>
+        </div>
 
         <button
-          className="btn btn-dark w-100 rounded rounded-5 py-2"   onClick={handlePayment}
+          className="btn btn-dark w-100 rounded rounded-5 py-2"
+          onClick={handlePayment}
         >
           Pay
         </button>
