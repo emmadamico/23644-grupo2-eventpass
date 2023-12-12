@@ -38,11 +38,11 @@ export default function OtherEvents() {
       const windowWidth = window.innerWidth;
       let newElements;
 
-      if (windowWidth <= 576) {
+      if (windowWidth <= 768) {
         newElements = 1;
-      } else if (windowWidth >= 577 && windowWidth <= 768) {
+      } else if (windowWidth >= 777 && windowWidth <= 991) {
         newElements = 2;
-      } else {
+      } else if (windowWidth >= 992) {
         newElements = 4;
       }
 
