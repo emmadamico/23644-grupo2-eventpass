@@ -67,11 +67,13 @@ export function FavEvents() {
     ) : (
       <article className="text-white mt-5">
         <h3 className="versalita text-white fs-4 text-center">
-          Yours favorite events in one place...
+          Don´t have any events in favorites..
         </h3>
         <div className="d-flex align-items-center justify-content-end">
           <Link to={"/"} className="Link">
-            <button className="btn ">Find More Events</button>
+            <button className="btn btn-dark rounded-pill">
+              Find More Events
+            </button>
           </Link>
         </div>
       </article>

@@ -11,61 +11,107 @@ export function PopularSports(props) {
   };
 
   return (
-    <article className="col-12 col-md-4 col-lg-4 p-0 m-0 popularSports__wrapper">
-      <div className="row p-0 m-0 height__half">
-        <div
-          className="col-6 p-0 m-0 sports__card-bg1"
-          key={"Football"}
-          onClick={() => handleKeyValue("Football")}
-        >
+    <>
+      <article className="col-12 col-md-4 col-lg-4 d-none d-md-block p-0 m-0 popularSports__wrapper">
+        <div className="row p-0 m-0 height__half">
           <div
-            className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold"
+            className="col-6 p-0 m-0 sports__card-bg1"
+            key={"Football"}
             onClick={() => handleKeyValue("Football")}
           >
-            American Football
+            <div
+              className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold"
+              onClick={() => handleKeyValue("Football")}
+            >
+              American Football
+            </div>
+          </div>
+          <div
+            className="col-6 p-0 m-0 sports__card-bg2"
+            key={"Basketball"}
+            keyvalue={"Basketball"}
+            onClick={() => handleKeyValue("Basketball")}
+          >
+            <div className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold">
+              Basketball
+            </div>
           </div>
         </div>
         <div
-          className="col-6 p-0 m-0 sports__card-bg2"
+          className="row p-0 m-0 height__half"
           key={"Basketball"}
-
           keyvalue={"Basketball"}
-
-          onClick={() => handleKeyValue("Basketball")}
         >
-          <div className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold">
-            Basketball
+          <div
+            className="col-6 p-0 m-0 sports__card-bg3"
+            onClick={() => handleKeyValue("Baseball")}
+          >
+            <div className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold">
+              Baseball
+            </div>
+          </div>
+          <div
+            className="col-6 p-0 m-0 sports__card-bg4"
+            key={"Hockey"}
+            keyvalue={"Hockey"}
+            onClick={() => handleKeyValue("Hockey")}
+          >
+            <div className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold">
+              Hockey
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        className="row p-0 m-0 height__half"
-        key={"Basketball"}
-
-        keyvalue={"Basketball"}
-
-      >
+      </article>
+      <article className="col-12 col-md-4 col-lg-4 d-block d-md-none p-0 m-0 popularSports__wrapper">
+        <div className="row p-0 m-0 ">
+          <div
+            className="col-6 p-0 m-0 sports__card-bg1"
+            key={"Football"}
+            onClick={() => handleKeyValue("Football")}
+          >
+            <div
+              className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold"
+              onClick={() => handleKeyValue("Football")}
+            >
+              American Football
+            </div>
+          </div>
+          <div
+            className="col-6 p-0 m-0 sports__card-bg2"
+            key={"Basketball"}
+            keyvalue={"Basketball"}
+            onClick={() => handleKeyValue("Basketball")}
+          >
+            <div className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold">
+              Basketball
+            </div>
+          </div>
+        </div>
         <div
-          className="col-6 p-0 m-0 sports__card-bg3"
-          onClick={() => handleKeyValue("Baseball")}
+          className="row p-0 m-0 "
+          key={"Basketball"}
+          keyvalue={"Basketball"}
         >
-          <div className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold">
-            Soccer
+          <div
+            className="col-6 p-0 m-0 sports__card-bg3"
+            onClick={() => handleKeyValue("Baseball")}
+          >
+            <div className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold">
+              Baseball
+            </div>
+          </div>
+          <div
+            className="col-6 p-0 m-0 sports__card-bg4"
+            key={"Hockey"}
+            keyvalue={"Hockey"}
+            onClick={() => handleKeyValue("Hockey")}
+          >
+            <div className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold">
+              Hockey
+            </div>
           </div>
         </div>
-        <div
-          className="col-6 p-0 m-0 sports__card-bg4"
-          key={"Hockey"}
-
-          keyvalue={"Hockey"}
-
-          onClick={() => handleKeyValue("Hockey")}
-        >
-          <div className="versalita text-white glass-bg w-100 px-2 py-1 fw-bold">
-            Hockey
-          </div>
-        </div>
-      </div>
-    </article>
+      </article>
+    </>
   );
 }
