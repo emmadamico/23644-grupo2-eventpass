@@ -42,20 +42,15 @@ export function MyNavbar() {
             <ul className="nav" id="navBar__Collapse">
               {isLoggedIn === "true" ? (
                 <>
-                  <li className="nav-item ticket__navbar">
+                  <li className="nav-item">
                     <Link
-                     
                       to={"/mytickets"}
-                     
-                      className="nav-link  d-flex align-items-center gap-2  d-flex align-items-center gap-2 Link ticket__navbar"
-                    
+                      className="nav-link  d-flex align-items-center gap-2 Link"
                     >
-                      <p className="m-0 p-0"><p className="m-0 p-0 ">My Tickets</p>
-                      <i class="bi bi-ticket-perforated  fs-4 p-0 m-0 "></i></p>
-                      <i class="bi bi-ticket-perforated text-white fs-4 p-0 m-0 nav-link Link"></i>
+                      <p className="m-0 p-0 ">My Tickets</p>
+                      <i class="bi bi-ticket-perforated  fs-4 p-0 m-0 "></i>
                     </Link>
                   </li>
-                  <li className="nav-item d-flex align-items-center">
                   <li className="nav-item d-flex align-items-center">
                     <Link to={"/faq"} className="nav-link Link">
                       FAQ
@@ -69,7 +64,6 @@ export function MyNavbar() {
                   <li className="nav-item d-flex align-items-center">
                     <Link
                       onClick={handleLoggedOut}
-                      className="nav-link text-danger d-flex align-items-center gap-1 logout"
                       className="nav-link text-danger d-flex align-items-center gap-1 logout"
                     >
                       <p className="m-0 p-0 fw-bold">Logout</p>
@@ -88,7 +82,7 @@ export function MyNavbar() {
                       <i class="bi bi-box-arrow-in-right fs-4 p-0 m-0"></i>
                     </Link>
                   </li>
-                  <li className="nav-item d-flex align-items-center d-flex align-items-center">
+                  <li className="nav-item d-flex align-items-center">
                     <Link
                       to={"/register"}
                       className="nav-link d-flex align-items-center gap-2  Link"

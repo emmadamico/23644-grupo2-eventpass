@@ -34,7 +34,16 @@ export function TicketItem() {
             >
               <div className=" col-3 m-0  p-0  d-flex flex-column justify-content-around ticket__bg rounded-start">
                 <div className="row m-0 p-0 ">
-                  <p className="versalita mx-auto  m-0  ticket__name-secondary">
+                  <p
+                    className="versalita mx-auto  m-0  ticket__name-secondary"
+                    style={{
+                      display: "-webkit-box",
+                      "-webkit-line-clamp": 2,
+                      "-webkit-box-orient": "vertical",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
                     {ticketData.name}
                   </p>
                   <div className="d-flex flex-column align-items-end">
@@ -129,14 +138,19 @@ export function TicketItem() {
             </article>
           </div>
           <div className="col-12 col-md-3 p-0 m-0 d-flex flex-column justify-content-center">
-            <p className="p-0 m-0 versalita text-white fw-bold mb-1 ticket__name">
+            <p className="p-0 m-0 versalita text-white fw-bold mb-1 ticket__name-customize">
               {ticketData.name}
             </p>
-            <p>
-              <small className="text-white lh-sm">
-                Download or customize your ticket, and enjoy your event
-              </small>
-            </p>
+            <div className="d-flex flex-column my-3 gap-2 ">
+              <div className="d-flex align-items-center gap-1">
+                <i class="bi bi-geo-alt  fw-bold fs-5 icon__green"></i>
+                <p className="text-white versalita m-0 p-0">Location</p>
+              </div>
+              <div className="d-flex align-items-center gap-1">
+                <i class="bi bi-sign-no-parking fw-bold fs-5 text-danger"></i>
+                <p className="text-white versalita m-0 p-0">Parking</p>
+              </div>
+            </div>
             <div className="d-flex align-items-center justify-content-center">
               <Link to={`/customticket/:${ticketData.id}`} className="">
                 <button className="btn btn-dark rounded-start-pill btn__black-green ticket__dates">
