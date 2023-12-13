@@ -12,7 +12,6 @@ import "../styles/TicketItem.css";
 export function TicketCustom() {
   const [mensaje, setMensaje] = useState("Write your special message here");
   const [imgfondo, setImgfondo] = useState("../img/img5.jpg");
-  
 
   const [color, setColor] = useState("");
   const [size, setSize] = useState(20);
@@ -27,8 +26,6 @@ export function TicketCustom() {
     (ticket) => ticket.id === ticketData.substring(1)
   );
   console.log(selectedTicket);
-
-  
 
   function getRandomNumber() {
     const min = 22;
@@ -58,21 +55,22 @@ export function TicketCustom() {
   };
 
   const descarga = (e) => {
-    html2canvas(document.querySelector("#exportar"), { useCORS: true }).then(function (canvas) {
-      let img = canvas.toDataURL("regaloImg/png");
-      let link = document.createElement("a");
-      link.download = "regalo.png";
-      link.href = img;
-      link.click();
-    });
+    html2canvas(document.querySelector("#exportar"), { useCORS: true }).then(
+      function (canvas) {
+        let img = canvas.toDataURL("regaloImg/png");
+        let link = document.createElement("a");
+        link.download = "regalo.png";
+        link.href = img;
+        link.click();
+      }
+    );
   };
-  
 
   return (
     <>
       <Header />
       <MyNavbar />
-      <div className="vh-100">
+      <div className="">
         <div className="encabezado text-center">
           <p>
             Do you want to surprise someone with a ticket to this event? Gift a
@@ -265,7 +263,7 @@ export function TicketCustom() {
                       className="z-1 w-100"
                       fluid
                     />
-                   
+
                     <div className="position-absolute z-3 d-flex flex-column w-100 justify-content-center ticket__data-wrapper">
                       <div className="glass-bg p-0 py-1 py-lg-3">
                         <div className="row m-0 p-0 pb-2 mx-3 border-1 border-bottom border-white">

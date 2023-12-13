@@ -1,5 +1,5 @@
 /*Se estiliza banner de about*/
-.banner-about img {
+/* .banner-about img {
   width: 100%;
   height: 30rem;
   object-fit: cover;
@@ -12,13 +12,10 @@
   transform: translate(-50%, -50%);
   color: var(--bg-main-color);
   font-size: 2em;
-  font-family: "montserrat", sans-serif;
-  font-weight: bold;
-  font-variant: small-caps;
-}
+} */
 
 /*Se estiliza section*/
-.card-about {
+/* .card-about {
   width: 90%;
   height: auto;
   border-radius: 50px;
@@ -28,10 +25,10 @@
   position: relative;
   top: -180px;
   padding: 6rem;
-}
+} */
 
 /*Se sobreescriben estilos de bootstrap*/
-.card-about .card {
+/* .card-about .card {
   background-color: var(--green-light-color);
   border-radius: 50px !important;
   font-family: "montserrat", sans-serif;
@@ -95,4 +92,31 @@
   .card-about .card {
     border-radius: 0 !important;
   }
+} */
+
+.card__container-about {
+  min-height: 100% !important;
+  border: solid 1px #ffffff43 !important;
+  background-color: #4d4d4d6a !important;
+  backdrop-filter: blur(3px);
+}
+
+.card__descripcion-about {
+  font-size: 0.93rem;
+}
+
+.border__bottom-green-about {
+  border-bottom: solid 2px var(--green-light-color) !important;
+}
+
+.border__top-green-about {
+  border-top: solid 1px var(--green-light-color) !important;
+}
+
+.icon-about {
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-about:hover {
+  transform: scale(1.1);
 }

@@ -25,13 +25,14 @@
   text-shadow: 0 0 3px red;
 }
 
-.ticket__navbar {
+.login {
   color: var(--white-color) !important;
+  transition: all 0.3s ease-in-out;
 }
 
-.ticket__navbar:hover {
-  transition: color 0.3s ease-in-out;
-  color: var(--white-hover-color) !important;
+.login:hover {
+  color: var(--green-light-color) !important;
+  text-shadow: 0 0 3px var(--green-light-color);
 }
 /* MediaQuerys */
 

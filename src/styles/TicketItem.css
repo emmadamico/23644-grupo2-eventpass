@@ -8,7 +8,7 @@
 
 .ticket__name {
   font-size: 1.1rem !important;
-  white-space: nowrap;
+  white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -31,6 +31,12 @@
   font-style: italic;
 }
 
+.ticket__name-customize {
+  font-size: 1.1rem !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .vertical-text {
   writing-mode: vertical-rl;
   transform: rotate(-360);
@@ -51,8 +57,11 @@
   height: auto;
 }
 
+.icon__green {
+  color: var(--green-light-color);
+}
 .ticket__name-secondary {
-  font-size: 0.6rem;
+  font-size: 0.5rem;
 }
 
 .ticket__dates-secondary {
@@ -82,6 +91,9 @@
   }
   .ticket__name-secondary {
     font-size: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .ticket__dates-secondary {
