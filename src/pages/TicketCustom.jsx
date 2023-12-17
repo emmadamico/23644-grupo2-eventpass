@@ -334,27 +334,27 @@ export function TicketCustom() {
 
           <ul className="list-unstyled d-flex flex-wrap gap-3 align-items-center">
             <li>
-              <a href="http://" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-facebook fs-4 grey-link" />
               </a>
             </li>
             <li>
-              <a href="http://" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-instagram fs-4 grey-link" />
               </a>
             </li>
             <li>
-              <a href="http://" target="_blank" rel="noopener noreferrer">
+              <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-twitter fs-4 grey-link"></i>
               </a>
             </li>
             <li>
-              <a href="http://" target="_blank" rel="noopener noreferrer">
+              <a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer">
                 <i className="bi bi-whatsapp fs-4 grey-link"></i>
               </a>
             </li>
           </ul>
-          <h5 className="texto-verde descarga" onClick={descarga} type="button">
+          <h5 className="btn btn-dark rounded-pill btn__black-green" onClick={descarga} type="button">
             DOWNLOAD
           </h5>
         </div>
