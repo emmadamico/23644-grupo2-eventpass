@@ -58,21 +58,24 @@ export function TicketCustom() {
   };
 
   const descarga = (e) => {
-    html2canvas(document.querySelector("#exportar"), { useCORS: true }).then(function (canvas) {
-      let img = canvas.toDataURL("regaloImg/png");
-      let link = document.createElement("a");
-      link.download = "regalo.png";
-      link.href = img;
-      link.click();
-    });
+
+    html2canvas(document.querySelector("#exportar"), { useCORS: true }).then(
+      function (canvas) {
+        let img = canvas.toDataURL("regaloImg/png");
+        let link = document.createElement("a");
+        link.download = "regalo.png";
+        link.href = img;
+        link.click();
+      }
+    );
   };
-  
+
 
   return (
     <>
       <Header />
       <MyNavbar />
-      <div>
+      <div className="">
         <div className="encabezado text-center">
           <p>
             Do you want to surprise someone with a ticket to this event? Gift a
@@ -265,7 +268,8 @@ export function TicketCustom() {
                       className="z-1 w-100"
                       fluid
                     />
-                   
+
+                        
                     <div className="position-absolute z-3 d-flex flex-column w-100 justify-content-center ticket__data-wrapper">
                       <div className="glass-bg p-0 py-1 py-lg-3">
                         <div className="row m-0 p-0 pb-2 mx-3 border-1 border-bottom border-white">
@@ -334,22 +338,30 @@ export function TicketCustom() {
 
           <ul className="list-unstyled d-flex flex-wrap gap-3 align-items-center">
             <li>
+
               <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+
                 <i className="bi bi-facebook fs-4 grey-link" />
               </a>
             </li>
             <li>
+
               <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+
                 <i className="bi bi-instagram fs-4 grey-link" />
               </a>
             </li>
             <li>
+
               <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer">
+
                 <i className="bi bi-twitter fs-4 grey-link"></i>
               </a>
             </li>
             <li>
+
               <a href="https://web.whatsapp.com/" target="_blank" rel="noopener noreferrer">
+
                 <i className="bi bi-whatsapp fs-4 grey-link"></i>
               </a>
             </li>

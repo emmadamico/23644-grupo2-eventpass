@@ -7,14 +7,14 @@
 }
 
 .ticket__name {
-  font-size: 1.1rem;
-  white-space: nowrap;
+  font-size: 1.1rem !important;
+  white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .ticket__dates {
-  font-size: 0.65rem;
+  font-size: 0.65rem !important;
   font-weight: bold;
   text-wrap: balance;
 }
@@ -31,6 +31,12 @@
   font-style: italic;
 }
 
+.ticket__name-customize {
+  font-size: 1.1rem !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .vertical-text {
   writing-mode: vertical-rl;
   transform: rotate(-360);
@@ -51,12 +57,15 @@
   height: auto;
 }
 
+.icon__green {
+  color: var(--green-light-color);
+}
 .ticket__name-secondary {
-  font-size: 0.75rem;
+  font-size: 0.5rem;
 }
 
 .ticket__dates-secondary {
-  font-size: 0.55rem;
+  font-size: 0.48rem;
   font-weight: bold;
   text-wrap: balance;
 }
@@ -65,7 +74,7 @@
   min-height: 12rem;
 } */
 
-@media (max-width: 1024px) {
+@media (max-width: 1025px) {
   .ticket__name {
     font-size: 0.8rem;
     white-space: nowrap;
@@ -81,17 +90,7 @@
     text-wrap: balance;
   }
   .ticket__name-secondary {
-    font-size: 0.6rem;
-  }
-
-  .ticket__dates-secondary {
-    font-size: 0.45rem;
-  }
-}
-
-@media (max-width: 769px) {
-  .ticket__name-secondary {
-    font-size: 0.4rem;
+    font-size: 0.5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -99,6 +98,41 @@
 
   .ticket__dates-secondary {
     font-size: 0.38rem;
+  }
+}
+
+@media (max-width: 769px) {
+  .ticket__name-secondary {
+    font-size: 0.65rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ticket__dates-secondary {
+    font-size: 0.5rem;
+  }
+  .qr {
+    padding: 0rem !important;
+  }
+}
+
+@media (max-width: 426px) {
+  .ticket__name {
+    font-size: 0.7rem !important;
+  }
+  .ticket__dates {
+    font-size: 0.5rem !important;
+  }
+  .ticket__name-secondary {
+    font-size: 0.65rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ticket__dates-secondary {
+    font-size: 0.4rem;
   }
   .qr {
     padding: 0rem !important;

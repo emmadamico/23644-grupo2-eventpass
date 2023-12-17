@@ -116,7 +116,10 @@ export default function Events() {
                 : "Category"}
             </h3>
           ) : (
-            <h3 className="text-white versalita">All</h3>
+            <article>
+              <h3 className="text-white versalita">All</h3>
+              <div className="linea-color mb-3"></div>
+            </article>
           )}
 
           <PagerButtons
@@ -169,7 +172,9 @@ export default function Events() {
                             See More
                           </button>
                         </Link>
-                        {isLoggedIn && <Fav isLoggedIn={isLoggedIn} />}
+                        {isLoggedIn && (
+                          <Fav isLoggedIn={isLoggedIn} eventFav={event} />
+                        )}
                       </div>
                     </div>
                     <div className=" z-1 rounded ">

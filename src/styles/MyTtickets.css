@@ -1,0 +1,33 @@
+/* .ticket__container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+} */
+
+/* .ticket__container::-webkit-scrollbar {
+  width: 2px;
+  background-color: transparent;
+}
+
+.ticket__container::-webkit-scrollbar-thumb {
+  background-color: var(--green-light-color);
+  border-radius: 10px;
+}
+
+.ticket__container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.ticket__container::-webkit-scrollbar-button {
+  display: none;
+}
+
+.ticket__container::-webkit-scrollbar-corner {
+  background-color: transparent;
+} */
+
+.tickets__glass-bg {
+  background-color: rgba(90, 85, 85, 0);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(3px) brightness(0.7);
+}

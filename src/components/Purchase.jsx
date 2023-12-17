@@ -42,7 +42,7 @@ const Purchase = ({ eventData }) => {
     localStorage.setItem("ticketDataArray", JSON.stringify(ticketDataArray));
 
     //vuelve a la pagina de inicio luego de efectuar la compra
-    window.location.href = "/";
+    // window.location.href = "/";
   };
   return (
     <div className="col-lg-6 mb-3 w-100 ">

@@ -2,23 +2,123 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MyNavbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import Swal from 'sweetalert2';
 
 export function LoginPasswordChange() {
   const navigate = useNavigate();
-  const [securityQuestion, setSecurityQuestion] = useState("");
+
   const [securityAnswer, setSecurityAnswer] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  
-  const [securityQuestionError, setSecurityQuestionError] = useState("");
   const [securityAnswerError, setSecurityAnswerError] = useState("");
   const [newPasswordError, setNewPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
   const handlePasswordChange = async () => {
-    window.scrollTo(0, 0);
-    navigate('/');
+    setSecurityAnswerError("");
+    setNewPasswordError("");
+    setConfirmPasswordError("");
+
+    if (!securityAnswer && !newPassword && !confirmPassword){
+      setSecurityAnswerError('Required field');
+      setNewPasswordError('Required field');
+      setConfirmPasswordError('Required field');
+      return;
+    } else if (!securityAnswer && newPassword && !confirmPassword){
+      setSecurityAnswerError('Required field');
+      setConfirmPasswordError('Required field');
+      if (!/(?=.*[A-Z])(?=.*\d).{8,}/.test(newPassword)) {
+        setNewPasswordError('Password must be greater than 8 and contain at least one uppercase letter, one lowercase letter, one special character, and one number');
+      }
+      return;
+    } else if (securityAnswer && !newPassword && !confirmPassword){
+      setNewPasswordError('Required field');
+      setConfirmPasswordError('Required field');
+      return;
+    } else if (!securityAnswer && !newPassword && confirmPassword){
+      setSecurityAnswerError('Required field');
+      setNewPasswordError('Required field');
+      return;
+    } else if (!securityAnswer && newPassword && confirmPassword){
+      setSecurityAnswerError('Required field');
+      if (!/(?=.*[A-Z])(?=.*\d).{8,}/.test(newPassword)) {
+        setNewPasswordError('Password must be greater than 8 and contain at least one uppercase letter, one lowercase letter, one special character, and one number');
+      }
+      if (newPassword !== confirmPassword){
+        setConfirmPasswordError('Password do not match');
+      }
+      return;
+    } else if (securityAnswer && !newPassword && confirmPassword){
+      setNewPasswordError('Required field');
+      return;
+    } else if (securityAnswer && newPassword && !confirmPassword){
+      setConfirmPasswordError('Required field');
+      if (!/(?=.*[A-Z])(?=.*\d).{8,}/.test(newPassword)) {
+        setNewPasswordError('Password must be greater than 8 and contain at least one uppercase letter, one lowercase letter, one special character, and one number');
+      }
+      return;
+    }
+
+    if (newPassword !== confirmPassword){
+      setConfirmPasswordError('Password do not match');
+      return;
+    }
+
+    if (!/(?=.*[A-Z])(?=.*\d).{8,}/.test(newPassword) && newPassword) {
+      setNewPasswordError('Password must be greater than 8 and contain at least one uppercase letter, one lowercase letter, one special character, and one number');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:5000/auth/updateUserInfo', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: "",
+          lastName: "",
+          email: localStorage.getItem('email'),
+          newEmail: "",
+          password: "",
+          newPassw: newPassword,
+          repeatPassw: confirmPassword,
+          securityAnswers: securityAnswer
+        }),
+      });
+      const data = await response.json();
+
+      if (data.errorPassw) {
+        Swal.fire({
+          title: 'Error',
+          text: 'Please, verify your password.',
+          icon: 'error',
+          confirmButtonText: 'Close'
+        });
+      }
+
+      if (data.errorAnswer) {
+        Swal.fire({
+          title: 'Error',
+          text: 'Please, verify the information provided.',
+          icon: 'error',
+          confirmButtonText: 'Close'
+        });
+      }
+
+      if (data.msg) {
+        Swal.fire({
+          title: 'Saved!',
+          text: 'Your password has been updated.',
+          icon: 'success',
+          confirmButtonText: 'Accept'
+        }).then(function(){navigate("/login")});
+        localStorage.clear()
+      }
+    } catch (error) {
+      console.error('Error en la solicitud:', error);
+    }
   };
 
   return (
@@ -33,21 +133,12 @@ export function LoginPasswordChange() {
         <div className="form-item">
           <label>
             Security Question:
-            <select
-              className="mx-3 border-0 input-form"
-              value={securityQuestion}
-              onChange={(e) => setSecurityQuestion(e.target.value)}
+            <label
+              className="mx-3 input-form mb-0"
             >
-              <option value="" disabled>
-                Selecciona una opción
-              </option>
-              <option value="color">What's your favorite color?</option>
-              <option value="animal">What is your pet's name?</option>
-            </select>
+              {localStorage.getItem('selectedSecurityQuestion')}
+            </label>
           </label>
-          {securityQuestionError && (
-            <p className="error-message">{securityQuestionError}</p>
-          )}
         </div>
         <div className="form-item mt-3">
           <label>
