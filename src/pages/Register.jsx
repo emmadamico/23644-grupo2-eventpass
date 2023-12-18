@@ -196,7 +196,7 @@ export function Register() {
           </div>
           
           <div className="form-items mt-3 d-flex gap-3">
-            <label htmlFor="email" className="register-label text-white px-3 py-2">E-mail</label>
+            <label htmlFor="email" className="register-label text-white px-3 py-2" id="mail">E-mail</label>
             <div className="d-flex flex-column">
             <input
               className="register-input px-5 py-2 border-0 rounded-pill"
@@ -290,7 +290,8 @@ export function Register() {
           </div>
 
           <div className="form-items d-flex justify-content-end align-items-center flex-row mt-2 gap-3 mt-3">
-            <div className="d-flex align-items-center gap-1">
+            <div className="d-flex flex-column  gap-1">
+              <div className="d-flex justify-content-start px-3 gap-2">
               <label className="text-white">
                 <small>Agree terms and conditions</small>
               </label>
@@ -302,7 +303,10 @@ export function Register() {
                 value={formData.termsAccepted}
                 onChange={handleChange}
               ></input>
+              </div>
+              <div className="d-flex justify-content-end">
               {errors.termsAccepted && <small className="register-validation px-3 pt-2">{errors.termsAccepted}</small>}
+              </div>
             </div>
             <button type="submit" className="signup-register col border-0 rounded-pill px-5 py-2">Sign up</button>
           </div>
