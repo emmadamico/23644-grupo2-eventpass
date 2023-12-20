@@ -18,4 +18,18 @@
 
 .register-validation {
   color: var(--green-light-color);
+  max-width: 300px; 
+  word-wrap: break-word; 
 }
+
+#selectedSecurityQuestion {
+  padding: 10px 20px !important;
+}
+
+@media (max-width: 576px) {
+  #mail {
+    padding-right: 40px !important;
+  }
+}
+
+
