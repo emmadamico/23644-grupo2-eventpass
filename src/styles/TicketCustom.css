@@ -125,11 +125,12 @@
 .texto-verde {
   color: #0cff00;
 }
-.descarga:hover {
-  color: #7ef818;
-  padding: 1rem;
-  border-radius: 10px;
-  border: solid #272925;
+
+a:hover i {
+  transition: all 0.3s ease-in-out;
+  color: var(--green-color) !important;
+  text-shadow: 0 0 2px var(--green-color);
+  transform: scale(1.1);
 }
 
 .compartir {
