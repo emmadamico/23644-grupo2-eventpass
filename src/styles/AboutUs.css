@@ -1,95 +1,88 @@
 /*Se estiliza banner de about*/
-.banner-about img {
-    width: 100%;
-    height: 30rem; 
-    object-fit: cover;
+/* .banner-about img {
+  width: 100%;
+  height: 30rem;
+  object-fit: cover;
 }
 
 .banner-about .title {
-    position: absolute;
-    top: 25%;
-    left: 23%;
-    transform: translate(-50%, -50%);
-    color: var(--bg-main-color);
-    font-size: 2em;
-    font-family: 'montserrat', sans-serif;
-    font-weight: bold;
-    font-variant: small-caps;
-}
-
+  position: absolute;
+  top: 25%;
+  left: 23%;
+  transform: translate(-50%, -50%);
+  color: var(--bg-main-color);
+  font-size: 2em;
+} */
 
 /*Se estiliza section*/
-.card-about {
-    width: 90%;
-    height: auto;
-    border-radius: 50px;
-    background-color: rgba(90, 85, 85, 0);
-    backdrop-filter: blur(2px) brightness(0.7);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    position: relative;
-    top: -180px;
-    padding: 6rem;
-}
-
+/* .card-about {
+  width: 90%;
+  height: auto;
+  border-radius: 50px;
+  background-color: rgba(90, 85, 85, 0);
+  backdrop-filter: blur(2px) brightness(0.7);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  top: -180px;
+  padding: 6rem;
+} */
 
 /*Se sobreescriben estilos de bootstrap*/
-.card-about .card {
-    background-color: var(--green-light-color);
-    border-radius: 50px!important;
-    font-family: 'montserrat', sans-serif;
-    font-weight: bolder;
-    color: var(--bg-main-color);
+/* .card-about .card {
+  background-color: var(--green-light-color);
+  border-radius: 50px !important;
+  font-family: "montserrat", sans-serif;
+  font-weight: bolder;
+  color: var(--bg-main-color);
 }
 
 .card-about .card-header {
-    background-color: var(--green-light-color);
-    padding: 2rem;
-    border-radius: 50px!important;
-    font-family: 'montserrat', sans-serif;
-    font-weight: bolder;
-    color: var(--bg-main-color);
+  background-color: var(--green-light-color);
+  padding: 2rem;
+  border-radius: 50px !important;
+  font-family: "montserrat", sans-serif;
+  font-weight: bolder;
+  color: var(--bg-main-color);
 }
-
 
 .card-about .card-img-top {
-    border-radius: 50px 50px 0 0;
+  border-radius: 50px 50px 0 0;
 }
 
-
 .card-about .card-body {
-    color: var(--black-color);
-    text-align: justify;
+  color: var(--black-color);
+  text-align: left;
 }
 
 .card-about .card-footer {
-    background-color: transparent;
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    height: 60px; 
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
 }
 
-
 @media (max-width: 1024px) {
-    .banner-about .title {
-        left: 30%;
-        top: 30%;
-    }
+  .banner-about .title {
+    left: 30%;
+    top: 30%;
+  }
 }
 
 @media (max-width: 990px) {
-    .banner-about .title {
-        left: 35%;
-    }
+  .banner-about .title {
+    left: 35%;
+  }
 }
 
 @media (max-width: 655px) {
-    .banner-about .title {
-        left: 40%; 
-    }
+  .banner-about .title {
+    left: 40%;
+  }
 }
 
 @media (max-width: 570px) {
+<<<<<<< HEAD
 .card-about .accordion-item {
     background-color: transparent;
 }
@@ -118,28 +111,43 @@
     .banner-about .title{
         left: 30%;
         top: 30%;
+=======
+  .card-about {
+    width: 100%;
+    padding: 20% 0;
+    border-radius: 0;
   }
-}
-@media (max-width: 990px){
-    .banner-about .title{
-        left: 35%;
-  }
-}
-@media (max-width: 655px){
-    .banner-about .title{
-        left: 40%; 
-  }
-}
-@media (max-width: 570px){
-    .card-about{
 
-        width: 100%;
-        padding: 20% 0;
-        border-radius: 0;
-    }
+  .card-about .card-header,
+  .card-about .card {
+    border-radius: 0 !important;
+>>>>>>> 9de9869aaf8794b293d4eb63aa86fd2607b6be1f
+  }
+} */
 
-    .card-about .card-header,
-    .card-about .card {
-        border-radius: 0!important;
-    }
+.card__container-about {
+  min-height: 100% !important;
+  border: solid 1px #ffffff43 !important;
+  background-color: #4d4d4d6a !important;
+  backdrop-filter: blur(3px);
+}
+
+.card__descripcion-about {
+  font-size: 0.93rem;
+}
+
+.border__bottom-green-about {
+  border-bottom: solid 2px var(--green-light-color) !important;
+}
+
+.border__top-green-about {
+  border-top: solid 1px var(--green-light-color) !important;
+}
+
+.icon-about {
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-about:hover {
+  transform: scale(1.1);
 }

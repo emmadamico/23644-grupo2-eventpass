@@ -1,3 +1,13 @@
+import { Footer } from "../components/Footer";
+import { MyTickets } from "../components/MyTickets";
+import { MyNavbar } from "../components/Navbar";
+
 export function Tickets() {
-  return <h1>Mis Entradas</h1>;
+  return (
+    <>
+      <MyNavbar />
+      <MyTickets />
+      <Footer />
+    </>
+  );
 }

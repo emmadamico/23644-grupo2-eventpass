@@ -13,7 +13,7 @@ export function MyNavbar() {
 
   const handleLoggedOut = () => {
     localStorage.clear();
-    setIsLoggedIn(false);
+    //setIsLoggedIn(false);
     navigate("/");
     window.location.reload(true);
   };
@@ -43,39 +43,52 @@ export function MyNavbar() {
               {isLoggedIn === "true" ? (
                 <>
                   <li className="nav-item">
-                    <Link to={"/mytickets"} className="nav-link Link">
-                      My Tickets
+                    <Link
+                      to={"/mytickets"}
+                      className="nav-link  d-flex align-items-center gap-2 Link"
+                    >
+                      <p className="m-0 p-0 ">My Tickets</p>
+                      <i class="bi bi-ticket-perforated  fs-4 p-0 m-0 "></i>
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item d-flex align-items-center">
                     <Link to={"/faq"} className="nav-link Link">
                       FAQ
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item d-flex align-items-center">
                     <Link to={"/profile"} className="nav-link Link">
                       My Profile
                     </Link>
                   </li>
-                  <li className="nav-item">
+                  <li className="nav-item d-flex align-items-center">
                     <Link
                       onClick={handleLoggedOut}
-                      className="nav-link text-danger fw-bold"
+                      className="nav-link text-danger d-flex align-items-center gap-1 logout"
                     >
-                      Logout
+                      <p className="m-0 p-0 fw-bold">Logout</p>
+                      <i class="bi bi-box-arrow-left text-danger  fs-4 p-0 m-0  nav-link "></i>
                     </Link>
                   </li>
                 </>
               ) : (
                 <>
-                  <li className="nav-item">
-                    <Link to={"/login"} className="nav-link Link">
-                      Login
+                  <li className="nav-item d-flex align-items-center">
+                    <Link
+                      to={"/login"}
+                      className="nav-link d-flex align-items-center gap-2 login "
+                    >
+                      <p className="m-0 p-0">Login</p>
+                      <i class="bi bi-box-arrow-in-right fs-4 p-0 m-0"></i>
                     </Link>
                   </li>
-                  <li className="nav-item">
-                    <Link to={"/register"} className="nav-link Link">
-                      Signup
+                  <li className="nav-item d-flex align-items-center">
+                    <Link
+                      to={"/register"}
+                      className="nav-link d-flex align-items-center gap-2  Link"
+                    >
+                      <p className="m-0 p-0 ">Sigup</p>
+                      <i class="bi bi-box-arrow-up fs-4 p-0 m-0"></i>
                     </Link>
                   </li>
                 </>
