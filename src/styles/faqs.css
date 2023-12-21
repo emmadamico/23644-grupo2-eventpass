@@ -1,14 +1,12 @@
 /*Se estiliza banner de faq*/
 .banner-faq img {
-    width: 100%;
+    width: 100%; 
     height: 30rem; 
     object-fit: cover;
 }
 .banner-faq .title {
-    position: absolute;
-    top: 25%;
-    left: 23%;
-    transform: translate(-50%, -50%);
+    left: 0;
+    right: 0;
     color: var(--bg-main-color);
     font-size: 2em;
     font-family: 'montserrat', sans-serif;
@@ -44,21 +42,12 @@
     color: var(--white-color);
 } 
 
-@media (max-width: 1024px){
-    .banner-faq .title{
-        left: 30%;
-        top: 30%;
-}
-}
-@media (max-width: 990px){
-    .banner-faq .title{
-        left: 35%;
-  }
-}
-@media (max-width: 655px){
-    .banner-faq .title{
-        left: 40%; 
-  }
+@media (max-width: 758px){
+    .card-faq{
+        width: 100%;
+        padding: 20% 0;
+        border-radius: 0;
+    }
 }
 @media (max-width: 570px){
     .card-faq{

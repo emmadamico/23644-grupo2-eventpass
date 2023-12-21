@@ -9,9 +9,9 @@ export function FAQ() {
   return (
     <main>
       <MyNavbar />
-      <banner className="banner-faq">
+      <banner className="banner-faq position-relative">
         <img src="/banner.png" alt="" />
-        <h1 className="title versalita">Frequently Asked Questions</h1>
+        <h1 className="title versalita container position-absolute" style={{top: "50%", transform: "translateY(-50%)"}}>Frequently Asked Questions</h1>
       </banner>
 
       <section>
