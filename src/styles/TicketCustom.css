@@ -126,7 +126,7 @@
   color: #0cff00;
 }
 
-a:hover i {
+.icon:hover {
   transition: all 0.3s ease-in-out;
   color: var(--green-color) !important;
   text-shadow: 0 0 2px var(--green-color);

@@ -109,7 +109,7 @@ export default function OtherEvents() {
                     </div>
                     <div className="d-flex align-items-center justify-content-between">
                       <Link to={`/description/:${event.id}`} className="hover">
-                        <button className="btn btn-dark rounded-pill">
+                        <button className="btn btn-dark rounded-pill btn__black-green">
                           See More
                         </button>
                       </Link>
