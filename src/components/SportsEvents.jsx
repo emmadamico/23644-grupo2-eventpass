@@ -111,7 +111,7 @@ export function SportsEvents() {
                           to={`/description/:${filteredEvents[index].id}`}
                           className="hover"
                         >
-                          <button className="btn btn-dark rounded-pill">
+                          <button className="btn btn-dark rounded-pill btn__black-green">
                             See More
                           </button>
                         </Link>
