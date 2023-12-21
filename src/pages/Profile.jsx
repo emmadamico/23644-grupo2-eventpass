@@ -280,27 +280,30 @@ export function Profile() {
     <>
       <MyNavbar />
       <main>
-        <banner className="banner-profile">
-          <img src="/banner.png" alt="" />
-          <h1 className="title versalita">My Profile</h1>
-          <p className="p-profile">Modify your account and contact details</p>
+        <banner className="banner-profile position-relative">
+          <img src="/banner.png" alt="" className="banner-image"/>
+          <section className="banner-content container position-absolute" style={{top: "50%", transform: "translateY(-50%)"}}>
+            <h1 className="versalita fw-bold">My Profile</h1>
+            <p>Modify your account and contact details</p>
+          </section>
         </banner>
 
-        <div className="card-user mx-auto glass-bg ">
+        <div className="card-user mx-auto glass-bg">
+          <section className="card-section">
           <Tabs
             defaultActiveKey="user-info"
             id="fill-tab-example"
             className="mb-3"
             fill
-          >
+          > 
             <Tab eventKey="user-info" title="Personal Information">
               <section className="d-flex flex-column justify-content-center align-items-center">
-                <form className="d-flex flex-column justify-content-center align-items-end p-3 user-form mt-3 mb-5">
+              <form className="d-flex flex-column justify-content-center p-3 user-form mt-3 mb-5">
                   <div className="form-item">
                     <label>
                       Name:
                       <input
-                        className="mx-3 border-0 input-form"
+                        className="border-0 input-form "
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -309,11 +312,11 @@ export function Profile() {
                     </label>
                     {nameError && <p className="error-message">{nameError}</p>}
                   </div>
-                  <div className="form-item mt-3">
+                  <div className="form-item  mt-3">
                     <label>
                       Last Name:
                       <input
-                        className="mx-3 border-0 input-form"
+                        className="border-0 input-form"
                         type="text"
                         value={lastName}
                         onChange={(e) => setLastName(e.target.value)}
@@ -324,11 +327,11 @@ export function Profile() {
                       <p className="error-message">{lastNameError}</p>
                     )}
                   </div>
-                  <div className="form-item mt-3">
+                  <div className="form-item  mt-3">
                     <label>
                       E-mail:
                       <input
-                        className="mx-3 border-0 input-form"
+                        className="border-0 input-form"
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -361,12 +364,12 @@ export function Profile() {
 
             <Tab eventKey="password" title="Password">
               <section className="d-flex flex-column justify-content-center align-items-center">
-                <form className="d-flex flex-column justify-content-center align-items-end p-3 user-form mt-3 mb-5">
+                <form className="d-flex flex-column justify-content-center p-3 user-form mt-3 mb-5">
                   <div className="form-item">
                     <label>
                       Current Password:
                       <input
-                        className="mx-3 border-0 input-form"
+                        className="border-0 input-form"
                         type="password"
                         value={currentPassword}
                         onChange={(e) => setCurrentPassword(e.target.value)}
@@ -381,7 +384,7 @@ export function Profile() {
                     <label>
                       New Password:
                       <input
-                        className="mx-3 border-0 input-form"
+                        className="border-0 input-form"
                         type="password"
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
@@ -396,7 +399,7 @@ export function Profile() {
                     <label>
                       Confirm Password:
                       <input
-                        className="mx-3 border-0 input-form"
+                        className="border-0 input-form"
                         type="password"
                         value={repeatPassword}
                         onChange={(e) => setRepeatPassword(e.target.value)}
@@ -427,6 +430,7 @@ export function Profile() {
               </section>
             </Tab>
           </Tabs>
+          </section>
         </div>
       </main>
       <Footer />
