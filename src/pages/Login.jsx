@@ -40,7 +40,7 @@ export function Login() {
 
     if (email && password) {
       try {
-        const response = await fetch('http://localhost:5000/auth/login', {
+        const response = await fetch('https://eventpass-server.vercel.app/auth/login', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ export function Login() {
     
     if (email) {
       try {
-        const response = await fetch('http://localhost:5000/auth/getUserSecQuestion/'+ email, {
+        const response = await fetch('https://eventpass-server.vercel.app/auth/getUserSecQuestion/'+ email, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

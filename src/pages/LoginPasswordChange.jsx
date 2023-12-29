@@ -71,7 +71,7 @@ export function LoginPasswordChange() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/auth/updateUserInfo', {
+      const response = await fetch('https://eventpass-server.vercel.app/auth/updateUserInfo', {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

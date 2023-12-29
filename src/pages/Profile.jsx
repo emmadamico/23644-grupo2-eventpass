@@ -97,7 +97,7 @@ export function Profile() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/auth/updateUserInfo",
+        "https://eventpass-server.vercel.app/auth/updateUserInfo",
         {
           method: "PATCH",
           headers: {
@@ -231,7 +231,7 @@ export function Profile() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/auth/updateUserInfo",
+        "https://eventpass-server.vercel.app/auth/updateUserInfo",
         {
           method: "PATCH",
           headers: {

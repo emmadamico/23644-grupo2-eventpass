@@ -54,7 +54,7 @@ export function Register() {
 
     try {
       if (Object.keys(validationErrors).length === 0) {
-        const response = await fetch('http://localhost:5000/auth/register', {
+        const response = await fetch('https://eventpass-server.vercel.app/auth/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
