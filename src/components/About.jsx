@@ -53,7 +53,7 @@ export function About() {
       description:
         "I'm Emmanuel, a 34 year old computer engineer working in cybersecurity. I enjoy traveling, socializing, and gaming",
       linkedin:
-        "https://www.linkedin.com/in/emmanuel-angel-nenadovit-47036b96/",
+        "https://www.linkedin.com/in/emmanuel-angel-nenadovit/",
       github: "https://github.com/emmadamico",
     },
     {

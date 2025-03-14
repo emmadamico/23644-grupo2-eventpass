@@ -45,8 +45,9 @@ button.py-2:hover {
 .form-check-label {
   color: #eff5f1;
 }
-.forget {
+.forget.btn.btn-link {
   color: #eff5f1;
+  text-decoration: none;
 }
 .boton-modal:hover {
   background-color: var(--green-light-color)!important;

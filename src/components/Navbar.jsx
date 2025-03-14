@@ -79,7 +79,7 @@ export function MyNavbar() {
                       className="nav-link d-flex align-items-center gap-2 login "
                     >
                       <p className="m-0 p-0">Login</p>
-                      <i class="bi bi-box-arrow-in-right fs-4 p-0 m-0"></i>
+                      <i className="bi bi-box-arrow-in-right fs-4 p-0 m-0"></i>
                     </Link>
                   </li>
                   <li className="nav-item d-flex align-items-center">
@@ -88,7 +88,7 @@ export function MyNavbar() {
                       className="nav-link d-flex align-items-center gap-2  Link"
                     >
                       <p className="m-0 p-0 ">Sigup</p>
-                      <i class="bi bi-box-arrow-up fs-4 p-0 m-0"></i>
+                      <i className="bi bi-box-arrow-up fs-4 p-0 m-0"></i>
                     </Link>
                   </li>
                 </>

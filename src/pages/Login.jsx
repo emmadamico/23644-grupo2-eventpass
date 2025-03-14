@@ -14,7 +14,7 @@ export function Login() {
   const [password, setPassword] = useState('');
   const [showModal, setShowModal] = useState(false);
   
-  const [showPasswordChangeForm, setShowPasswordChangeForm] = useState(false);
+  //const [showPasswordChangeForm, //] = useState(false);
 
   useEffect(() => {
     const storedEmail = localStorage.getItem('email');
@@ -113,7 +113,7 @@ export function Login() {
           localStorage.setItem('selectedSecurityQuestion', data.selectedSecurityQuestion);
           localStorage.setItem('email', email);
           setShowModal(false); 
-          setShowPasswordChangeForm(true);
+          //setShowPasswordChangeForm(true);
           navigate('/forgot-password');
         }
       } catch (error) {
@@ -196,13 +196,12 @@ export function Login() {
 
                   <div className="row mt-3 d-flex justify-content-center">
                     <div className="row mt-3">
-                      <a
-                        className="forget"
-                        href="#"
+                      <button
+                        className="forget btn btn-link"
                         onClick={() => setShowModal(true)}
                       >
                         Did you forget your password?
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>
