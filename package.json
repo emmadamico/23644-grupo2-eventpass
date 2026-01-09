@@ -18,7 +18,7 @@
     "react-bootstrap-validation": "^0.1.11",
     "react-dom": "^19.2.3",
     "react-qr-code": "^2.0.18",
-    "react-router-dom": "^7.11.0",
+    "react-router-dom": "^7.12.0",
     "react-scripts": "^0.0.0",
     "sweetalert2": "^11.26.17",
     "validator": "^13.15.26",
